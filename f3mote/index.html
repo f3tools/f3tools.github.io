@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>f3mote — f3tools</title>
+<meta name="description" content="f3mote is a free, MIT-licensed tool from f3tools.">
+<meta name="theme-color" content="#3b82f6">
+<link rel="icon" href="../assets/f3tools-logo.png">
+<link rel="stylesheet" href="../style.css">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body>
+<div class="wrap" x-data="tool('f3mote')" x-init="load()">
+  <header class="top">
+    <a class="brand" href="../"><img src="../assets/f3tools-logo.png" alt="" width="32" height="32"><span>f3tools</span></a>
+    <nav><a href="../#tools">All tools</a><a href="https://github.com/f3tools" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+  </header>
+
+  <template x-if="t">
+    <main>
+      <section class="hero">
+        <h1><span class="grad" x-text="t.name"></span></h1>
+        <p class="lede" x-text="t.tagline"></p>
+      </section>
+
+      <section class="section">
+        <p x-text="t.summary"></p>
+      </section>
+
+      <section class="section">
+        <h2>Install</h2>
+        <pre><code x-text="t.install"></code></pre>
+        <p>Then run <code x-text="t.run"></code>.</p>
+      </section>
+
+      <section class="section links">
+        <a class="btn primary" :href="t.npm" target="_blank" rel="noreferrer">npm</a>
+        <a class="btn" :href="t.repo" target="_blank" rel="noreferrer">Source on GitHub</a>
+      </section>
+    </main>
+  </template>
+  <p x-show="!t && error" x-text="error"></p>
+
+  <a class="back" href="../">← Back to f3tools</a>
+  <footer><div>MIT licensed · part of <a href="../">f3tools</a></div></footer>
+</div>
+<script>
+function tool(id) {
+  return {
+    t: null,
+    error: "",
+    async load() {
+      try {
+        const res = await fetch("../tools.json", { cache: "no-cache" });
+        if (!res.ok) throw new Error(res.status);
+        this.t = (await res.json()).find((x) => x.id === id) || null;
+        if (!this.t) this.error = "Tool not found.";
+      } catch (e) {
+        this.error = "Could not load this tool.";
+      }
+    },
+  };
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>f3tools — open source, free AI tools</title>
+<meta name="description" content="f3tools: free, open-source AI tools. f3router is a free LLM API router for coding agents; f3mote is a remote terminal for your coding agents.">
+<meta name="theme-color" content="#3b82f6">
+<meta property="og:title" content="f3tools — open source, free AI tools">
+<meta property="og:image" content="assets/f3tools-og.jpeg">
+<link rel="icon" href="assets/f3tools-logo.png">
+<link rel="stylesheet" href="style.css">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body>
+<div class="wrap" x-data="tools()" x-init="load()">
+  <header class="top">
+    <a class="brand" href="./"><img src="assets/f3tools-logo.png" alt="" width="32" height="32"><span>f3tools</span></a>
+    <nav>
+      <a href="#tools">Tools</a>
+      <a href="https://github.com/f3tools" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1><span class="grad">Free AI tools</span>, open source</h1>
+    <p class="lede">
+      f3tools is a small set of MIT-licensed tools for working with AI coding agents without paying for every token.
+      Each tool does one job; more are on the way.
+    </p>
+  </section>
+
+  <section id="tools" class="section">
+    <div class="grid">
+      <template x-for="t in list" :key="t.id">
+        <a class="card" :href="t.page">
+          <h2 x-text="t.name"></h2>
+          <p x-text="t.tagline"></p>
+          <pre><code x-text="t.install"></code></pre>
+          <div class="tags"><template x-for="tag in t.tags" :key="tag"><span class="tag" x-text="tag"></span></template></div>
+        </a>
+      </template>
+    </div>
+    <p x-show="error" x-text="error" style="color: var(--muted)"></p>
+  </section>
+
+  <footer>
+    <div>MIT licensed · <a href="https://github.com/f3tools" target="_blank" rel="noreferrer">github.com/f3tools</a></div>
+  </footer>
+</div>
+<script>
+function tools() {
+  return {
+    list: [],
+    error: "",
+    async load() {
+      try {
+        const res = await fetch("tools.json", { cache: "no-cache" });
+        if (!res.ok) throw new Error(res.status);
+        this.list = await res.json();
+      } catch (e) {
+        this.error = "Could not load the tool list.";
+      }
+    },
+  };
+}
+</script>
+</body>
+</html>
