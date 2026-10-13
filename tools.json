@@ -4,12 +4,17 @@
     "name": "f3router",
     "tagline": "Free LLM API router for your coding agents",
     "summary": "One OpenAI- and Anthropic-compatible endpoint in front of many AI providers. Point Claude Code, Codex, Pi, OpenCode, Aider and other coding agents at it and it routes each request to a working provider, with automatic fallback when a quota runs out.",
-    "install": "npm i -g f3router",
-    "run": "f3router",
-    "npm": "https://www.npmjs.com/package/f3router",
+    "install": "npm i -g f3rtr",
+    "run": "f3rtr",
+    "npm": "https://www.npmjs.com/package/f3rtr",
     "repo": "https://github.com/f3tools/f3router",
     "page": "f3router/",
-    "tags": ["LLM router", "OpenAI-compatible", "Anthropic-compatible", "free quotas"]
+    "tags": [
+      "LLM router",
+      "OpenAI-compatible",
+      "Anthropic-compatible",
+      "free quotas"
+    ]
   },
   {
     "id": "f3mote",
@@ -21,6 +26,10 @@
     "npm": "https://www.npmjs.com/package/f3mote",
     "repo": "https://github.com/f3tools/f3mote",
     "page": "f3mote/",
-    "tags": ["remote terminal", "mobile", "coding agents"]
+    "tags": [
+      "remote terminal",
+      "mobile",
+      "coding agents"
+    ]
   }
 ]
