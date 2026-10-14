@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API reference — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html" class="on">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/api/01-rest-api.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>API reference</h1>
+<p><a href="/f3router/docs/en/index.html">← Back to README</a> · <a href="/f3router/docs/en/index.html">Documentation index</a></p>
+<p>Any OpenAI-compatible client works (Anthropic / Claude clients too — see <a href="#anthropic--claude-clients">Anthropic / Claude clients</a>). Base URL <code>http://localhost:3001/v1</code>, unified key from the dashboard&#39;s Keys page. An interactive OpenAPI viewer covering every proxy endpoint is served at <code>GET /v1/docs</code>; the spec itself lives at <code>GET /v1/openapi.json</code>.</p>
+<ul>
+<li><a href="#chat-completions">Chat completions</a></li>
+<li><a href="#routing-strategies-auto">Routing strategies (<code>auto:*</code>)</a></li>
+<li><a href="#model-listing">Model listing</a></li>
+<li><a href="#streaming">Streaming</a></li>
+<li><a href="#tool-calling">Tool calling</a></li>
+<li><a href="#gemini-google-search-grounding">Gemini Google Search grounding</a></li>
+<li><a href="#native-gemini-api">Native Gemini API</a></li>
+<li><a href="#ollama-emulation">Ollama emulation</a></li>
+<li><a href="#revocable-url-tokens">Revocable URL tokens</a></li>
+<li><a href="#vision--image-input">Vision / image input</a></li>
+<li><a href="#document-attachments">Document attachments</a></li>
+<li><a href="#images-video--text-to-speech">Images, video &amp; text-to-speech</a></li>
+<li><a href="#fusion-multi-model-synthesis">Fusion (multi-model synthesis)</a></li>
+<li><a href="#response-headers">Response headers</a></li>
+<li><a href="#embeddings">Embeddings</a></li>
+<li><a href="#anthropic--claude-clients">Anthropic / Claude clients</a></li>
+<li><a href="#free-tier-budget-api">Free-tier budget API</a></li>
+<li><a href="#backups-api">Backups API</a></li>
+</ul>
+<h2>Chat completions</h2>
+<p><strong>Python</strong></p>
+<pre><code class="language-python">from openai import OpenAI
+
+client = OpenAI(
+    base_url=&quot;http://localhost:3001/v1&quot;,
+    api_key=&quot;f3router-your-unified-key&quot;,
+)
+
+resp = client.chat.completions.create(
+    model=&quot;auto&quot;,  # let the router pick; or specify e.g. &quot;gemini-2.5-flash&quot;
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Summarise the fall of Rome in one sentence.&quot;}],
+)
+print(resp.choices[0].message.content)
+print(&quot;Routed via:&quot;, resp.headers.get(&quot;x-routed-via&quot;))
+</code></pre>
+<p><strong>curl</strong></p>
+<pre><code class="language-bash">curl http://localhost:3001/v1/chat/completions \
+  -H &quot;Authorization: Bearer f3router-your-unified-key&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{
+    &quot;model&quot;: &quot;auto&quot;,
+    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;hi&quot;}]
+  }&#39;
+</code></pre>
+<h2>Routing strategies (<code>auto:*</code>)</h2>
+<p>Plain <code>auto</code> follows your active fallback chain. Add a suffix to steer a single request instead — no dashboard changes needed:</p>
+<ul>
+<li><code>auto:smart</code> — favor the highest-intelligence models</li>
+<li><code>auto:fast</code> — favor measured speed (throughput and time-to-first-byte)</li>
+<li><code>auto:cheap</code> — budget-leaning; currently the same blend as <code>balanced</code> (everything in the pool is already free)</li>
+<li><code>auto:reliable</code> — favor recent success rate</li>
+<li><code>auto:balanced</code> — the default blend (reliability first, speed and intelligence split the rest)</li>
+</ul>
+<p>These rank <strong>every enabled model</strong>, ignoring your chain order. Common synonyms resolve too (<code>auto:fastest</code>, <code>auto:speed</code>, <code>auto:smartest</code>, <code>auto:cheapest</code>, <code>auto:budget</code>, …), and the whole model string is case-insensitive.</p>
+<pre><code class="language-bash">curl http://localhost:3001/v1/chat/completions \
+  -H &quot;Authorization: Bearer f3router-your-unified-key&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{
+    &quot;model&quot;: &quot;auto:fast&quot;,
+    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;hi&quot;}]
+  }&#39;
+</code></pre>
+<p><code>auto:&lt;profile-name&gt;</code> routes through a named profile&#39;s chain instead of the active one, so different tools can use different chains through the same key:</p>
+<pre><code class="language-bash">curl http://localhost:3001/v1/chat/completions \
+  -H &quot;Authorization: Bearer f3router-your-unified-key&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{
+    &quot;model&quot;: &quot;auto:coding&quot;,
+    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Write a binary search in Rust.&quot;}]
+  }&#39;
+</code></pre>
+<p>An unknown profile name returns a clear <code>400</code> rather than silently falling back. Profiles are named fallback chains (see <a href="https://github.com/f3tools/f3router/blob/main/README.md#features" target="_blank" rel="noreferrer">Features</a>) — create and switch them from the dashboard; whichever is active is what plain <code>auto</code> uses.</p>
+<h2>Model listing</h2>
+<p><code>GET /v1/models</code> lists the whole catalog, including models you cannot call yet, so a client can show what exists as well as what is connected. <code>?available=true</code> (aliases <code>?connected=true</code>, <code>?ready=true</code>) narrows to models that can serve a request now.</p>
+<p>Each catalog entry also carries <code>execution_status</code>, a live answer to &quot;would a request work right now&quot;:</p>
+<ul>
+<li><code>ready</code> — at least one key can actually serve it: enabled, healthy or not yet probed, not scoped away from this model, not on a rate-limit cooldown, and inside its rate and token windows. A key whose <code>status</code> is still <code>unknown</code> counts as ready, because probing is lazy and a fresh key is usable until something says otherwise.</li>
+<li><code>needsKey</code> — the model is disabled, or no enabled key matches it at all.</li>
+<li><code>exhausted</code> — keys match the model but every one of them is blocked at this moment, so a request would fail immediately. This is the state a burst of 429s produces, and it clears on its own when the cooldowns expire.</li>
+</ul>
+<p><code>?execution_status=ready</code> (also <code>needsKey</code>, <code>exhausted</code>; matched case-insensitively) narrows the catalog rows to one status, so an agent can ask for models it can call without reading the whole list. An unrecognised value filters nothing. Like <code>?available=</code>, the filter applies only to catalog rows: <code>auto</code>, <code>fusion</code> and the <code>auto:&lt;profile&gt;</code> chains are router entries rather than models with keys of their own, and are always listed.</p>
+<pre><code class="language-bash">curl &quot;http://localhost:3001/v1/models?execution_status=ready&quot; \
+  -H &quot;Authorization: Bearer f3router-your-unified-key&quot;
+</code></pre>
+<h2>Streaming</h2>
+<pre><code class="language-python">stream = client.chat.completions.create(
+    model=&quot;auto&quot;,
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Stream me a haiku about SQLite.&quot;}],
+    stream=True,
+)
+for chunk in stream:
+    print(chunk.choices[0].delta.content or &quot;&quot;, end=&quot;&quot;, flush=True)
+</code></pre>
+<h2>Tool calling</h2>
+<p>Pass OpenAI-style <code>tools</code> and <code>tool_choice</code>; the assistant response round-trips back through the proxy exactly like the OpenAI API. Multi-step flows (assistant <code>tool_calls</code> → <code>tool</code> role follow-up → final answer) work across every provider the router can reach.</p>
+<pre><code class="language-python">tools = [{
+    &quot;type&quot;: &quot;function&quot;,
+    &quot;function&quot;: {
+        &quot;name&quot;: &quot;get_weather&quot;,
+        &quot;description&quot;: &quot;Get current weather for a city.&quot;,
+        &quot;parameters&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {&quot;city&quot;: {&quot;type&quot;: &quot;string&quot;}},
+            &quot;required&quot;: [&quot;city&quot;],
+        },
+    },
+}]
+
+# 1. Model asks for a tool call
+first = client.chat.completions.create(
+    model=&quot;auto&quot;,
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;What&#39;s the weather in Karachi?&quot;}],
+    tools=tools,
+    tool_choice=&quot;required&quot;,
+)
+call = first.choices[0].message.tool_calls[0]
+
+# 2. You execute the tool, feed the result back
+final = client.chat.completions.create(
+    model=&quot;auto&quot;,
+    messages=[
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;What&#39;s the weather in Karachi?&quot;},
+        first.choices[0].message,
+        {&quot;role&quot;: &quot;tool&quot;, &quot;tool_call_id&quot;: call.id, &quot;content&quot;: &#39;{&quot;temp_c&quot;: 32, &quot;cond&quot;: &quot;sunny&quot;}&#39;},
+    ],
+    tools=tools,
+)
+print(final.choices[0].message.content)
+</code></pre>
+<p>Works with <code>stream=True</code> as well — you&#39;ll get <code>delta.tool_calls</code> chunks followed by a <code>finish_reason: &quot;tool_calls&quot;</code> close. Under the hood, OpenAI-compatible providers (Groq, Cerebras, Mistral, OpenRouter, GitHub Models, HuggingFace, Cloudflare, Cohere compat) get the request passed through; Gemini requests get translated into Google&#39;s <code>functionDeclarations</code> / <code>functionResponse</code> shape and the response is translated back.</p>
+<h2>Gemini Google Search grounding</h2>
+<p>Google&#39;s models can ground their answers in live Google Search results. Since the OpenAI wire format has no way to express that, request a tool named <code>google_search</code> and the Google provider translates it into Gemini&#39;s native grounding tool. It can be sent on its own or alongside your normal function tools.</p>
+<pre><code class="language-python">resp = client.chat.completions.create(
+    model=&quot;gemini-2.5-flash&quot;,  # pin a Google model so the request routes there
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Who won the F1 race this weekend?&quot;}],
+    tools=[{&quot;type&quot;: &quot;function&quot;, &quot;function&quot;: {&quot;name&quot;: &quot;google_search&quot;, &quot;parameters&quot;: {}}}],
+)
+print(resp.choices[0].message.content)
+</code></pre>
+<h2>Native Gemini API</h2>
+<p>Gemini SDKs and Gemini CLI can use the native <code>/v1beta</code> surface:</p>
+<ul>
+<li><code>GET /v1beta/models</code></li>
+<li><code>GET /v1beta/models/{model}</code></li>
+<li><code>POST /v1beta/models/{model}:generateContent</code></li>
+<li><code>POST /v1beta/models/{model}:streamGenerateContent</code> (<code>?alt=sse</code> for Gemini CLI)</li>
+<li><code>POST /v1beta/models/{model}:countTokens</code></li>
+</ul>
+<pre><code class="language-bash">curl &quot;http://localhost:3001/v1beta/models/gemini-2.5-flash:generateContent&quot; \
+  -H &quot;x-goog-api-key: f3router-your-unified-key&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;contents&quot;:[{&quot;role&quot;:&quot;user&quot;,&quot;parts&quot;:[{&quot;text&quot;:&quot;hello&quot;}]}]}&#39;
+</code></pre>
+<p>Gemini model names like <code>gemini-2.5-flash</code> resolve through the Gemini family map (Keys → Gemini model mapping) rather than the catalog directly, so they route to Auto or whichever catalog model each family is pinned to. Catalog ids work verbatim too.</p>
+<p><code>contents</code> text, inline data, function calls/responses, system instructions,
+function declarations, structured JSON output, generation controls, and
+thinking budgets translate into the same internal chat/fallback pipeline.
+Bearer auth works too. Gemini&#39;s <code>?key=</code> query parameter is accepted only below
+<code>/v1beta</code>; prefer a header because URL credentials leak into history and logs.</p>
+<h2>Ollama emulation</h2>
+<p>The opt-in Ollama surface implements tags, chat, generate, show, version, embed,
+and legacy embeddings under <code>/api/*</code>. Streaming is Ollama-compatible NDJSON.
+It defaults to <code>off</code>; choose <code>open-loopback</code> or <code>key-required</code> on
+<strong>Keys → Agents</strong>. Open-loopback checks the direct socket peer, so desktop LAN
+access cannot silently turn it into an unauthenticated LAN endpoint.</p>
+<p>The dashboard also owns <code>/api/embeddings</code>. A request with a valid dashboard
+session continues to the dashboard handler; all other requests at that exact
+path are treated as Ollama legacy embeddings and follow the emulation policy.</p>
+<h2>Revocable URL tokens</h2>
+<p>Headerless clients can mirror models, chat completions, Responses, and
+Ollama-style chat/tags under <code>/v1/t/{token}/…</code>. These tokens are random,
+stored only as hashes, separately revocable, and are not the unified key.
+Create/revoke them on <strong>Keys → Agents</strong>.</p>
+<p>Treat them as sensitive anyway: URLs are routinely retained by shell history,
+reverse proxies, browser history, and telemetry. Revocation is immediate.</p>
+<h2>Vision / image input</h2>
+<p>Send images with the standard OpenAI <code>image_url</code> content blocks (base64 <code>data:</code> URLs or <code>http(s)</code> URLs). When a request contains an image, the router restricts itself to <strong>vision-capable models</strong> and ignores text-only ones. Vision models are tagged with a <strong>Vision</strong> badge on the Fallback Chain page; the current set includes Gemini (2.5 / 3.x), Llama 4 Scout/Maverick (Groq, NVIDIA), GLM-4.6V Flash (Z.ai), Nemotron Nano 12B VL (OpenRouter), and GitHub&#39;s GPT-4o / GPT-4.1.</p>
+<pre><code class="language-python">resp = client.chat.completions.create(
+    model=&quot;auto&quot;,  # auto-routes to a vision model
+    messages=[{
+        &quot;role&quot;: &quot;user&quot;,
+        &quot;content&quot;: [
+            {&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;What&#39;s in this image?&quot;},
+            {&quot;type&quot;: &quot;image_url&quot;, &quot;image_url&quot;: {&quot;url&quot;: &quot;data:image/png;base64,&lt;...&gt;&quot;}},
+        ],
+    }],
+)
+print(resp.choices[0].message.content)
+</code></pre>
+<p>If no vision-capable model is enabled in your Fallback Chain, an image request returns a clear <code>422</code> (<code>code: &quot;no_vision_model&quot;</code>) rather than silently dropping the image. (Image input on <code>/v1/responses</code> isn&#39;t supported yet — use <code>/v1/chat/completions</code>.)</p>
+<h2>Document attachments</h2>
+<p>Anthropic&#39;s <code>document</code> content blocks are accepted on <code>/v1/messages</code> when their source is already text:</p>
+<pre><code class="language-json">{&quot;type&quot;: &quot;document&quot;, &quot;title&quot;: &quot;contract.txt&quot;,
+ &quot;source&quot;: {&quot;type&quot;: &quot;text&quot;, &quot;media_type&quot;: &quot;text/plain&quot;, &quot;data&quot;: &quot;PAYMENT TERMS: net 30.&quot;}}
+</code></pre>
+<p><code>text</code> and <code>content</code> sources are inlined into the prompt, wrapped in a fence tagged with a hash of the document body so the model can tell quoted material from your instructions. The tag is derived from the content rather than randomized, so a repeated attachment keeps the prompt prefix stable and stays cacheable.</p>
+<p><strong>Binary sources — <code>base64</code> (PDF, DOCX, XLSX…) and <code>url</code> — return a <code>400</code>.</strong> No provider in the pool accepts them, and there is no local converter, so the honest answer is to refuse: forwarding the request would drop the attachment and produce a confident answer about a document the model never saw. The rejection happens before routing, so it spends no provider quota. Send the extracted text instead.</p>
+<p><code>url</code> sources are refused rather than fetched on your behalf; making the proxy retrieve arbitrary URLs would turn it into a request forwarder for whatever a client names.</p>
+<h2>Images, video &amp; text-to-speech</h2>
+<p><code>POST /v1/images/generations</code>, <code>POST /v1/videos/generations</code>, and <code>POST /v1/audio/speech</code> route across the providers that serve media models. Images and speech also accept custom OpenAI-compatible media endpoints; video does not. Browse and toggle them on the dashboard&#39;s <strong>Models → Image / Video / Audio</strong> tabs.</p>
+<p>Video generation is served by two platforms — <strong><code>pollinations</code></strong> and <strong><code>huggingface</code></strong> (<code>VIDEO_PLATFORMS</code>). It accepts a JSON body with <code>prompt</code>, optional <code>model</code> (<code>auto</code> by default), and provider-dependent <code>duration</code>, <code>aspect_ratio</code>, <code>image</code>, <code>seed</code>, and <code>audio</code> options. A video job runs for minutes, so the whole surface is <strong>bounded to a 5-minute timeout</strong> (<code>VIDEO_FETCH_TIMEOUT_MS</code>); if the provider hasn&#39;t finished by then the request returns <code>504</code>. A client that hangs up mid-generation is detected via the socket <code>close</code> event, which aborts the work so the gateway does not keep polling (and fail over to a second provider) for a response nobody is waiting for.</p>
+<p>HuggingFace models route through the <strong>fal queue</strong> (<code>router.huggingface.co/fal-ai/…</code>): the request is submitted as a queued job, polled every 500 ms until <code>COMPLETED</code>, and the resulting video URL is fetched and streamed back. Pollinations models are requested directly. Both return the generated video as binary MP4 data with <code>X-Provider</code> and <code>X-Model</code> response headers:</p>
+<pre><code class="language-bash">curl http://localhost:3001/v1/videos/generations \
+  -H &quot;Authorization: Bearer f3router-your-unified-key&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;model&quot;:&quot;auto&quot;,&quot;prompt&quot;:&quot;a sunrise over a quiet lake&quot;,&quot;duration&quot;:6}&#39; \
+  --output video.mp4
+</code></pre>
+<h2>Fusion (multi-model synthesis)</h2>
+<p>Request the virtual <code>fusion</code> model and the router fans your prompt out to a panel of diverse free models in parallel, then a judge model synthesizes one answer from the drafts. Panel, judge, and strategy are configurable on the dashboard&#39;s <strong>Fusion</strong> page or per request via the <code>fusion</code> field; each sub-call goes through normal routing, quotas, and analytics.</p>
+<h2>Response headers</h2>
+<p>Every response carries an <code>X-Routed-Via: &lt;platform&gt;/&lt;model&gt;</code> header so you can see which provider actually served each call. If a request fell over between providers, you&#39;ll also see <code>X-Fallback-Attempts: N</code> and <code>X-Fallback-Trail</code>, which names each hop that failed and why:</p>
+<pre><code>X-Fallback-Attempts: 2
+X-Fallback-Trail: groq/llama-3.3-70b key1=rate_limited; google/gemini-2.5-flash key2=timeout
+</code></pre>
+<p><code>X-Fallback-Detail</code> adds what each of those hops <strong>cost</strong>, which is the part you cannot reconstruct from the trail — a request answered in 40s reads identically whether one provider stalled for 39 seconds or four failed fast:</p>
+<pre><code>X-Fallback-Detail: groq/llama-3.3-70b key1=rate_limited t=0+39000ms msg=Groq API error 429: rate limit; google/gemini-2.5-flash key2=timeout t=39000+12ms
+</code></pre>
+<p><code>t=&lt;start&gt;+&lt;duration&gt;ms</code> is the offset from the start of the failover chain and how long that hop ran. <code>msg=</code> is the provider&#39;s error, redacted and truncated; it is last in each record, and any semicolon inside it becomes a comma so <code>; </code> stays an unambiguous record separator.</p>
+<p>The detail header is <strong>off by default</strong> — it puts hop timings and provider error text on the response. Turn it on with <code>FALLBACK_DETAIL_HEADER=1</code> or the <code>expose_fallback_detail_header</code> settings key, which takes precedence. Both headers list at most ten hops and then a <code>; +N more</code> marker.</p>
+<p>Only hops that already <strong>failed</strong> can appear. The hop actually serving your request is recorded after its response finishes — after the JSON is sent, or after the stream closes — so its duration does not exist while the headers are still open. Use <code>X-Routed-Via</code> to see which provider that was.</p>
+<p>HTTP headers only carry printable ASCII, so a model id with characters outside that range (a Chinese name from a relay catalog, for example) is percent-encoded in the header — run the value through <code>decodeURIComponent</code> (or <code>urllib.parse.unquote</code>) to read it back.</p>
+<p>The opt-in response cache can be toggled per request with <code>X-FreeLLM-Cache: on|off</code> — an exact-match in-memory LRU for identical requests, streaming included (a streamed hit replays the stored SSE verbatim) (canonical SHA-256 keys over the full request, TTL and temperature gates, saved-token stats on the dashboard). Off by default; cache hits consume zero provider quota.</p>
+<p>When <a href="/f3router/docs/en/compression/01-compression-pipeline.html">prompt compression</a> is enabled, <code>X-FreeLLM-Compress: off|on|lossless|standard|aggressive</code> can disable or lower the configured mode for one request. It cannot raise the operator&#39;s configured mode. The response reports the effective mode and estimated savings, for example <code>X-FreeLLM-Compress: standard; saved~=1840</code>.</p>
+<p><code>X-FreeLLM-Task-Type: code|chat|auto</code> tells the router what kind of turn this is, so it can bias the routing weights: <code>code</code> trades some of the speed weight for intelligence (a wrong answer costs more than a slow one), <code>chat</code> does the reverse. It is a soft preference only — capability gates, the failover chain and the model catalog are untouched, and the shift is 30% of one axis by default. The default is <code>auto</code>: tool-bearing requests and messages carrying unambiguous code markers (a fenced block, a declaration, a stack frame, a <code>file.ts:214</code> reference) are treated as <code>code</code>, and everything else keeps the preset weights exactly as configured. The <code>fastest</code>, <code>reliable</code> and <code>custom</code> routing strategies ignore the header — those are an explicit operator choice about where on the axis to sit.</p>
+<p>How far the shift goes is operator-tunable: <code>GET /api/settings/task-weight-share</code> reads the current fraction and <code>PUT /api/settings/task-weight-share</code> with <code>{&quot;share&quot;: 0..1}</code> sets it (default <code>0.3</code>). <code>0</code> disables the bias while leaving the header itself accepted, and <code>null</code> clears the setting back to the default. It takes effect on the next request, with no restart.</p>
+<h2>Embeddings</h2>
+<p><code>/v1/embeddings</code> is OpenAI-compatible, with one deliberate difference from chat routing: <strong>failover never crosses models.</strong> Vectors from different models live in incompatible spaces — silently switching models would corrupt any vector store built on top of the proxy. So embeddings route by <strong>family</strong> (one model identity + dimension), and failover only walks the providers serving that same family.</p>
+<pre><code class="language-python">resp = client.embeddings.create(
+    model=&quot;auto&quot;,          # default family; or a family name like &quot;bge-m3&quot;
+    input=[&quot;the quick brown fox&quot;, &quot;pack my box with five dozen liquor jugs&quot;],
+)
+print(len(resp.data), &quot;vectors of&quot;, len(resp.data[0].embedding), &quot;dims&quot;)
+</code></pre>
+<pre><code class="language-bash">curl http://localhost:3001/v1/embeddings \
+  -H &quot;Authorization: Bearer f3router-your-unified-key&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;model&quot;: &quot;auto&quot;, &quot;input&quot;: &quot;hello world&quot;}&#39;
+</code></pre>
+<p><code>model</code> accepts <code>auto</code> (the configured default family), a family name, or a provider-specific model id (which resolves to its family). Available families:</p>
+<table>
+<thead>
+<tr>
+<th>Family (<code>model</code>)</th>
+<th>Dims</th>
+<th>Providers (failover order)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>gemini-embedding-001</code> <em>(default)</em></td>
+<td>3072</td>
+<td>Google</td>
+</tr>
+<tr>
+<td><code>text-embedding-3-large</code></td>
+<td>3072</td>
+<td>GitHub Models</td>
+</tr>
+<tr>
+<td><code>text-embedding-3-small</code></td>
+<td>1536</td>
+<td>GitHub Models</td>
+</tr>
+<tr>
+<td><code>embed-v4.0</code></td>
+<td>1536</td>
+<td>Cohere</td>
+</tr>
+<tr>
+<td><code>bge-m3</code></td>
+<td>1024</td>
+<td>Cloudflare → Hugging Face</td>
+</tr>
+<tr>
+<td><code>qwen3-embedding-0.6b</code></td>
+<td>1024</td>
+<td>Cloudflare</td>
+</tr>
+<tr>
+<td><code>nv-embedqa-e5-v5</code></td>
+<td>1024</td>
+<td>NVIDIA</td>
+</tr>
+<tr>
+<td><code>llama-nemotron-embed-1b-v2</code></td>
+<td>2048</td>
+<td>NVIDIA</td>
+</tr>
+<tr>
+<td><code>llama-nemotron-embed-vl-1b-v2</code></td>
+<td>2048</td>
+<td>NVIDIA → OpenRouter</td>
+</tr>
+<tr>
+<td><code>embeddinggemma-300m</code></td>
+<td>768</td>
+<td>Cloudflare</td>
+</tr>
+</tbody></table>
+<p>The default family, per-provider toggles, and priorities live on the dashboard&#39;s <strong>Models → Embeddings</strong> page. Pick your family once and stick with it for a given vector store — that&#39;s the whole point of the family model.</p>
+<h2>Anthropic / Claude clients</h2>
+<p>f3router also speaks Anthropic&#39;s Messages API, so anything built for Claude — including <strong>Claude Code</strong> and the official Anthropic SDKs — can run against your free pool. Point the client at your server&#39;s <strong>origin</strong> (Anthropic clients append <code>/v1/messages</code> themselves) and authenticate with your unified key. Both <code>x-api-key</code> and <code>Authorization: Bearer</code> are accepted.</p>
+<pre><code class="language-bash">curl http://localhost:3001/v1/messages \
+  -H &quot;x-api-key: f3router-your-unified-key&quot; \
+  -H &quot;anthropic-version: 2023-06-01&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{
+    &quot;model&quot;: &quot;claude-sonnet-4-5&quot;,
+    &quot;max_tokens&quot;: 256,
+    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;hi&quot;}]
+  }&#39;
+</code></pre>
+<p>Claude model names map to your free pool on the <strong>Keys → Anthropic</strong> tab: each family (<code>default</code>, <code>opus</code>, <code>sonnet</code>, <code>haiku</code>) routes to <code>auto</code> (the router picks a free model) or a model you pin. <code>POST /v1/messages/count_tokens</code> and a content-negotiated <code>GET /v1/models</code> (Anthropic shape when <code>anthropic-version</code> is sent) are implemented too. Streaming, system prompts, tool use, and image input all translate across the same router as the OpenAI endpoints.</p>
+<p><strong>Claude Code</strong> — point it at your server and start it:</p>
+<p><em>On macOS / Linux (Bash):</em></p>
+<pre><code class="language-bash">export ANTHROPIC_BASE_URL=http://localhost:3001
+export ANTHROPIC_AUTH_TOKEN=f3router-your-unified-key   # NOT ANTHROPIC_API_KEY
+claude
+</code></pre>
+<p><em>On Windows (PowerShell):</em></p>
+<pre><code class="language-powershell">$env:ANTHROPIC_BASE_URL=&quot;http://localhost:3001&quot;
+$env:ANTHROPIC_AUTH_TOKEN=&quot;f3router-your-unified-key&quot;
+claude
+</code></pre>
+<blockquote>
+<p>Use <code>ANTHROPIC_AUTH_TOKEN</code> (sent as a Bearer token), <strong>not</strong> <code>ANTHROPIC_API_KEY</code> — Claude Code treats a set <code>ANTHROPIC_API_KEY</code> as a conflicting first-party credential and refuses to start.</p>
+</blockquote>
+<h2>Free-tier budget API</h2>
+<p><code>GET /api/free-tier</code> returns the operator&#39;s free-tier budget as a <strong>pool-deduped</strong> monthly overview. Many models on one platform share the same free pool, so summing every model&#39;s label would double-count; the endpoint collapses models into quota pools (<code>inferQuotaPoolKey</code>) and reports <strong>one documented budget per pool</strong> (the largest <code>parseBudget</code> value seen in it), scaled by the number of usable (enabled + healthy/unknown) keys for the platform. Chain-disabled rows still contribute to a pool — they share the same provider allowance — and are only marked, never dropped, so the totals match the dashboard&#39;s stacked per-model bar.</p>
+<pre><code class="language-json">{
+  &quot;generatedAt&quot;: &quot;2026-08-25T12:00:00.000Z&quot;,
+  &quot;summary&quot;: {
+    &quot;poolCount&quot;: 18,
+    &quot;documentedMonthlyTokens&quot;: 7400000000,
+    &quot;creditsBasedPools&quot;: 2,
+    &quot;unpublishedPools&quot;: 3
+  },
+  &quot;pools&quot;: [
+    {
+      &quot;poolKey&quot;: &quot;google&quot;,
+      &quot;platform&quot;: &quot;google&quot;,
+      &quot;memberModelIds&quot;: [&quot;gemini-3.0-flash&quot;, &quot;gemini-2.5-flash&quot;],
+      &quot;modelCount&quot;: 2,
+      &quot;disabledModelCount&quot;: 0,
+      &quot;keyCount&quot;: 1,
+      &quot;documentedBudget&quot;: 120000000,
+      &quot;bestLabel&quot;: &quot;~120M&quot;,
+      &quot;kind&quot;: &quot;documented&quot;,
+      &quot;quota&quot;: { &quot;limit&quot;: 150000000, &quot;remaining&quot;: 98000000, &quot;resetAt&quot;: &quot;2026-08-26T00:00:00.000Z&quot;, &quot;metric&quot;: &quot;tokens&quot;, &quot;keyCount&quot;: 1 }
+    }
+  ]
+}
+</code></pre>
+<ul>
+<li><code>kind</code> ∈ <code>documented</code> (a parseable monthly budget), <code>credits</code> (credit-based), or <code>unpublished</code> (no public figure).</li>
+<li><code>quota</code> carries live observations (limit / remaining / reset / metric) when the provider reports them; <code>metric</code> prefers <code>tokens</code> → <code>credits</code> → <code>neurons</code> → <code>requests</code>.</li>
+<li>Mounted behind the dashboard session (<code>requireAuth</code>); not the unified <code>/v1</code> key.</li>
+</ul>
+<h2>Backups API</h2>
+<p><code>GET /api/backups</code> lists the encrypted database snapshots the gateway has taken (scheduled or manual via <code>POST /api/backups</code>). Each backup is an SQL dump with a header carrying its <strong>sha256 key fingerprint</strong> — <code>restore</code> refuses a dump written under a different <code>ENCRYPTION_KEY</code> (reports <code>backup: &lt;fingerprint&gt;; server: &lt;fingerprint&gt;</code>). The on-disk layout is versioned with <code>DUMP_FORMAT = 1</code>; a dump of a different format is rejected with <code>409</code>.</p>
+<pre><code class="language-json">{
+  &quot;items&quot;: [
+    {
+      &quot;id&quot;: 14,
+      &quot;filename&quot;: &quot;f3router-20260825-040000-enc.sql&quot;,
+      &quot;filesize&quot;: 2418688,
+      &quot;isFull&quot;: true,
+      &quot;source&quot;: &quot;scheduled&quot;,
+      &quot;createdAt&quot;: &quot;2026-08-25T04:00:00.000Z&quot;,
+      &quot;tables&quot;: [&quot;api_keys&quot;, &quot;models&quot;, &quot;fallback_config&quot;, &quot;settings&quot;, &quot;...&quot;]
+    }
+  ],
+  &quot;total&quot;: 14
+}
+</code></pre>
+<p>Endpoints (all behind <code>requireAuth</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GET</code></td>
+<td><code>/api/backups</code></td>
+<td>Paginated listing (<code>?page=&amp;pageSize=</code>, max 200)</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/backups</code></td>
+<td>Create now; optional <code>tables</code> whitelist (≤ 500 names)</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/backups/:id/download</code></td>
+<td>Download the encrypted dump</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/backups/:id/restore</code></td>
+<td>Restore into the live DB (refuses mismatched key / format)</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><code>/api/backups/:id</code></td>
+<td>Delete one backup</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/backups/tables</code></td>
+<td>Tables a dump may contain</td>
+</tr>
+<tr>
+<td><code>GET</code> / <code>PUT</code></td>
+<td><code>/api/backups/schedule</code></td>
+<td>Read / write the backup schedule (HH:mm, interval days, path)</td>
+</tr>
+</tbody></table>
+<h2>Monthly provider-key budgets</h2>
+<p>Authenticated dashboard clients can set <code>monthlyRequestCap</code> and <code>monthlyTokenCap</code>
+through <code>PATCH /api/keys/:id</code>. Both are nonnegative integers; <code>0</code> means unlimited.
+These limits apply to an upstream provider key across chat, embeddings, and
+keyed media requests, and reset at 00:00 UTC on the first of each month. They do
+not apply separately to downstream client profiles.</p>
+<p>Successful request counts and reported tokens are stored in a durable monthly
+ledger. Request-log cleanup does not clear this ledger. Existing retained request
+history is backfilled during upgrade; usage already pruned before the upgrade
+cannot be reconstructed. In-flight requests reserve capacity until completion,
+including long-running streams. Failed attempts release their reservation.</p>
+<p>Token reservations use routing estimates. Actual provider token usage can differ,
+so the final response can take recorded usage above the configured token cap;
+further requests are then rejected. This is a usage guard, not an exact billing
+limit. Media requests count toward the request cap; the current media adapters
+do not report token usage. Reservations coordinate requests within one gateway
+process, not across multiple gateway replicas.</p>
+<p>When all otherwise eligible keys have exhausted their monthly budget, standard
+chat, embeddings, and media routing returns HTTP <code>429</code> with a <code>Retry-After</code> header
+pointing to the next UTC month. OpenAI-compatible endpoints also return
+<code>error.code: &quot;quota_exceeded&quot;</code>; other protocol adapters preserve their native
+error format. Fusion subcalls obey the caps but retain Fusion&#39;s aggregate error
+format. If another key has capacity, normal fallback can use it.</p>
+<p>Embeddings additionally relay the upstream providers&#39; own back-off. A provider
+that answers <code>429</code> is simply skipped for the next one in the family; only when
+every provider in the family was rate limited and each stated a <code>Retry-After</code>
+does the gateway&#39;s <code>429</code> carry one: the soonest of them, in whole seconds
+(clamped to 24h). A chain that also hit a non-rate-limit failure returns <code>502</code>
+without <code>Retry-After</code>, since waiting would not be a promise.</p>
+</article></main>
+</div>
+</body>
+</html>

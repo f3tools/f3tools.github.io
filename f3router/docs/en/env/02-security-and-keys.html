@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security and key handling — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html" class="on">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/env/02-security-and-keys.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Security and key handling</h1>
+<p>How f3router protects the provider API keys you store in it, and how the <code>ENCRYPTION_KEY</code> that makes that protection real is generated, stored, and migrated.</p>
+<p>Sources: <a href="https://github.com/f3tools/f3router/blob/main/.env.example" target="_blank" rel="noreferrer"><code>.env.example</code></a> (key lifecycle comments), <a href="https://github.com/f3tools/f3router/blob/main/server/src/lib/crypto.ts" target="_blank" rel="noreferrer"><code>server/src/lib/crypto.ts</code></a>, and <a href="https://github.com/f3tools/f3router/blob/main/server/src/db/index.ts" target="_blank" rel="noreferrer"><code>server/src/db/index.ts</code></a>.</p>
+<ul>
+<li><a href="#the-encryption-key-at-a-glance">The encryption key at a glance</a></li>
+<li><a href="#key-resolution-precedence">Key resolution precedence</a></li>
+<li><a href="#the-dev-auto-generated-key-file">The dev auto-generated key file</a></li>
+<li><a href="#why-the-key-file-is-not-in-the-database">Why the key file is not in the database</a></li>
+<li><a href="#at-rest-encryption-of-provider-keys">At-rest encryption of provider keys</a></li>
+<li><a href="#data-directory-hardening-wal-sidecars">Data directory hardening (WAL sidecars)</a></li>
+<li><a href="#first-run-setup-code">First-run setup code</a></li>
+</ul>
+<h2>The encryption key at a glance</h2>
+<p><code>ENCRYPTION_KEY</code> is the server-side key for API-key storage. It must be 64 hex characters — a 32-byte AES-256-GCM key. Generate one with:</p>
+<pre><code class="language-bash">node -e &quot;console.log(require(&#39;crypto&#39;).randomBytes(32).toString(&#39;hex&#39;))&quot;
+</code></pre>
+<p>(or <code>openssl rand -hex 32</code>, as the Compose quickstart uses). The placeholder value from <code>.env.example</code> (<code>your-64-char-hex-key-here</code>) is never accepted as a real key.</p>
+<p>A typo&#39;d or short key fails fast with an actionable error instead of being silently truncated and only surfacing as a cryptic <code>node:crypto</code> failure on the first encrypt call.</p>
+<h2>Key resolution precedence</h2>
+<p>On boot, after the database is initialized, the key is resolved in this order:</p>
+<ol>
+<li><strong><code>ENCRYPTION_KEY</code> env var</strong> — always wins when set to a non-placeholder value.</li>
+<li><strong>Key file</strong> — a <code>.encryption-key</code> file next to the SQLite database.</li>
+<li><strong>Legacy settings row</strong> — older installs kept the key in a <code>settings</code> table row; it is migrated to the file on first boot, then deleted from the table.</li>
+<li><strong>Freshly generated key</strong> — written to the key file (outside production only; see below).</li>
+</ol>
+<h2>The dev auto-generated key file</h2>
+<p>Outside production, <code>ENCRYPTION_KEY</code> is optional: when unset, a key is auto-generated and written to a file named <code>.encryption-key</code> next to the SQLite database — not inside it — with <code>0600</code> permissions. This exists so a fresh clone boots under <code>npm run dev</code> without manual setup; otherwise the placeholder in <code>.env.example</code> would crash the server on boot, which surfaces in the client as &quot;Can&#39;t reach the server&quot;.</p>
+<p>Production still requires an explicit env key: a generated key lives only on the local disk, and silently losing it would make every stored API key undecryptable.</p>
+<p>Two write-safety details:</p>
+<ul>
+<li>The key file is written atomically via temp-file-and-rename, so a crash never leaves a half-written key.</li>
+<li>The temp file is restricted to owner-only permissions BEFORE the rename, so the key is never briefly world-readable under its final name; the rename carries the DACL with it, and a second restriction pass on the final path is idempotent belt-and-braces. If the final restriction cannot be applied, a warning is logged.</li>
+</ul>
+<p>Do not rely on the fallback with real provider keys: set <code>ENCRYPTION_KEY</code>.</p>
+<h2>Why the key file is not in the database</h2>
+<p>Storing the key beside the ciphertext it protects (the old <code>settings</code> row) meant encryption-at-rest protected nothing for a default install: whoever copied the DB also copied the key. The key file sits in the same directory but is a separate artifact, chmod <code>0600</code>, so copying the database alone no longer yields usable ciphertext. Legacy installs are migrated to this scheme automatically on first boot.</p>
+<h2>At-rest encryption of provider keys</h2>
+<p>Stored provider keys are encrypted with AES-256-GCM using the resolved key. Consequences worth knowing:</p>
+<ul>
+<li><strong>Keep the same <code>ENCRYPTION_KEY</code> across restarts and upgrades.</strong> Losing it makes every stored provider key undecryptable; there is no recovery path.</li>
+<li>The dashboard&#39;s key export exists for backup purposes; its rate limit is deliberately much tighter than the general <code>/api</code> flood guard (see <a href="/f3router/docs/en/env/01-variables.html#rate-limits">01-variables.md</a>).</li>
+<li>The optional encrypted DB backup (<a href="/f3router/docs/en/deployment/02-updates-and-backup.html">02-updates-and-backup.md</a>) defaults its envelope key to <code>ENCRYPTION_KEY</code>; <code>FREEAPI_DB_BACKUP_KEY</code> can override that with a separate 64-char hex key.</li>
+</ul>
+<h2>Data directory hardening (WAL sidecars)</h2>
+<p>SQLite creates <code>-wal</code> and <code>-shm</code> sidecar files on the first write and deletes them on the last clean close — so at startup there may be nothing there to chmod, and the files&#39; protection has to come from the directory they live in. f3router therefore restricts the directory holding the database to the owning account before opening the connection (on Windows the ACL is inherited, so hardening first means the database file is born protected rather than spending its first moments with whatever ACL the parent handed down).</p>
+<p>Because locking down a directory that is not ours would be a worse outage than the leak it prevents (pointing the DB at <code>/tmp/freeapi.db</code> must not chmod <code>0700</code> <code>/tmp</code>), hardening applies by ownership-by-construction:</p>
+<ol>
+<li>The directory was just created by this process, or</li>
+<li>It is the built-in default data directory (<code>server/data</code>), which ships as ours.</li>
+</ol>
+<p>An operator pointing <code>FREEAPI_DB_PATH</code> at a dedicated pre-existing directory can opt in with <code>FREEAPI_DB_DIR_HARDENING=1</code>, and opt out entirely with <code>=0</code>. The default is default-on-where-safe rather than a required flag, because hardening that only runs when someone remembers to ask for it is the same class of failure as hardening nobody noticed had stopped running.</p>
+<h2>First-run setup code</h2>
+<p>The first dashboard account is created through the UI. A browser on the same machine as the server can do this with no extra step. If the server is reachable from other devices, creating that first account also requires a one-time setup code, printed in the server logs at startup while no account exists — this stops a stranger from claiming a freshly exposed install.</p>
+</article></main>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossary — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html" class="on">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/glossary/01-glossary.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Glossary</h1>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Headroom</strong></td>
+<td>Remaining quota for a model/key before rate limit: <code>1 − max(RPM/RPD/TPM/TPD used)</code>. <code>0</code>=exhausted, <code>1</code>=full. Tunable via <code>HEADROOM_RAMP_START</code>/<code>HEADROOM_FLOOR</code> (<code>../architecture/01-routing-and-bandit-scoring.md</code>).</td>
+</tr>
+<tr>
+<td><strong>RPD / TPD</strong></td>
+<td>Requests / tokens per day — daily quota windows (<code>ratelimit.ts:modelWindowUsedFraction</code>, 5s TTL).</td>
+</tr>
+<tr>
+<td><strong>RPM / TPM</strong></td>
+<td>Requests / tokens per minute — short-window quota.</td>
+</tr>
+<tr>
+<td><strong>Pool key</strong></td>
+<td>Shared quota pool identifier (<code>provider-quota.ts:inferQuotaPoolKey</code>), e.g. <code>openrouter::free</code>, <code>google::project</code>, <code>custom::key123</code>. Keys in the same pool share one allowance.</td>
+</tr>
+<tr>
+<td><strong>Least-remaining</strong></td>
+<td>Key selection strategy (<code>c4c0221</code>) that picks the key with the most remaining quota in the pool (<code>services/router.ts:getKeySelectionStrategy</code>), skipping <code>::account</code> pools.</td>
+</tr>
+<tr>
+<td><strong><code>auto:&lt;name&gt;</code></strong></td>
+<td>Named fallback chain exposed as a selectable model in <code>GET /v1/models</code> (<code>cc1e985</code>) — e.g. <code>auto:fast</code> routes only through that chain.</td>
+</tr>
+<tr>
+<td><strong>Model-age gate</strong></td>
+<td>Catalog sync rule: new models are <code>premium</code> for 30 days then become <code>free</code> on the next signed sync (<code>services/catalog-sync.ts</code>).</td>
+</tr>
+<tr>
+<td><strong>Bandit router</strong></td>
+<td>Thompson-sampling router (<code>services/router.ts</code> + <code>scoring.ts</code>) that balances reliability/speed/intelligence/headroom posteriors with 10% explore.</td>
+</tr>
+<tr>
+<td><strong>In-flight window</strong></td>
+<td>Concurrent request deduplication window — <strong>not</strong> deduplicated for idempotency (<code>95bc46f</code>, <code>services/idempotency.ts:16-20</code>) — a concurrent retry with the same <code>Idempotency-Key</code> may race.</td>
+</tr>
+<tr>
+<td><strong>TRUST_PROXY</strong></td>
+<td>Env var (<code>.env.example:314</code>, <code>lib/config.ts:95-110</code>) forwarded to Express <code>trust proxy</code> so analytics/rate limiting see real client IP via <code>X-Forwarded-For</code>/<code>Proto</code>. Default <code>false</code> (no spoof).</td>
+</tr>
+<tr>
+<td><strong><code>FREEAPI_SHOT</code></strong></td>
+<td>Desktop capture mode flag in <code>desktop/src/main.ts</code> for screenshots.</td>
+</tr>
+<tr>
+<td><strong><code>f3router-…</code></strong></td>
+<td>Pooled fallback chain identifier — the gateway&#39;s single logical model that fans out over the fallback ladder.</td>
+</tr>
+</tbody></table>
+<p>See also: <a href="/f3router/docs/en/architecture/index.html">Architecture</a>, <a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing &amp; bandit scoring</a>, <a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota &amp; cooldown</a>.</p>
+</article></main>
+</div>
+</body>
+</html>

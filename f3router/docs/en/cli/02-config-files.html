@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Config files — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html" class="on">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/cli/02-config-files.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Config files</h1>
+<h2>Registry — <code>cli/tools.json</code></h2>
+<p><code>cli/tools.json</code> is the single source of truth for the generator list. Each entry has <code>id</code>, <code>name</code>, <code>category</code> (<code>code</code>|<code>agent</code>), <code>configType</code> (<code>file</code>|<code>guide</code>), <code>protocol</code> (<code>Anthropic Messages</code>|<code>OpenAI Chat</code>|<code>OpenAI Responses</code>), <code>baseUrlSupport</code>, <code>command</code> (<code>setup-*</code>), and <code>docsUrl</code>. <code>client/src/data/agent-tools.json</code> is the dashboard copy (keep in sync).</p>
+<h2><code>cli/src/config-files.ts</code> — merge layer</h2>
+<p>Every <code>Xxx()</code> generator in <code>cli/src/tools.ts</code> returns a <code>Generation { files: { path, format, sensitive, value }[], notes }</code>. <code>config-files.ts</code> applies each file via:</p>
+<ul>
+<li><strong>JSON</strong> (<code>settings.json</code>, <code>config.json</code>) — deep-merge, preserve unrelated keys; <code>0600</code> (<code>0o600</code>) on write.</li>
+<li><strong>TOML</strong> (<code>config.toml</code> for Codex, AtomCode) — structural merge preserves other <code>[providers.*]</code> tables; Codex&#39;s single-file <code>~/.codex/config.toml</code> uses <code>[profiles.NAME]</code> tables, not per-profile files.</li>
+<li><strong>YAML</strong> (<code>config.yaml</code> for Goose) — similar merge.</li>
+</ul>
+<h3>Backup</h3>
+<p>Before first write, <code>config-files.ts</code> copies the existing file to <code>&lt;path&gt;.bak.&lt;ISO timestamp&gt;</code> (e.g. <code>settings.json.bak.2026-09-02T10-30-00-000Z</code>). No backup if the file didn&#39;t exist. The backup is also <code>0600</code>.</p>
+<h3>Dry run</h3>
+<p><code>--dry-run</code> runs the merge in memory, prints a diff, and exits without touching disk.</p>
+<h3><code>tools.test.ts</code> snapshot</h3>
+<p><code>cli/src/__snapshots__/tools.test.ts.snap</code> pins the generated file contents for each generator; update with <code>npm run test -- -u</code> after changing a generator.</p>
+<h2>Adding a new generator</h2>
+<ol>
+<li>Add entry to <code>cli/tools.json</code> (<code>id</code>, <code>name</code>, <code>category</code>, <code>configType</code>, <code>protocol</code>, <code>baseUrlSupport</code>, <code>command</code>, <code>docsUrl</code>).</li>
+<li>Add <code>function myTool(ctx: GenerateContext): Generation</code> in <code>cli/src/tools.ts</code> — return <code>files</code> with correct <code>path</code>/<code>format</code>/<code>value</code> and <code>notes</code> for the CLI output. Use helpers <code>rootUrl()</code>/<code>v1Url()</code>/<code>primaryModel()</code>/<code>contextWindow()</code>.</li>
+<li>Add snapshot case in <code>cli/src/tools.test.ts</code>.</li>
+<li>Document in <a href="/f3router/docs/en/cli/01-generators.html">01-generators.md</a> table + <code>docs/en/clients/01-agent-clients.md</code> section.</li>
+<li>Sync <code>client/src/data/agent-tools.json</code> if the dashboard lists it.</li>
+</ol>
+<h2>Related</h2>
+<ul>
+<li><a href="/f3router/docs/en/cli/01-generators.html">Generators</a> — all <code>setup-*</code> commands and target files.</li>
+<li><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients &amp; agents</a> — per-agent recipes.</li>
+</ul>
+</article></main>
+</div>
+</body>
+</html>

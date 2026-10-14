@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outbound proxies — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html" class="on">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/env/03-outbound-proxies.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Outbound proxies</h1>
+<p>How f3router routes its provider-bound traffic through proxies, which variables win when several are set, and the Docker networking gotchas that come with that.</p>
+<p>Sources: <a href="https://github.com/f3tools/f3router/blob/main/.env.example" target="_blank" rel="noreferrer"><code>.env.example</code></a> (proxy block), <a href="https://github.com/f3tools/f3router/blob/main/docker-compose.yml" target="_blank" rel="noreferrer"><code>docker-compose.yml</code></a>, the container-networking notes in <a href="/f3router/docs/en/install/01-install.html">docs/en/install/01-install.md</a>, the proxy transports in <a href="/f3router/docs/en/proxy/01-fetch-relay.html"><code>../proxy/01-fetch-relay.md</code></a> / <a href="/f3router/docs/en/proxy/index.html"><code>../proxy/OVERVIEW.md</code></a> (<code>server/src/lib/proxy.ts:52-414</code>, <code>server/src/lib/config.ts:95-110</code> for <code>TRUST_PROXY</code>).</p>
+<ul>
+<li><a href="#proxy-chain-precedence">Proxy chain precedence</a></li>
+<li><a href="#fetch-relay-transport-summary">Fetch Relay transport</a></li>
+<li><a href="#scheme-support">Scheme support</a></li>
+<li><a href="#no_proxy-bypasses">NO_PROXY bypasses</a></li>
+<li><a href="#docker-127001-is-the-container">Docker: 127.0.0.1 is the container</a></li>
+<li><a href="#related-inbound-rate-limit-knobs">Related inbound rate-limit knobs</a></li>
+</ul>
+<h2>Proxy chain precedence</h2>
+<p>Outbound proxy for provider requests is normally set in the dashboard (Keys → Outbound proxy); the env vars exist for headless installs. Resolution is centralized in <code>resolveProxySource()</code> (<code>server/src/lib/proxy.ts:124-143</code>) — when several sources are present, this is who wins:</p>
+<pre><code>PROXY_URL → dashboard setting (proxy_url) → ALL_PROXY → HTTPS_PROXY → HTTP_PROXY → detectSystemProxy() → direct
+</code></pre>
+<p><code>PROXY_MODE</code> (<code>server/src/lib/proxy.ts:52</code> <code>PROXY_MODES = [&#39;forward&#39;,&#39;fetch-relay&#39;]</code>, <code>.env.example:70-78</code>) selects <em>how</em> the winning URL is used, not its position in the chain: <code>forward</code> (default) is the ordinary forward proxy (HTTP/SOCKS via undici <code>ProxyAgent</code> / <code>SocksProxyAgent</code>); <code>fetch-relay</code> (opt-in) interprets the same winning URL as an application-layer relay endpoint that forwards with <code>Fetch-Relay-Target</code> / <code>Fetch-Relay-Authorization</code> headers (<code>server/src/lib/proxy.ts:53-54,875-900</code>). A legacy <code>PROXY_URL</code> or ambient standard var without an explicit <code>PROXY_MODE=fetch-relay</code> always stays <code>forward</code> regardless of a saved dashboard mode (<code>server/src/lib/proxy.ts:310-312,377-382</code>). See <a href="/f3router/docs/en/proxy/01-fetch-relay.html"><code>../proxy/01-fetch-relay.md</code></a> for the relay contract (owned by another writer; link assumes it will exist).</p>
+<p><code>PROXY_URL</code> stays highest; the dashboard beats the generic environment variables; the final fallback is system auto-detect (commit <code>86368ac</code>, closes #353/#1069) — reads the OS-wide proxy so the app works without duplicating OS config. Never per request; evaluated once at boot and on <code>PUT /api/settings/proxy</code>, and again via <code>restoreProxySettings()</code>. Best-effort and never throws — failure falls through to direct.</p>
+<p>The standard variables are also read in their lower-case spellings (<code>all_proxy</code>, <code>https_proxy</code>, <code>http_proxy</code>) via <code>readEnv()</code> (<code>server/src/lib/proxy.ts:109-112</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Role in the chain</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PROXY_URL</code></td>
+<td>Explicit f3router proxy setting; highest precedence. Checked via <code>readEnv(&#39;PROXY_URL&#39;)</code> (upper- or lower-case).</td>
+</tr>
+<tr>
+<td>Dashboard setting</td>
+<td>Keys → Outbound proxy (<code>getSetting(&#39;proxy_url&#39;)</code>); beats the generic environment variables — a proxy deliberately typed into the UI must not be silently overridden by a machine-wide <code>ALL_PROXY</code> exported for curl/git.</td>
+</tr>
+<tr>
+<td><code>ALL_PROXY</code></td>
+<td>Standard catch-all proxy variable.</td>
+</tr>
+<tr>
+<td><code>HTTPS_PROXY</code> / <code>HTTP_PROXY</code></td>
+<td>Conventional per-scheme variables, lowest of the explicit env vars.</td>
+</tr>
+<tr>
+<td><code>detectSystemProxy()</code> system fallback</td>
+<td>Last-resort only (<code>server/src/lib/proxy.ts:52-414</code>, <code>detectSystemProxy</code> / <code>parseScutilProxy</code> / <code>parseRegProxy</code> / <code>parseGsettingsProxy</code>): macOS <code>scutil --proxy</code> (<code>HTTPEnable</code>/<code>HTTPProxy</code>/<code>HTTPPort</code> or <code>SOCKSEnable</code>/<code>SOCKSProxy</code>/<code>SOCKSPort</code>), Windows registry <code>HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings</code> (<code>ProxyEnable</code> + <code>ProxyServer</code>, <code>http=</code> entry preferred), Linux GNOME <code>gsettings</code> (<code>org.gnome.system.proxy</code> <code>mode == &#39;manual&#39;</code> plus <code>org.gnome.system.proxy.http</code> host/port). <code>execFileSync</code> 2s timeout, never throws, failure → direct. Source labels <code>system(macOS)</code> / <code>system(Windows)</code> / <code>system(GNOME)</code>.</td>
+</tr>
+</tbody></table>
+<h2>Fetch Relay transport (summary)</h2>
+<p>For the full application-layer Fetch Relay transport (<code>PROXY_MODE=fetch-relay</code>, <code>PROXY_URL</code> as relay URL, <code>FETCH_RELAY_TOKEN</code> bearer), see <a href="/f3router/docs/en/proxy/01-fetch-relay.html"><code>../proxy/01-fetch-relay.md</code></a>. The forward proxy (<code>PROXY_MODE=forward</code>, default) is the traditional <code>http</code>/<code>https</code>/<code>socks</code> CONNECT/SOCKS path documented below; the relay is opt-in and uses <code>Fetch-Relay-Target</code>/<code>Fetch-Relay-Authorization</code> hop headers, encrypted-at-rest token handling (<code>encodeFetchRelayToken</code> → <code>encrypt()</code> JSON envelope), <code>FETCH_RELAY_TOKEN</code> env precedence over DB (<code>readEnv(&#39;FETCH_RELAY_TOKEN&#39;) || dbValue</code>), <code>isLoopbackRelayHostname</code> loopback guard, and the <code>examples/fetch-relay-worker/</code> Cloudflare Worker reference. <code>PROXY_MODE</code> and <code>FETCH_RELAY_TOKEN</code> are documented in detail in the proxy domain and in <a href="/f3router/docs/en/env/01-variables.html#outbound-proxies">01-variables.md</a> — this page keeps the forward-proxy chain, scheme support, per-key overrides, <code>NO_PROXY</code>, loopback guard, and Docker gotchas.</p>
+<h2>Per-key proxy overrides</h2>
+<p><code>#590</code> — each API key can route through its own exit IP (geo-ban / risk-control avoidance). The override rides request-scoped <code>AsyncLocalStorage</code> (<code>perKeyProxyStore</code>, <code>withKeyProxy(proxyUrl, fn)</code> <code>server/src/lib/proxy.ts:15-20</code>, <code>dispatchFetch</code> <code>821-841</code>):</p>
+<ul>
+<li><code>resolvePerKeyDispatcher()</code> keeps a bounded LRU map (<code>PER_KEY_CACHE_MAX = 32</code>, evicts oldest; failed builds cached briefly <code>PER_KEY_FAILURE_TTL_MS = 30s</code>) keyed by the key&#39;s proxy URL — unlike the global dispatcher (TTL 30s), a per-key entry cannot go stale because the URL is the key.</li>
+<li>A per-key override says <em>which</em> proxy to use, not <em>that</em> the request must be proxied — the same bypasses still apply: global <code>proxy_enabled == false</code>, <code>proxy_bypass</code> per-platform list, <code>NO_PROXY</code>, and local/LAN destinations still go direct. Failure to build a per-key dispatcher falls through to the global proxy or direct.</li>
+<li>Configured per key in the dashboard/API (<code>proxy_url</code> on the key row); same <code>http</code>/<code>https</code>/<code>socks*</code> schemes and redaction apply.</li>
+</ul>
+<h2>Scheme support</h2>
+<p>Accepted schemes: <code>http</code>, <code>https</code>, <code>socks4</code>, <code>socks4a</code>, <code>socks5</code>, <code>socks5h</code>.</p>
+<p>The <code>h</code>/<code>a</code> variants (<code>socks5h</code>, <code>socks4a</code>) resolve DNS at the proxy rather than locally, which is what you want on a DNS-poisoned network. Example:</p>
+<pre><code class="language-env">PROXY_URL=socks5h://127.0.0.1:1080
+</code></pre>
+<blockquote>
+<p><strong>Fetch-Relay note:</strong> when <code>PROXY_MODE=fetch-relay</code> (<code>server/src/lib/proxy.ts:52</code> <code>PROXY_MODES</code>), the winning URL is treated as an application-layer relay endpoint and must be <code>http</code>/<code>https</code> — SOCKS schemes are rejected at boot by <code>enforceRelayUrlPolicy()</code> (<code>server/src/lib/proxy.ts:339-350</code>), and plain <code>http</code> is only allowed for loopback relays (<code>isLoopbackRelayHostname</code> — <code>localhost</code>, <code>127.0.0.1</code>, <code>::1</code>/<code>[::1]</code>, <code>127.*</code>, <code>fetchRelayUrlError()</code> <code>server/src/lib/proxy.ts:71-81</code>). Encrypted-at-rest token handling and env precedence (<code>FETCH_RELAY_TOKEN</code> → <code>readEnv(&#39;FETCH_RELAY_TOKEN&#39;) || dbValue</code>, <code>encodeFetchRelayToken</code>/<code>decodeFetchRelayToken</code> <code>389-417</code>) are detailed in <a href="/f3router/docs/en/env/01-variables.html#outbound-proxies">01-variables.md</a> and <a href="/f3router/docs/en/proxy/01-fetch-relay.html"><code>../proxy/01-fetch-relay.md</code></a>.</p>
+</blockquote>
+<h2>NO_PROXY bypasses</h2>
+<p><code>NO_PROXY</code> lists hosts that must be reached directly, bypassing whichever proxy won above (<code>parseNoProxy</code> / <code>noProxyMatches</code> <code>server/src/lib/proxy.ts:223-251</code>):</p>
+<pre><code class="language-env">NO_PROXY=localhost,127.0.0.1,.internal.corp
+</code></pre>
+<ul>
+<li>Comma-separated entries, trimmed, lower-cased, <code>*.</code> prefix stripped to <code>.</code>.</li>
+<li>A bare domain also covers its subdomains (<code>example.com</code> matches <code>api.example.com</code>); a leading <code>.</code> explicitly covers the suffix.</li>
+<li>A <code>host:port</code> entry narrows to that port (bare <code>host</code> compared).</li>
+<li>Trailing dot (FQDN form) and IPv6 brackets are ignored for matching.</li>
+<li>The special value <code>*</code> disables the proxy entirely (matches any host).</li>
+</ul>
+<p>Parsed once in <code>applyProxyUrl()</code> from <code>readEnv(&#39;NO_PROXY&#39;)</code> (<code>server/src/lib/proxy.ts:313</code>).</p>
+<h2>Loopback and LAN guard</h2>
+<p><code>shouldBypassProxy(url, platform)</code> (<code>server/src/lib/proxy.ts:472-486</code>) returns direct when any holds:</p>
+<ul>
+<li>proxy disabled globally (<code>applyProxyEnabled(false)</code> / <code>_proxyEnabled</code>);</li>
+<li><code>platform</code> listed in <code>proxy_bypass</code> (<code>applyProxyBypass</code>);</li>
+<li><code>NO_PROXY</code> matches the upstream hostname;</li>
+<li>upstream hostname is loopback or private/LAN and <code>FREEAPI_PROXY_LOCAL_DESTINATIONS</code> is not set (<code>server/src/lib/proxy.ts:262-263,314</code>).</li>
+</ul>
+<p>By default <strong>local and LAN destinations always bypass the proxy</strong> — a remote proxy has no route back to <code>localhost</code>/<code>127.0.0.0/8</code>/<code>::1</code>/<code>0.0.0.0</code> or RFC1918/ULA/CGNAT addresses, and an IP literal must go on the wire as SOCKS ATYP <code>0x01</code> no matter what <code>socks5h</code> promises, so Tor logs “giving Tor only an IP address” and may refuse. That is the right default for local Ollama / llama.cpp / LM Studio.</p>
+<p>Set <code>FREEAPI_PROXY_LOCAL_DESTINATIONS=true</code> (checked case-insensitive <code>1|true|yes</code>) only when proxying a local address <em>is</em> the point — e.g. <code>ssh -D</code> dynamic tunnel where <code>http://127.0.0.1:11434</code> through SOCKS should resolve at the remote end.</p>
+<h3>Fetch-Relay loopback hostnames</h3>
+<p>A Fetch Relay carries the provider API key <em>and</em> the relay token inside the forwarded request, so the hop to the relay must be encrypted. <code>fetchRelayUrlError()</code> (<code>server/src/lib/proxy.ts:71-81</code>) allows <code>http</code> only for loopback relay hostnames:</p>
+<pre><code class="language-ts">isLoopbackRelayHostname(hostname): localhost, 127.0.0.1, ::1, [::1], 127.*  // server/src/lib/proxy.ts:59-66
+</code></pre>
+<p>Otherwise <code>https</code> is required; plaintext to a remote host earns <code>Fetch Relay URL must use https, or http only for a loopback relay.</code> at boot. The same guard is shared by the settings validator so the dashboard and headless installs agree.</p>
+<blockquote>
+<p><strong>Callout — inbound vs outbound proxy.</strong>
+The outbound chain above (<code>PROXY_URL</code>, dashboard, <code>ALL_PROXY</code>, … <code>detectSystemProxy()</code>, per-key proxy, <code>NO_PROXY</code>, loopback guard) steers <strong>f3router → provider</strong> traffic. <code>TRUST_PROXY</code> steers the opposite direction — <strong>client → f3router</strong> — by telling Express whether to trust <code>X-Forwarded-For</code> / <code>X-Forwarded-Proto</code> from a reverse proxy (Caddy/nginx/Traefik). They are independent knobs; setting one does not imply the other. See <code>server/src/lib/config.ts:95-110</code> <code>parseTrustProxy()</code> vs <code>server/src/lib/proxy.ts:52-414</code> outbound chain.</p>
+</blockquote>
+<p>See also <a href="/f3router/docs/en/proxy/index.html"><code>../proxy/OVERVIEW.md</code></a> for the full transport scope.</p>
+<h2>Docker: 127.0.0.1 is the container</h2>
+<p>Inside a container, <code>127.0.0.1</code> is the container itself — not your machine (#733). If your proxy client runs on the host (Clash, v2rayN, sing-box, a corporate proxy), two adjustments are needed:</p>
+<ol>
+<li><p>Point f3router at the host&#39;s address instead of loopback:</p>
+<pre><code class="language-env">PROXY_URL=socks5h://host.docker.internal:7890
+</code></pre>
+</li>
+<li><p>Make sure the proxy listens on more than loopback (in Clash: <code>allow-lan: true</code>).</p>
+</li>
+</ol>
+<p>The bundled <code>docker-compose.yml</code> maps <code>host.docker.internal</code> to the host gateway via an <code>extra_hosts</code> entry, so this works on plain Linux Docker too, not just Docker Desktop (which provides the name already):</p>
+<pre><code class="language-yaml">extra_hosts:
+  - &quot;host.docker.internal:host-gateway&quot;
+</code></pre>
+<p>A second, unrelated way a container can be cut off from providers while the host works fine: on an IPv6-only host, the default bridge network is IPv4-only, so the container cannot reach anything — DNS included. Enable IPv6 in <code>/etc/docker/daemon.json</code> (<code>&quot;ipv6&quot;: true</code>, <code>&quot;ip6tables&quot;: true</code>, a <code>&quot;fixed-cidr-v6&quot;</code> range) and restart Docker.</p>
+<p>To see which case you are hitting, ask the container directly:</p>
+<pre><code class="language-bash">docker compose exec f3router node -e &quot;fetch(&#39;https://generativelanguage.googleapis.com/&#39;).then(r=&gt;console.log(&#39;ok&#39;,r.status)).catch(e=&gt;console.log(&#39;fail&#39;,e.cause?.code||e.message))&quot;
+</code></pre>
+<h2>TRUST_PROXY: inbound vs outbound</h2>
+<blockquote>
+<p><strong>Inbound vs outbound — different directions.</strong>
+Outbound (<code>PROXY_URL</code>, dashboard, <code>ALL_PROXY</code>, <code>HTTPS_PROXY</code>, <code>HTTP_PROXY</code>, <code>detectSystemProxy()</code>, per-key proxy, <code>NO_PROXY</code>, loopback guard) controls <strong>f3router → provider</strong> egress. <code>TRUST_PROXY</code> controls <strong>client → f3router</strong> ingress: whether Express trusts <code>X-Forwarded-For</code> / <code>X-Forwarded-Proto</code> from a reverse proxy so Analytics and the per-IP rate limiters see the real client. One does not imply the other.</p>
+<p>| Outbound | <code>PROXY_URL</code> / <code>ALL_PROXY</code> / <code>detectSystemProxy()</code> etc. | <code>server/src/lib/proxy.ts:52-414</code> | Provider-bound traffic |
+| Inbound | <code>TRUST_PROXY</code> (<code>false\|true\|&lt;hops&gt;\|addr/CIDR</code>, <code>.env.example:314</code>) | <code>server/src/lib/config.ts:95-110</code> <code>parseTrustProxy()</code> → Express <code>trust proxy</code> | Client IP for <code>REQUEST_ANALYTICS_LOG_CLIENT</code> + <code>PROXY_RATE_LIMIT_RPM</code> / <code>ADMIN_RATE_LIMIT_RPM</code> |</p>
+</blockquote>
+<p><code>TRUST_PROXY</code> (<code>server/src/lib/config.ts:95-110</code>, <code>.env.example:306-315</code>) is forwarded to Express <code>trust proxy</code> in <code>server/src/app.ts</code>:</p>
+<table>
+<thead>
+<tr>
+<th><code>TRUST_PROXY</code> value</th>
+<th><code>trustProxy</code></th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>unset / empty / <code>false</code> / <code>no</code> / <code>0</code></td>
+<td><code>false</code></td>
+<td><strong>Do not trust</strong> forwarded headers — <code>X-Forwarded-For</code> ignored, direct callers cannot spoof <code>clientIp</code>; analytics + limiters count the socket peer. <strong>Default, safe without a reverse proxy.</strong></td>
+</tr>
+<tr>
+<td><code>true</code> / <code>yes</code></td>
+<td><code>true</code></td>
+<td>Trust every hop — only on fully trusted network.</td>
+</tr>
+<tr>
+<td>non-negative integer e.g. <code>1</code></td>
+<td><code>1</code> (number)</td>
+<td>Trust that many hops from socket peer — Express idiom <code>trust proxy: 1</code> for one proxy in front. <code>0</code> → <code>false</code>.</td>
+</tr>
+<tr>
+<td>comma-separated addresses/CIDRs e.g. <code>100.64.0.0/10,192.168.1.10</code></td>
+<td><code>string[]</code></td>
+<td>Trust only those proxy addresses/CIDRs.</td>
+</tr>
+</tbody></table>
+<p>When trusted, <code>client-context</code> (<code>server/src/lib/client-context.ts</code>) and limiters read the left-most untrusted <code>X-Forwarded-For</code> entry, so Caddy/nginx/Traefik is not counted as client. When untrusted, socket peer is client regardless of <code>X-Forwarded-For</code> — safe default for direct installs. Commit <code>46ea0de</code> (#1041, closes #1024). Also see <a href="/f3router/docs/en/proxy/index.html"><code>../proxy/OVERVIEW.md</code></a> and <a href="/f3router/docs/en/env/01-variables.html#rate-limits">01-variables.md</a>.</p>
+<h2>Related inbound rate-limit knobs</h2>
+<p>Despite the shared “proxy” name, these two variables throttle <em>inbound</em> traffic to f3router itself, not outbound provider calls. They count the <strong>real client IP</strong> when <code>TRUST_PROXY</code> is set, otherwise the socket peer:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PROXY_RATE_LIMIT_RPM</code></td>
+<td><code>120</code></td>
+<td>Max <code>/v1</code> proxy requests per minute per client IP. <code>0</code> disables.</td>
+</tr>
+<tr>
+<td><code>ADMIN_RATE_LIMIT_RPM</code></td>
+<td><code>600</code></td>
+<td>Max <code>/api</code> dashboard requests per minute per client IP — a flood guard; login has its own per-email lockout and key export its own much tighter cap. <code>0</code> disables.</td>
+</tr>
+</tbody></table>
+<p>Full descriptions live in <a href="/f3router/docs/en/env/01-variables.html#rate-limits">01-variables.md</a>.</p>
+</article></main>
+</div>
+</body>
+</html>

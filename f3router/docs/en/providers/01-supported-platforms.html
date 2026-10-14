@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supported platforms — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html" class="on">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/providers/01-supported-platforms.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Supported platforms</h1>
+<p>The <code>Platform</code> union in <a href="https://github.com/f3tools/f3router/blob/main/shared/types.ts" target="_blank" rel="noreferrer"><code>shared/types.ts</code> (line 59)</a> is the single source of truth for platform identity; the runtime registry in <a href="https://github.com/f3tools/f3router/blob/main/server/src/providers/index.ts" target="_blank" rel="noreferrer"><code>server/src/providers/index.ts</code></a> must match it. The union currently declares <strong>45 members</strong>:</p>
+<ul>
+<li><strong>43 built-in platforms</strong> registered as adapters at startup,</li>
+<li>plus the <strong><code>custom</code></strong> placeholder (a real OpenAI-compatible adapter built per API key, since its base URL is user-supplied), giving <strong>44 entries</strong> in the registry map,</li>
+<li>plus <strong><code>sambanova</code></strong>, retained in the type union but no longer registered — it was dropped in V23 (June 2026) when its free tier was permanently retired (every chat call returns 402 &quot;payment method required&quot; once the one-time $5 trial credit lapses).</li>
+</ul>
+<p>Of the 43 built-in platforms, <strong>10 use dedicated adapters</strong> and <strong>33 ride <code>OpenAICompatProvider</code></strong> directly against a provider-specific base URL. Three platforms are registered keyless (<code>kilo</code>, <code>ovh</code>, and <code>aihorde</code>, which auto-configures with its documented anonymous sentinel key). The public catalog headline is smaller than the union because several registered gateways keep their free rosters in the hosted catalog rather than shipping them to every binary.</p>
+<h2>Catalog</h2>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Display name</th>
+<th>Auth</th>
+<th>Adapter</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>google</code></td>
+<td>Google Gemini</td>
+<td>Keyed</td>
+<td>Native (<code>GoogleProvider</code>)</td>
+<td>Gemini wire format; 60s default timeout because Gemma reasoning variants take 20–60s on cold start.</td>
+</tr>
+<tr>
+<td><code>groq</code></td>
+<td>Groq</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Standard compatible endpoint at <code>api.groq.com/openai/v1</code>.</td>
+</tr>
+<tr>
+<td><code>cerebras</code></td>
+<td>Cerebras</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td><code>api.cerebras.ai/v1</code>.</td>
+</tr>
+<tr>
+<td><code>electronhub</code></td>
+<td>ElectronHub</td>
+<td>Keyed</td>
+<td>OpenAI-compat subclass</td>
+<td>Shared weekly credit pool; validates against <code>/v1/user/me</code>, rejects HTTP-200 proxy-error banners. <a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">Funding and integration notes</a>.</td>
+</tr>
+<tr>
+<td><code>experiential</code></td>
+<td>Experiential Labs</td>
+<td>Keyed</td>
+<td>OpenAI-compat subclass</td>
+<td>Shared monthly credit pool; authenticated <code>/v1/models</code>, model-specific Claude sampling compatibility. <a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">Funding and account-verification notes</a>.</td>
+</tr>
+<tr>
+<td><code>sail</code></td>
+<td>Sail Research</td>
+<td>Keyed (payment method required for recurring credit)</td>
+<td>Native (<code>SailProvider</code>)</td>
+<td>Stable <code>/v1/responses</code> integration submits background jobs and polls them to completion; flex-only models use the <code>flex</code> completion window. Sail grants $5 in monthly credits while a payment method is attached, then charges usage beyond that credit.</td>
+</tr>
+<tr>
+<td><code>bai</code></td>
+<td>B.AI</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Gateway added in #918; only catalog row is a limited-time 0-credit promo, kept in the hosted catalog.</td>
+</tr>
+<tr>
+<td><code>anyapi</code></td>
+<td>AnyAPI</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Free tier $0/no card/recurring, capped at 100K tokens/day over &quot;free and basic&quot; models; no RPM/RPD published (#772). Model ids arrive via catalog-sync, never seeded blind.</td>
+</tr>
+<tr>
+<td><code>radeon</code></td>
+<td>AMD Radeon Cloud TokenFactory</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Shared Model API at <code>developer.amd.com.cn/radeon/api/v1</code>; public models are free without consuming instance credits and use a rotating experimental roster. Current per-account limits are read from response headers rather than hard-coded. Parallel tool calls are disabled and the adapter allows the documented ten-minute generation window.</td>
+</tr>
+<tr>
+<td><code>nvidia</code></td>
+<td>NVIDIA NIM</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td><code>parallel_tool_calls</code> pinned false (#255); 180s timeout doubles as streaming first-byte grace (#584).</td>
+</tr>
+<tr>
+<td><code>mistral</code></td>
+<td>Mistral</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td><code>api.mistral.ai/v1</code>.</td>
+</tr>
+<tr>
+<td><code>sambanova</code></td>
+<td>SambaNova</td>
+<td>Retired (V23)</td>
+<td>Not registered</td>
+<td>Free tier permanently gone; kept in the type union for historical key rows.</td>
+</tr>
+<tr>
+<td><code>openrouter</code></td>
+<td>OpenRouter</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Sends <code>HTTP-Referer</code>/<code>X-Title</code> headers; <code>:free</code> model suffix marks zero-cost routes.</td>
+</tr>
+<tr>
+<td><code>github</code></td>
+<td>GitHub Models</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Routes to <code>models.github.ai/inference</code>; catalog uses <code>&lt;publisher&gt;/&lt;model&gt;</code> ids.</td>
+</tr>
+<tr>
+<td><code>cohere</code></td>
+<td>Cohere</td>
+<td>Keyed</td>
+<td>Native (<code>CohereProvider</code>)</td>
+<td>Uses Cohere&#39;s OpenAI-compatible endpoint.</td>
+</tr>
+<tr>
+<td><code>cloudflare</code></td>
+<td>Cloudflare Workers AI</td>
+<td>Keyed (<code>account_id:token</code>)</td>
+<td>Native (<code>CloudflareProvider</code>)</td>
+<td>Compound credential format parsed by the adapter.</td>
+</tr>
+<tr>
+<td><code>zhipu</code></td>
+<td>Zhipu (Z.ai / bigmodel.cn)</td>
+<td>Keyed</td>
+<td>Native (<code>ZhipuProvider</code>)</td>
+<td>Console autodetect: a rejected domestic key is re-probed against the global <code>api.z.ai</code> host; 60s timeout covers glm-4.7-flash hidden reasoning.</td>
+</tr>
+<tr>
+<td><code>ollama</code></td>
+<td>Ollama Cloud</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>120s timeout for frontier reasoning models; reasoning returned in <code>message.reasoning</code>; catalog filtered to confirmed-free rows.</td>
+</tr>
+<tr>
+<td><code>kilo</code></td>
+<td>Kilo Gateway</td>
+<td>Keyless</td>
+<td>OpenAI-compat</td>
+<td>Anonymous <code>:free</code> routes rate-limited 200 req/hr per IP; prompts/outputs logged for training; validation probes <code>/api/gateway/models</code> (#181).</td>
+</tr>
+<tr>
+<td><code>pollinations</code></td>
+<td>Pollinations</td>
+<td>Keyed</td>
+<td>Native (<code>PollinationsProvider</code>)</td>
+<td><code>GET /v1/models</code> answers 200 even for revoked keys, so validation probes the authenticated <code>/account/key</code> instead (#608).</td>
+</tr>
+<tr>
+<td><code>llm7</code></td>
+<td>LLM7.io</td>
+<td>Keyed (anonymous works for basic models)</td>
+<td>OpenAI-compat</td>
+<td>100 req/hr free tier.</td>
+</tr>
+<tr>
+<td><code>huggingface</code></td>
+<td>Hugging Face Router</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td><code>router.huggingface.co</code> meta-router (re-added V13); recurring $0.10/mo router credit on the free tier.</td>
+</tr>
+<tr>
+<td><code>opencode</code></td>
+<td>OpenCode Zen</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Free roster is locked to the OpenCode client since 2026-09 (403 FreeTierError, #1249) and disabled in the catalog; paid models only.</td>
+</tr>
+<tr>
+<td><code>ovh</code></td>
+<td>OVHcloud AI Endpoints</td>
+<td>Keyless</td>
+<td>OpenAI-compat</td>
+<td>Anonymous tier: 2 req/min per IP per model (observed stricter); authenticated tier requires a Public Cloud project with payment method on file (<code>migrateModelsV26</code>).</td>
+</tr>
+<tr>
+<td><code>agnes</code></td>
+<td>Agnes AI</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Proprietary models served at $0/token promotionally; ~30 concurrent requests before 429s; 60s timeout for reasoning TTFB.</td>
+</tr>
+<tr>
+<td><code>reka</code></td>
+<td>Reka</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>No free tier for new accounts since 2026-09: prepaid credits required (#1202). Accounts that still hold credit keep working; balance dashboard-only.</td>
+</tr>
+<tr>
+<td><code>siliconflow</code></td>
+<td>SiliconFlow</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Registered mainly for FREE generative-media models (FLUX.1-schnell image, CosyVoice2 TTS) routed via <code>services/media.ts</code>.</td>
+</tr>
+<tr>
+<td><code>routeway</code></td>
+<td>Routeway</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Requires browser-style User-Agent (Cloudflare rejects others with error 1010); free pool observed stricter (~5 rpm) than the documented 20 rpm / 200 rpd.</td>
+</tr>
+<tr>
+<td><code>bazaarlink</code></td>
+<td>BazaarLink</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Only the <code>auto:free</code> route is cataloged — direct model ids are paid (#385).</td>
+</tr>
+<tr>
+<td><code>ainative</code></td>
+<td>AINative Studio</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Advertises recurring ~10M tokens/month free allocation; quota treated as unverified until confirmed by a real account.</td>
+</tr>
+<tr>
+<td><code>aion</code></td>
+<td>Aion Labs</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>No-card free key; availability catalog-managed behind the 30-day age gate.</td>
+</tr>
+<tr>
+<td><code>requesty</code></td>
+<td>Requesty</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Router endpoint at <code>router.requesty.ai/v1</code>; free rows age into the monthly catalog; the free tier is 200 requests/day shared across all free models.</td>
+</tr>
+<tr>
+<td><code>navy</code></td>
+<td>NavyAI</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Free plan: 150K tokens/day and 20 RPM; live smoke tests require an explicit User-Agent header.</td>
+</tr>
+<tr>
+<td><code>nara</code></td>
+<td>NaraRouter</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Free plan additionally requires Telegram channel/link verification; live-probed 2026-07-09.</td>
+</tr>
+<tr>
+<td><code>sealion</code></td>
+<td>SEA-LION (AI Singapore)</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>First-party API; Google sign-in, no card, no region wall; 10 RPM recurring free tier.</td>
+</tr>
+<tr>
+<td><code>orcarouter</code></td>
+<td>OrcaRouter</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Recurring <code>$0</code> free aliases with intentionally unpublished limits (#896): 429 is a clean quota signal because free routes never fall back to paid models.</td>
+</tr>
+<tr>
+<td><code>unorouter</code></td>
+<td>UnoRouter</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Free models carry <code>:free</code> suffix; per-minute rate limit (429 on cap). <code>GET /v1/models</code> public (200 no key) but 401 on wrong key; default key validation works. Catalog rows in hosted catalog (premium now, free after 30-day age gate).</td>
+</tr>
+<tr>
+<td><code>xkiro</code></td>
+<td>xKiro</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Free plan: 5M tokens/day on free models (Mistral, MiniMax, DeepSeek families); paid models 403. <code>GET /v1/models</code> public (200 no key), so <code>validateUrl</code> points to <code>/v1/usage</code> which 401s on missing/invalid key. Accepts Bearer or <code>x-api-key</code>. Catalog rows in hosted catalog (premium now, free after 30-day age gate).</td>
+</tr>
+<tr>
+<td><code>modelscope</code></td>
+<td>ModelScope (Alibaba)</td>
+<td>Keyed</td>
+<td>Native (<code>ModelScopeProvider</code>)</td>
+<td>Calls require binding to an Alibaba Cloud CHINA-site account with real-name verification; <code>GET /v1/models</code> accepts garbage tokens so validation uses a 1-token chat probe; retired models answer 429 &quot;insufficient balance&quot; (#581).</td>
+</tr>
+<tr>
+<td><code>qianfan</code></td>
+<td>Baidu Qianfan</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>ERNIE-Speed/Lite/Tiny free indefinitely via pay-as-you-go billing bounded by rate limits; Chinese real-name auth required (#936).</td>
+</tr>
+<tr>
+<td><code>volcengine</code></td>
+<td>Volcengine Ark (ByteDance)</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Recurring daily per-model reward quota of 2M tokens/day/model for individual developers, on top of a one-time 500K new-user grant; real-name auth required (#936).</td>
+</tr>
+<tr>
+<td><code>longcat</code></td>
+<td>LongCat (Meituan)</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Daily free quota; exception among the Chinese providers — email signup works from outside mainland China. Also speaks Anthropic wire at <code>/anthropic</code> (unused here) (#936).</td>
+</tr>
+<tr>
+<td><code>xfyun</code></td>
+<td>iFlytek Spark</td>
+<td>Keyed</td>
+<td>OpenAI-compat</td>
+<td>Auth is the console APIPassword as a Bearer token; the Lite model is the documented free one; no published token/QPS ceiling (#936).</td>
+</tr>
+<tr>
+<td><code>aihorde</code></td>
+<td>AI Horde</td>
+<td>Keyless (anonymous sentinel <code>0000000000</code>; registered key raises queue priority)</td>
+<td>Native (<code>AIHordeProvider</code>)</td>
+<td>Community volunteer workers via queue-based proxy: max_tokens &gt;= 16, stop must be array, no tools, usage reported as kudos, 120s timeout, no upstream streaming (#345).</td>
+</tr>
+<tr>
+<td><code>custom</code></td>
+<td>Custom (OpenAI-compatible)</td>
+<td>User-supplied base URL stored per <code>api_keys</code> row</td>
+<td>OpenAI-compat built per key via <code>resolveProvider()</code></td>
+<td>Registered placeholder keeps <code>getProvider(&#39;custom&#39;)</code>/<code>hasProvider(&#39;custom&#39;)</code> well-behaved; 120s timeout for slow local runtimes (llama.cpp, vLLM, LM Studio) (#145).</td>
+</tr>
+</tbody></table>
+<h2>Custom endpoint groups</h2>
+<p>Custom endpoints can be filed under a <strong>group</strong> you name (#1176): set it in the <strong>Group</strong> field when adding an endpoint, or later from <strong>Edit key</strong>. The group belongs to the endpoint, so every key in that endpoint&#39;s pool moves with it, and a key added later joins the same group. Blank means the default <strong>Custom (OpenAI-compatible)</strong> group.</p>
+<ul>
+<li><strong>Keys page</strong> – each group gets its own section with a <code>#handle</code> badge (the label slugified: <code>Work relays</code> → <code>#work-relays</code>). The section&#39;s switch turns on or off only that group&#39;s endpoints.</li>
+<li><strong>Requests</strong> – add the handle after a model id to keep a request inside the group: <code>custom:deepseek-v3.1#work-relays</code> (or <code>deepseek-v3.1#work-relays</code>) routes and fails over only across the group&#39;s endpoints that serve that model. An endpoint&#39;s own handle (<code>custom:deepseek-v3.1#relay-a.example.com-v1</code>) still pins a single endpoint and wins if a group has the same name.</li>
+<li><strong>API</strong> – <code>GET /api/keys</code> returns <code>groupLabel</code>; <code>PATCH /api/keys/:id</code> and <code>POST /api/keys/custom</code> accept <code>groupLabel</code> (<code>&quot;&quot;</code> clears it); <code>PATCH /api/keys/platform/custom</code> accepts <code>group</code> (a label, or <code>null</code> for the ungrouped endpoints) to narrow the on/off sweep.</li>
+</ul>
+<h2>Related history</h2>
+<ul>
+<li>Moonshot direct integration and MiniMax direct were dropped in <code>migrateModelsV4</code> (paid-only / superseded by the OpenRouter route).</li>
+<li>Hugging Face was dropped in V4 (&quot;tool-call format issues&quot;) and re-added in V13 through the Inference Providers meta-router.</li>
+<li>Chutes was evaluated for V11 and dropped: every model returned 402 requiring a non-zero balance, conflicting with the project&#39;s no-card criterion.</li>
+</ul>
+</article></main>
+</div>
+</body>
+</html>

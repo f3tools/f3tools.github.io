@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Idempotency-Key — Safe Retries for Non-Streaming Chat Completions — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html" class="on">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/api/02-idempotency.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</h1>
+<blockquote>
+<p><strong>Sources:</strong> <code>server/src/services/idempotency.ts</code>, <code>server/src/routes/proxy.ts:1793-1835</code> (entry) + <code>2640-2656</code> (persist), <code>server/src/db/migrations/20260901_000001_idempotency_claims.ts</code>, commit <code>36b877d</code> (feature), <code>95bc46f</code> (in-flight clarification), env <code>IDEMPOTENCY_TTL_MS</code> documented in <a href="/f3router/docs/en/env/01-variables.html#idempotency"><code>docs/en/env/01-variables.md#idempotency</code></a>.</p>
+</blockquote>
+<p>Non-streaming <code>POST /v1/chat/completions</code> supports an opt-in <code>Idempotency-Key</code> header so a client that times out and retries does not burn a second free-tier slot for an answer it already received. When the same key + same request content is seen again inside the replay window the gateway replays the stored response at <strong>zero provider cost</strong>; the same key with different content is a <code>409</code> rather than a silent wrong answer.</p>
+<hr>
+<h2>1. Header</h2>
+<p>Send <code>Idempotency-Key</code> (case-insensitive — Express lower-cases to <code>idempotency-key</code>) on a <strong>non-streaming</strong> request:</p>
+<pre><code>Idempotency-Key: &lt;opaque client token&gt;
+</code></pre>
+<p>Normalization (<code>normalizeIdempotencyKey</code> in <code>server/src/services/idempotency.ts:176-182</code>):</p>
+<ul>
+<li>Trim surrounding whitespace; empty after trim → ignored (no idempotency).</li>
+<li>Must be <code>≤ 255</code> UTF-8 bytes (<code>Buffer.byteLength(..., &#39;utf8&#39;)</code>); longer → ignored.</li>
+<li>If the header is repeated, the <strong>first</strong> value wins (<code>Array.isArray(raw) ? raw[0] : raw</code>), matching Express multi-value handling.</li>
+</ul>
+<p>Only a <code>SHA-256 hex</code> of the key is stored (<code>hashIdempotencyKey</code>) — the raw key never touches SQLite, mirroring how admin/runtime tokens are handled.</p>
+<p>Streaming requests (<code>stream: true</code>) <strong>always bypass</strong> idempotency (<code>const idemKey = !stream ? normalize... : null</code> in <code>proxy.ts:1805</code>). A stream cannot be replayed as a unit for a <em>retry</em> and the open connection is itself the retry signal. (The response cache no longer follows this policy: it does replay streams, keyed on request content rather than a caller-supplied key.)</p>
+<hr>
+<h2>2. States — <code>miss</code> / <code>replay</code> / <code>409 conflict</code></h2>
+<p><code>lookupIdempotencyReplay(keyHash, fingerprint)</code> in <code>server/src/services/idempotency.ts:91-119</code> queries the <code>idempotency_claims</code> table for an <strong>unexpired</strong> row with the same <code>key_hash</code> and compares its stored <code>request_fingerprint</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Condition</th>
+<th>Gateway behavior</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>miss</code></td>
+<td>No row <code>WHERE key_hash = ? AND expires_at_ms &gt; now</code>, or corrupt stored body, or DB unavailable</td>
+<td>Proceed normally; if the upstream later succeeds with <code>finish_reason !== &#39;length&#39;</code>, persist the result for future replays.</td>
+</tr>
+<tr>
+<td><code>replay</code></td>
+<td>Row exists <strong>and</strong> <code>request_fingerprint</code> matches</td>
+<td><code>X-Routed-Via: idempotency</code>, replay stored <code>response_status</code> + <code>response_body</code> verbatim. <strong>No provider quota is consumed</strong> — same zero-cost rationale as a <code>HIT</code> from the response cache, so request/usage bookkeeping is skipped.</td>
+</tr>
+<tr>
+<td><code>conflict</code></td>
+<td>Row exists but fingerprints differ</td>
+<td><code>409</code> with <code>idempotency_key_conflict</code> (see §6) — the caller reused a key with different content.</td>
+</tr>
+</tbody></table>
+<p>Expired rows are treated as <code>miss</code>; a new successful completion with the same key <strong>replaces</strong> the previous claim (<code>INSERT ... ON CONFLICT(key_hash) DO UPDATE</code> in <code>storeIdempotencyResult</code>).</p>
+<p>DB failures degrade to <code>miss</code> — idempotency is best-effort and never fails the hot path (mirrors <code>services/cache.ts</code>).</p>
+<hr>
+<h2>3. Non-streaming only</h2>
+<ul>
+<li>Applies <strong>only</strong> to <code>POST /v1/chat/completions</code> with <code>stream</code> falsy. Streaming, <code>/v1/responses</code>, <code>/v1/messages</code> (Anthropic), <code>/v1/completions</code>, <code>/v1/embeddings</code>, and media endpoints are not covered.</li>
+<li>A truncated turn (<code>finish_reason === &#39;length&#39;</code>) is <strong>not stored</strong> and not replayed — replaying a cut-off answer would be worse than regenerating. This matches the response-cache policy (<code>proxy.ts:2644-2648</code> guards <code>result.choices?.[0]?.finish_reason !== &#39;length&#39;</code>).</li>
+</ul>
+<hr>
+<h2>4. Fingerprint composition</h2>
+<p><code>computeIdempotencyFingerprint</code> (<code>server/src/services/idempotency.ts:51-70</code>) builds a canonical <code>SHA-256</code> over the JSON serialization of exactly these fields:</p>
+<pre><code class="language-typescript">{
+  model:       input.model ?? null,
+  messages:    input.messages,
+  temperature: input.temperature ?? null,
+  top_p:       input.top_p ?? null,
+  max_tokens:  input.max_tokens ?? null,
+  tools:       input.tools ?? null,
+  tool_choice: input.tool_choice ?? null,
+}
+</code></pre>
+<p><code>model</code> comes from the client&#39;s <code>model</code> field as-is (e.g. <code>auto</code>, <code>auto:fast</code>, <code>gemini-2.5-flash</code>); <code>messages</code> is the full OpenAI-shaped array after <code>developer</code>→<code>system</code> normalization. <code>tools</code>/<code>tool_choice</code> include their schemas so a retry that changes a tool binding correctly conflicts.</p>
+<p>Default-valued sampling params are canonicalized (<code>null</code> when absent) so <code>top_p: 1</code> and omitting <code>top_p</code> do not create two fingerprints for the same logical request — consistent with cache key <code>v4</code>.</p>
+<hr>
+<h2>5. In-flight requests are NOT deduplicated (95bc46f)</h2>
+<p>A duplicate that arrives while the original is still running is <strong>not coalesced</strong>:</p>
+<blockquote>
+<p>Only <strong>completed</strong> responses are claimable. If two requests race with the same key + fingerprint, both execute to completion; the second <code>storeIdempotencyResult</code> replaces the first. A third request that then repeats the key will replay the winner.</p>
+</blockquote>
+<p>Guarding the in-flight window would require a <code>pending</code>-claim state with its own short TTL so a crash cannot wedge a key for 24 h. That is <strong>deliberately out of scope</strong> (commit <code>95bc46f</code>, <code>server/src/services/idempotency.ts:17-20</code>). Callers that need stronger dedup should hold off retrying until the first request either returns or the client&#39;s own timeout fires.</p>
+<hr>
+<h2>6. TTL — <code>IDEMPOTENCY_TTL_MS</code></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>IDEMPOTENCY_TTL_MS</code></td>
+<td><code>86400000</code> (24 h)</td>
+<td>Replay window for completed claims</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Read <strong>per call</strong> via <code>idempotencyTtlMs()</code> → <code>envNum(&#39;IDEMPOTENCY_TTL_MS&#39;, 24*60*60*1000)</code> so tests can flip it live; non-finite / negative → fallback.</li>
+<li><code>expires_at_ms = now + ttl</code>; stale rows are lazily swept <strong>per <code>key_hash</code></strong> at the next <code>storeIdempotencyResult</code> (<code>DELETE ... WHERE key_hash = ? AND expires_at_ms &lt;= ?</code>) and via the <code>idx_idempotency_claims_expires</code> index for range scans.</li>
+<li>Source of truth: <code>server/src/services/idempotency.ts:40-42</code>, <a href="/f3router/docs/en/env/01-variables.html#idempotency"><code>docs/en/env/01-variables.md#idempotency</code></a>.</li>
+</ul>
+<hr>
+<h2>7. 409 handling — <code>idempotency_key_conflict</code></h2>
+<p>Reusing a key with <strong>different</strong> <code>model</code>/<code>messages</code>/sampling/<code>tools</code> is a <code>409 Conflict</code> (before any provider is called):</p>
+<pre><code class="language-json">HTTP/1.1 409 Conflict
+Content-Type: application/json
+
+{
+  &quot;error&quot;: {
+    &quot;message&quot;: &quot;idempotency_key_conflict&quot;,
+    &quot;type&quot;: &quot;invalid_request_error&quot;
+  }
+}
+</code></pre>
+<p>Client recovery:</p>
+<ol>
+<li>Generate a <strong>new</strong> <code>Idempotency-Key</code> for genuinely new content, or</li>
+<li>Resend the <strong>original</strong> body byte-for-byte to get the replay.</li>
+</ol>
+<p>No provider quota is spent on the <code>409</code> — it is returned directly from the lookup (<code>proxy.ts:1827-1835</code>). Treat it as a programmer error, not a retryable status.</p>
+<hr>
+<h2>8. Curl example — timeout, retry, replay</h2>
+<pre><code class="language-bash"># 1. First attempt — times out on the client side, but the gateway
+#    finishes and stores the response under the key hash.
+curl -X POST http://localhost:3001/v1/chat/completions \
+  -H &quot;Authorization: Bearer f3router-your-unified-key&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;Idempotency-Key: 7f3a-2026-09-02-retry-1&quot; \
+  -d &#39;{
+    &quot;model&quot;: &quot;auto&quot;,
+    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Summarise the fall of Rome in one sentence.&quot;}]
+  }&#39; --max-time 10 || echo &quot;client timed out&quot;
+
+# 2. Retry with the SAME key + SAME body → replay, zero provider cost
+curl -i http://localhost:3001/v1/chat/completions \
+  -H &quot;Authorization: Bearer f3router-your-unified-key&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;Idempotency-Key: 7f3a-2026-09-02-retry-1&quot; \
+  -d &#39;{
+    &quot;model&quot;: &quot;auto&quot;,
+    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Summarise the fall of Rome in one sentence.&quot;}]
+  }&#39;
+# Response headers include: X-Routed-Via: idempotency
+# Body is the exact JSON from the first success, including usage/model fields.
+
+# 3. Same key with DIFFERENT content → 409
+curl -i http://localhost:3001/v1/chat/completions \
+  -H &quot;Authorization: Bearer f3router-your-unified-key&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;Idempotency-Key: 7f3a-2026-09-02-retry-1&quot; \
+  -d &#39;{
+    &quot;model&quot;: &quot;auto&quot;,
+    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Different question&quot;}]
+  }&#39;
+# → 409 {&quot;error&quot;:{&quot;message&quot;:&quot;idempotency_key_conflict&quot;,&quot;type&quot;:&quot;invalid_request_error&quot;}}
+</code></pre>
+<p>Tips:</p>
+<ul>
+<li>Use a <strong>UUID v4</strong> or KSUID per logical operation; do not reuse keys across unrelated calls.</li>
+<li>Timeouts are the expected use case — set the client timeout shorter than the gateway&#39;s provider budget so retries actually fire.</li>
+<li>A replay can be distinguished by <code>X-Routed-Via: idempotency</code> (normal hits use <code>X-Routed-Via: &lt;platform&gt;/&lt;model&gt;</code>); cache hits use <code>X-FreeLLM-Cache: HIT</code>.</li>
+</ul>
+<hr>
+<h2>9. Storage &amp; cost model</h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Table</td>
+<td><code>idempotency_claims</code> (<code>id</code>, <code>key_hash UNIQUE</code>, <code>request_fingerprint</code>, <code>response_status</code>, <code>response_body TEXT</code>, <code>execution_id</code>, <code>created_at_ms</code>, <code>expires_at_ms</code>) — migration <code>20260901_000001_idempotency_claims.ts</code></td>
+</tr>
+<tr>
+<td>Index</td>
+<td><code>idx_idempotency_claims_expires ON expires_at_ms</code></td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Replay = <strong>zero provider keys/quota</strong>, no <code>requests</code>/<code>request_attempts</code> rows, same as cache <code>HIT</code></td>
+</tr>
+<tr>
+<td>Scoping</td>
+<td>Per-caller key (caller controls the key), unlike the response cache which is global exact-match on request content</td>
+</tr>
+<tr>
+<td>Semantics</td>
+<td>One row per <code>key_hash</code>; a new successful completion <strong>replaces</strong> the old one (fingerprint + body overwritten)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>10. Relationship to response cache &amp; degraded mode</h2>
+<ul>
+<li><strong>Response cache</strong> (<code>services/cache.ts</code>, <code>X-FreeLLM-Cache</code>) is orthogonal: global, temperature-gated, in-memory LRU covering streaming and non-streaming alike; idempotency is durable (SQLite), per-caller, fingerprint-bound, and non-streaming only. Both short-circuit provider calls.</li>
+<li><strong>Degraded mode</strong> (<a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html"><code>docs/en/architecture/04-degraded-mode-and-failover.md</code></a>) disables bandit exploration but does not affect idempotency — replays still bypass routing entirely.</li>
+<li><strong>Failover</strong>: only the final successful body is stored. If a request exhausts the fallback loop, nothing is stored for that key.</li>
+</ul>
+<hr>
+<h2>Related</h2>
+<ul>
+<li><a href="/f3router/docs/en/env/01-variables.html#idempotency"><code>docs/en/env/01-variables.md#idempotency</code></a> — <code>IDEMPOTENCY_TTL_MS</code> defaults and bounds.</li>
+<li><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html"><code>docs/en/architecture/04-degraded-mode-and-failover.md</code></a> — retry budget, hedging, and fallback headers that apply when a <code>miss</code> enters the loop.</li>
+<li><code>01-rest-api.md</code> — OpenAI-compatible surface (<code>/v1/chat/completions</code>) and response headers (<code>X-Routed-Via</code>, <code>X-Fallback-Detail</code>).</li>
+</ul>
+</article></main>
+</div>
+</body>
+</html>

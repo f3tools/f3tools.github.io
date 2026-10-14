@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompt compression — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html" class="on">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/compression/01-compression-pipeline.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Prompt compression</h1>
+<p><a href="/f3router/docs/en/index.html">← Back to README</a> · <a href="/f3router/docs/en/index.html">Documentation index</a> · <a href="/f3router/docs/en/api/01-rest-api.html">API reference</a></p>
+<p>Long coding-agent sessions repeatedly send system prompts, file reads, command output, and tool schemas. f3router can shrink that request context before cache lookup, token budgeting, and routing, so the router sees the reduced estimate and more small-context models remain eligible. Provider responses are never rewritten.</p>
+<p>The same pipeline runs on Chat Completions, Responses, Anthropic Messages, and Anthropic token counting. Compression is <strong>off by default</strong>.</p>
+<h2>Enable it</h2>
+<p>Choose a mode under dashboard <strong>Settings → Prompt compression</strong>, or bootstrap the mode with:</p>
+<pre><code class="language-env">F3ROUTER_COMPRESSION=lossless
+</code></pre>
+<p>Once settings have been saved in the dashboard, the stored setting takes precedence over the environment value.</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>What runs</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>off</code></td>
+<td>No request rewriting. This is a master switch; a request header cannot enable it.</td>
+</tr>
+<tr>
+<td><code>lossless</code></td>
+<td>Repeated-block deduplication, whitespace hygiene, and reversible homogeneous-JSON table encoding.</td>
+</tr>
+<tr>
+<td><code>standard</code></td>
+<td>Lossless engines plus command-aware tool-output filtering and stale file-read supersession.</td>
+</tr>
+<tr>
+<td><code>aggressive</code></td>
+<td>Standard engines plus older-turn condensation, lexical relevance filtering, and an optional hard token target.</td>
+</tr>
+</tbody></table>
+<p>The dashboard also controls each engine independently, the estimated-token auto-trigger, target size, stable-prefix freezing, and whether repository-local filters are trusted.</p>
+<h2>Per-request control</h2>
+<p>Send one of these values with <code>X-FreeLLM-Compress</code>:</p>
+<pre><code class="language-text">off | on | lossless | standard | aggressive
+</code></pre>
+<p>The header may turn compression off or lower the operator&#39;s configured mode, but it cannot raise it. <code>on</code> uses the configured mode. Responses report the effective mode and estimated savings:</p>
+<pre><code class="language-text">X-FreeLLM-Compress: standard; saved~=1840
+</code></pre>
+<p>Savings use the same estimated <code>chars / 4</code> accounting as routing, so the header deliberately uses <code>~=</code>.</p>
+<h2>Adaptive compression</h2>
+<p>When <code>autoTriggerEstTokens</code> is configured and an uncompressed request crosses that estimate, the pipeline may use aggressive engines even if the normal configured mode is lower. It stops once <code>targetTokens</code> is reached. An explicit request header still wins when it lowers the permitted mode.</p>
+<h2>Fidelity and cache safety</h2>
+<p>The pipeline is fail-open. Every engine runs independently, and its output is discarded if it grows the request, throws an exception, or fails a fidelity gate. The gate requires:</p>
+<blockquote>
+<p><strong>Perf note (cf0c216):</strong> The protected-span check now early-exits when a span is
+already known to be preserved, avoiding redundant work in the per-line hot path.</p>
+</blockquote>
+<ul>
+<li><p>all distinct numeric literals and diff hunks to survive;</p>
+</li>
+<li><p>all distinct numeric literals and diff hunks to survive;</p>
+</li>
+<li><p>every explicit constraint, security instruction, and error line to survive;</p>
+</li>
+<li><p>at least 90% of JSON keys to survive;</p>
+</li>
+<li><p>at least 95% of other protected spans to survive;</p>
+</li>
+<li><p>tool-call and tool-result envelopes to remain valid.</p>
+</li>
+</ul>
+<p>Protected spans include code fences, URLs, file paths, stack traces, explicit constraints, error lines, key/value pairs, and structured tool metadata.</p>
+<p>Repeated stable system prefixes are frozen after their third appearance. Anthropic <code>cache_control</code> prefixes are capped at lossless rewriting. Compression configuration is included in the response-cache fingerprint, so differently compressed requests cannot share a stale cache entry.</p>
+<h2>Tool-output filters</h2>
+<p>Built-in filters understand common output from Git, package managers, test runners, builds, Docker, search tools, JSON, and stack traces. They can remove ANSI escape sequences, collapse repetitive sections, keep matched lines, and preserve useful head/tail context under character and line limits. Error output receives conservative treatment.</p>
+<p>Additional JSON filter definitions can be loaded from:</p>
+<ul>
+<li><code>~/.f3router/filters/*.json</code> for user-owned filters;</li>
+<li><code>.f3router/filters.json</code> in the project, only when <strong>Trust project filter files</strong> is enabled.</li>
+</ul>
+<p>Project filters are disabled by default because repositories may be untrusted.</p>
+<h2>Design boundaries</h2>
+<p>The built-in path is deterministic, synchronous, dependency-light, and provider-neutral. It does not call another model, use a learned token-pruning model, rewrite images, or emit opaque provider-specific compaction blocks. Those approaches can be useful when a compatible upstream provider or agent runtime owns the context state, but silently translating them across providers would weaken the fail-open and fidelity guarantees of this router.</p>
+<h2>Settings, preview, and statistics APIs</h2>
+<p>Authenticated admin clients can use:</p>
+<ul>
+<li><code>GET /api/settings/compression</code> — read the effective configuration.</li>
+<li><code>PUT /api/settings/compression</code> — update modes, engines, limits, and trust controls.</li>
+<li><code>POST /api/compression/preview</code> — inspect compressed output and per-engine results without affecting live statistics.</li>
+<li><code>GET /api/compression/stats</code> — read rolling aggregate and per-engine savings and fidelity-gate discards.</li>
+</ul>
+<p>MCP clients can read the same live aggregates with the <code>compression_stats</code> tool. Statistics contain counts, timings, and estimated savings only; request bodies are never retained.</p>
+</article></main>
+</div>
+</body>
+</html>

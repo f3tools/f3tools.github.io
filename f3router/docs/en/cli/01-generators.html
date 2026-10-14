@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setup generators — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html" class="on">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/cli/01-generators.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Setup generators</h1>
+<h2>Usage</h2>
+<pre><code class="language-bash">npx f3router setup-claude        # wire Claude Code
+npx f3router setup-codex         # wire Codex CLI
+npx f3router setup-dsh           # wire DeepSeek Harness
+npx f3router setup-mimo          # wire MiMo Code
+npx f3router setup-atomcode      # wire AtomCode
+npx f3router --dry-run setup-claude  # preview without writing
+npx f3router setup-claude --model gpt-4o  # pin a model
+</code></pre>
+<p>Every generator (<code>cli/src/tools.ts:52-622</code>) fetches the live catalog, resolves <code>--model</code> against the unfiltered catalog (<code>c942352</code>), backs up existing config with a timestamped copy, merges without clobbering unrelated keys, and writes with <code>0600</code>.</p>
+<h2>Generator table</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Target file</th>
+<th>Protocol</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>setup-claude</code></td>
+<td><code>~/.claude/settings.json</code></td>
+<td>Anthropic Messages</td>
+<td><code>ANTHROPIC_BASE_URL</code>/<code>AUTH_TOKEN</code>/<code>MODEL</code>, <code>CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1</code>, <code>launch</code> zero-persistence launcher</td>
+</tr>
+<tr>
+<td><code>setup-codex</code></td>
+<td><code>~/.codex/config.toml</code></td>
+<td>OpenAI Responses</td>
+<td><code>[model_providers.f3router]</code> <code>wire_api=responses</code>, <code>launch-codex</code> launcher</td>
+</tr>
+<tr>
+<td><code>setup-cline</code></td>
+<td><code>~/.config/Code/User/settings.json</code></td>
+<td>OpenAI Chat</td>
+<td>Cline VS Code extension</td>
+</tr>
+<tr>
+<td><code>setup-continue</code></td>
+<td><code>~/.continue/config.json</code></td>
+<td>OpenAI Chat</td>
+<td>Continue ghost-text autocomplete</td>
+</tr>
+<tr>
+<td><code>setup-aider</code></td>
+<td><code>~/.aider.conf.yml</code></td>
+<td>OpenAI Chat</td>
+<td>Aider pair-programmer</td>
+</tr>
+<tr>
+<td><code>setup-opencode</code></td>
+<td><code>~/.config/opencode/config.json</code></td>
+<td>OpenAI Chat</td>
+<td>OpenCode agent</td>
+</tr>
+<tr>
+<td><code>setup-goose</code></td>
+<td><code>~/.config/goose/config.yaml</code></td>
+<td>OpenAI Chat</td>
+<td>Goose agent</td>
+</tr>
+<tr>
+<td><code>setup-qwen</code></td>
+<td><code>~/.qwen/settings.json</code></td>
+<td>OpenAI/Gemini</td>
+<td>Qwen Code, <code>/v1</code> or native <code>/v1beta</code></td>
+</tr>
+<tr>
+<td><code>setup-roo</code></td>
+<td><code>~/.config/roo/config.json</code></td>
+<td>OpenAI Chat</td>
+<td>Roo Code</td>
+</tr>
+<tr>
+<td><code>setup-kilo</code></td>
+<td><code>~/.config/kilo/config.json</code></td>
+<td>OpenAI Chat</td>
+<td>Kilo Code</td>
+</tr>
+<tr>
+<td><code>setup-crush</code></td>
+<td><code>~/.config/crush/config.json</code></td>
+<td>OpenAI Chat</td>
+<td>Crush (charmbracelet)</td>
+</tr>
+<tr>
+<td><code>setup-dsh</code></td>
+<td><code>~/.dsh/config.json</code></td>
+<td>OpenAI Chat</td>
+<td>DeepSeek Harness (#995)</td>
+</tr>
+<tr>
+<td><code>setup-mimo</code></td>
+<td><code>~/.config/mimocode/config.json</code></td>
+<td>OpenAI Chat</td>
+<td>MiMo Code <code>~/.config/mimocode/config.json</code> <code>default_provider=f3router</code> + <code>[providers.f3router]</code> <code>type=openai</code> <code>base_url=/v1</code> <code>api_key</code> <code>model</code> <code>context_window</code> (#1003)</td>
+</tr>
+<tr>
+<td><code>setup-atomcode</code></td>
+<td><code>~/.atomcode/config.toml</code></td>
+<td>OpenAI Chat</td>
+<td>AtomCode <code>default_provider=f3router</code> + <code>[providers.f3router]</code> TOML preserve other providers (#1025)</td>
+</tr>
+<tr>
+<td><code>setup-cursor</code></td>
+<td>guide only</td>
+<td>OpenAI Chat</td>
+<td>Manual <code>Cursor Settings → Models → Add Model</code> (no file)</td>
+</tr>
+<tr>
+<td><code>setup-generic</code></td>
+<td>guide only</td>
+<td>OpenAI Chat</td>
+<td>Any OpenAI-compatible client</td>
+</tr>
+</tbody></table>
+<h2>Zero-persistence launchers</h2>
+<pre><code class="language-bash">npx f3router launch            # injects F3ROUTER_API_KEY + model into `claude`
+npx f3router launch-codex      # injects into `codex --profile NAME`
+</code></pre>
+<p>These do not write config files; they spawn the child process with <code>F3ROUTER_API_KEY</code>/<code>F3ROUTER_MODEL</code> in env only. Useful for ephemeral or shared machines.</p>
+<h2><code>f3router doctor</code></h2>
+<pre><code class="language-bash">npx f3router doctor
+</code></pre>
+<p>Proves a client&#39;s requests reach this gateway (checks routed <code>Authorization</code> header, catalog, live probe).</p>
+<h2>Common flags</h2>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--dry-run</code></td>
+<td>Preview changes without writing; shows diff</td>
+</tr>
+<tr>
+<td><code>--model &lt;id&gt;</code></td>
+<td>Pin to a model (resolved against unfiltered catalog)</td>
+</tr>
+<tr>
+<td><code>--profile &lt;name&gt;</code></td>
+<td>Named profile (Codex <code>codex --profile NAME</code>, Claude <code>CLAUDE_CONFIG_DIR</code>)</td>
+</tr>
+</tbody></table>
+<h2>Related</h2>
+<ul>
+<li><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a> — merge strategies, <code>tools.json</code>, adding a new generator.</li>
+<li><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients &amp; agents</a> — per-agent wiring recipes, headerless URL tokens, MCP.</li>
+</ul>
+</article></main>
+</div>
+</body>
+</html>

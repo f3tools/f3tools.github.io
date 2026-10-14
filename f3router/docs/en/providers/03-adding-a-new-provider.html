@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adding a new provider — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html" class="on">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/providers/03-adding-a-new-provider.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Adding a new provider</h1>
+<p>A contributor walkthrough that mirrors how the existing 41 built-in platforms are wired. Read <a href="https://github.com/f3tools/f3router/blob/main/server/src/providers/index.ts" target="_blank" rel="noreferrer"><code>server/src/providers/index.ts</code></a> alongside this guide — it is both the registry and the best documentation of per-platform judgment calls.</p>
+<h2>1. Declare the platform</h2>
+<p>Add the id to the <code>Platform</code> union in <a href="https://github.com/f3tools/f3router/blob/main/shared/types.ts" target="_blank" rel="noreferrer"><code>shared/types.ts</code></a> (line 59) with a comment stating the free-tier facts you can defend: what is free, recurring or promotional, card or no card, and any signup walls. The union must stay in sync with the <code>PLATFORMS</code> allowlist in <a href="https://github.com/f3tools/f3router/blob/main/server/src/routes/keys.ts" target="_blank" rel="noreferrer"><code>server/src/routes/keys.ts</code></a> — that zod enum gates which platforms users may register keys for.</p>
+<h2>2. Choose an adapter</h2>
+<ul>
+<li><strong>OpenAI-compatible endpoint</strong> → no new class. Register <code>OpenAICompatProvider</code> with the platform&#39;s base URL, as groq, cerebras, openrouter, and ~27 others do.</li>
+<li><strong>Wire-format divergence</strong> → subclass <code>BaseProvider</code> in its own file and register it. Existing precedents:<ul>
+<li><code>GoogleProvider</code> — native Gemini wire format;</li>
+<li><code>CohereProvider</code> / <code>CloudflareProvider</code> / <code>ZhipuProvider</code> — compatible chat routing plus key-shape or console-detection behavior;</li>
+<li><code>PollinationsProvider</code> / <code>ModelScopeProvider</code> — needed because their public model-list endpoints answer 200 even for bad keys, so validation needs a different probe;</li>
+<li><code>AIHordeProvider</code> — queue-based proxy diverging from the OpenAI contract (<code>max_tokens &gt;= 16</code>, array-only <code>stop</code>, kudos usage, no tools).</li>
+</ul>
+</li>
+</ul>
+<p>Every adapter gets for free: timeout/stall wiring (<code>fetchWithTimeout</code>, first-byte budgeting #584), SSE reading with truncation detection, <code>&lt;think&gt;</code> extraction, and error construction via <code>providerHttpError</code>.</p>
+<h2>3. Register with the right options</h2>
+<p>In <code>index.ts</code>:</p>
+<pre><code class="language-ts">register(new OpenAICompatProvider({
+  platform: &#39;yourplatform&#39;,
+  name: &#39;Your Platform&#39;,
+  baseUrl: &#39;https://api.example.com/v1&#39;,
+}));
+</code></pre>
+<p>Options to consider, each used by a real registration:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>When</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>timeoutMs</code></td>
+<td>Cold starts or hidden reasoning exceed the 15s default; per-call overrides still win.</td>
+<td>google 60s, nvidia 180s, ollama/custom 120s</td>
+</tr>
+<tr>
+<td><code>keyless: true</code></td>
+<td>The free tier works anonymously. The provider omits Authorization; the Keys page stores a sentinel row so routing treats the platform as configured.</td>
+<td>kilo, ovh</td>
+</tr>
+<tr>
+<td><code>extraHeaders</code></td>
+<td>Provider requires specific headers.</td>
+<td>openrouter referer/title; routeway/navy browser-style User-Agent behind Cloudflare</td>
+</tr>
+<tr>
+<td><code>forceSingleToolCall</code></td>
+<td>Upstream rejects parallel tool calls.</td>
+<td>nvidia (#255)</td>
+</tr>
+<tr>
+<td><code>validateUrl</code></td>
+<td>Key validation should probe a different URL than <code>/v1/models</code>.</td>
+<td>kilo probes <code>/api/gateway/models</code></td>
+</tr>
+</tbody></table>
+<p>Env-tunable timeouts come automatically via <code>PROVIDER_TIMEOUT_&lt;PLATFORM&gt;</code> (#547).</p>
+<h2>4. Get key validation right</h2>
+<p><code>validateKey</code> returns a boolean or <code>{ valid: false, error }</code>. Use the inherited <code>validationResult(res)</code> helper to turn 401/403 into a diagnostic failure carrying the upstream reason. Two hard rules learned in production:</p>
+<ol>
+<li><strong>Never trust a public models endpoint as proof of a valid key</strong> (pollinations #608, modelscope): if <code>GET /v1/models</code> answers 200 unauthenticated, probe something authenticated instead.</li>
+<li><strong>If validation consumes metered quota, cache it or find a free probe</strong> — see <a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html#health-checks-must-not-burn-metered-quota-882">#882</a>. Health runs every ~5 minutes against every stored key.</li>
+</ol>
+<h2>5. Seed the catalog deliberately</h2>
+<p>Model rows come from two places, and picking wrong leaks paid models to free users:</p>
+<ul>
+<li><strong>Versioned migrations</strong> (<code>migrateModelsV&lt;N&gt;</code>) for docs-confirmed free rosters shipped to every binary (opencode V18, ovh V26).</li>
+<li><strong>Hosted catalog</strong> via <code>services/catalog-sync.ts</code> (gated on <code>hasProvider</code>) when availability should be managed centrally — typically premium now, free after the 30-day age gate. Rows are never seeded from third-party lists without live verification: a bad model id is caught by health checks instead of shipped as default.</li>
+</ul>
+<p>If the platform publishes no limits, set <code>null</code> rather than guessing; the unknown-limit cooldown path caps benches at 10 minutes precisely because guesses are not measurements.</p>
+<h2>6. Test it</h2>
+<p>Ship tests under <a href="https://github.com/f3tools/f3router/blob/main/server/src/__tests__/providers/" target="_blank" rel="noreferrer"><code>server/src/__tests__/providers/</code></a> following the existing pattern (see <code>cn-providers.test.ts</code> for a batch of OpenAI-compat registrations): assert the outgoing request shape (URL, auth header placement, headers), response normalization, and any quirk you introduced. Run the full chain with <code>npm test</code> from the repo root — see <a href="/f3router/docs/en/testing/index.html">docs/testing</a>.</p>
+<h2>Checklist</h2>
+<ul>
+<li><input disabled="" type="checkbox"> <code>Platform</code> union + <code>routes/keys.ts</code> <code>PLATFORMS</code> allowlist updated together</li>
+<li><input disabled="" type="checkbox"> Registration in <code>providers/index.ts</code> with defensible timeout/headers/keyless choices</li>
+<li><input disabled="" type="checkbox"> <code>validateKey</code> proven against real 401/403 bodies and public-endpoint gotchas</li>
+<li><input disabled="" type="checkbox"> Free-tier claims verified live (dates and observations in comments, like the rest of <code>index.ts</code>)</li>
+<li><input disabled="" type="checkbox"> Catalog seeding decision made explicitly (migration vs hosted catalog vs none)</li>
+<li><input disabled="" type="checkbox"> Provider tests added; root <code>npm test</code> green</li>
+</ul>
+</article></main>
+</div>
+</body>
+</html>

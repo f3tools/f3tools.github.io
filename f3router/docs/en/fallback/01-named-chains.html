@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Named Fallback Chains — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html" class="on">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/fallback/01-named-chains.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Named Fallback Chains</h1>
+<blockquote>
+<p><strong>Source:</strong> <code>server/src/services/router.ts</code> (<code>activeChainOrThrow</code>, <code>resolveRoutingChain</code>), <code>server/src/services/profile-models.ts</code> (<code>getActiveProfileId</code>, <code>autoIncludeNewModelsForProfiles</code>), <code>server/src/routes/fallback.ts</code>, <code>server/src/routes/profiles.ts</code></p>
+</blockquote>
+<p>A <em>fallback chain</em> is the ordered set of models the router may try for a request. One chain is <strong>active</strong> at a time; <code>plain auto</code> always follows the active chain. Chains are stored in two places, depending on whether the install uses named profiles:</p>
+<ul>
+<li><strong>No profiles (legacy install):</strong> the global <code>fallback_config</code> table.</li>
+<li><strong>Named profiles:</strong> the <code>profiles</code> table plus a <code>profile_models</code> row per chained model, with <code>priority</code> and <code>enabled</code> per row.</li>
+</ul>
+<p>Create, rename, delete, and switch the active chain on the dashboard&#39;s <strong>Fallback</strong> page. A profile name uses Latin letters, digits, hyphens and underscores (max 20 chars) and may not collide with the reserved routing words (<code>auto</code>, <code>smart</code>, <code>fast</code>, <code>cheap</code>, <code>budget</code>, <code>intelligence</code>, <code>speed</code>, <code>active</code>, <code>default</code>).</p>
+<h2>Lifecycle: the empty-chain refusal</h2>
+<p>When a named profile is the active chain, <code>auto</code> is <strong>not</strong> a free pass over the whole catalog. The router resolves the active chain and, if it has no enabled models, <strong>throws a client-facing <code>400</code></strong> rather than silently falling back to the global table:</p>
+<pre><code>The active fallback chain &#39;&lt;name&gt;&#39; has no enabled models.
+Enable models for it on the Models page, switch the active chain,
+or name another one with &quot;auto:&lt;chain&gt;&quot;.
+</code></pre>
+<p>This refusal only triggers when a profile is active. A legacy install with no profiles keeps the ordinary &quot;all models exhausted&quot; path — the router runs the (possibly empty) global chain and returns a normal exhaustion error. The point: an empty chain must <em>mean</em> &quot;nothing allowed&quot;, not &quot;everything allowed&quot;. See <a href="#commits">Commits</a> for the history.</p>
+<p><code>activeChainOrThrow</code> (<code>router.ts</code>) is the single chokepoint: <code>auto</code>, an unknown <code>auto:</code> suffix, and a blank model string all route through it. It is also what <code>GET /api/fallback</code> and <code>/token-usage</code> read, so the dashboard and the router never disagree about what the active chain contains.</p>
+<h2><code>auto:&lt;name&gt;</code> in <code>GET /v1/models</code></h2>
+<p>Every custom routing profile is advertised to clients as a discoverable model id <code>auto:&lt;name&gt;</code> (<code>cc1e985</code>). <code>GET /v1/models</code> lists each named chain with its max context and availability, alongside the plain OpenAI-shaped catalog and the Claude family discovery ids. A client can switch chains per request by sending <code>model=&quot;auto:coding&quot;</code> — no dashboard change, no key rotation. An unknown chain name returns a clear <code>400</code> instead of silently using the active chain.</p>
+<p>Because the named-chain rows come from <code>profile_models</code> (not the global <code>fallback_config</code>), two installs can run entirely different model sets through the same unified key — the chain is selected by the request&#39;s <code>model</code> field, not by the account.</p>
+<h2>Catalog sync and curated chains</h2>
+<p>A brand-new profile defaults to <strong>&quot;Start empty&quot;</strong> — its <code>profile_models</code> set begins empty, and it opts out of catalog-sync backfill. This is the whole point of a named chain: the operator hand-picks &quot;these three models, in this order&quot; and the gateway stops guessing.</p>
+<p>The <code>profiles.auto_include_new_models</code> flag (<code>b3bf20f</code>) controls the exception:</p>
+<ul>
+<li><strong><code>auto_include_new_models = 0</code> (default):</strong> catalog sync never refills the chain. The chain stays exactly what the operator put in it. Disable this on a curated coding/vision chain so a newly-discovered model can&#39;t silently appear in it.</li>
+<li><strong><code>auto_include_new_models = 1</code>:</strong> every newly synced model is appended to the chain (next priority, inheriting the model&#39;s global <code>enabled</code> state). Use this on a &quot;catch-all&quot; profile that should grow with the catalog.</li>
+</ul>
+<p>Sync runs <code>autoIncludeNewModelsForProfiles</code>, which only touches profiles with the flag set — curated chains are never touched.</p>
+<h2>Per-row enable / disable</h2>
+<p><code>PUT /api/fallback</code> writes a full chain replacement into the active chain, and the <strong>Enable all / Disable all</strong> actions (<code>b3bf20f</code>) flip every row at once. <code>chain_enabled</code> is only a marker at read time: a disabled row still consumes the provider&#39;s free allowance and still counts toward a quota pool, it is just ranked after every enabled row and skipped by <code>activeChainOrThrow</code>&#39;s &quot;has any enabled?&quot; check. This is what makes a hand-built (&quot;start empty&quot;) chain usable at all: the page renders as &quot;the catalog, minus what I turned off&quot;, ranked after the rows I explicitly added.</p>
+<h2>Notes, not the global table</h2>
+<p><code>fallback_config</code> is now <strong>only</strong> the chain for an install that has no profiles. As soon as a profile exists, its <code>profile_models</code> is authoritative and the global table is bypassed. Treating the global table as a fallback for an empty <code>profile_models</code> set is exactly the bug <code>e852ff1</code> fixed — before that, a freshly-created &quot;Start empty&quot; profile rendered the whole catalog as enabled, because every consumer read zero rows as &quot;no chain configured&quot; and quietly fell through to <code>fallback_config</code>.</p>
+<h2>Commits</h2>
+<table>
+<thead>
+<tr>
+<th>Commit</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>e852ff1</code></td>
+<td><strong>A fallback chain means itself, empty or not.</strong> <code>activeChainOrThrow</code> returns the active profile&#39;s chain even when it has no enabled rows, instead of falling through to the global <code>fallback_config</code>. An empty curated chain now refuses with <code>400</code> rather than silently routing over the whole catalog.</td>
+</tr>
+<tr>
+<td><code>b3bf20f</code></td>
+<td><strong>Let a hand-built chain stay that hand-built.</strong> Chains can start empty; the new <code>auto_include_new_models</code> flag keeps catalog sync from refilling curated chains; the routing table gets Enable all / Disable all. Closes #895.</td>
+</tr>
+<tr>
+<td><code>8bb2004</code></td>
+<td><strong>Named chain manager on the Fallback page.</strong> Collapsed accordion for creating, renaming and deleting named chains, surfacing the <code>auto:&lt;name&gt;</code> id clients send. Refs #895 #960.</td>
+</tr>
+<tr>
+<td><code>cc1e985</code></td>
+<td><strong>List named chains as <code>auto:&lt;name&gt;</code> models.</strong> Every custom routing profile shows up in <code>GET /v1/models</code> as <code>auto:&lt;name&gt;</code> with its max context and availability. Refs #895 #880 #960.</td>
+</tr>
+</tbody></table>
+</article></main>
+</div>
+</body>
+</html>

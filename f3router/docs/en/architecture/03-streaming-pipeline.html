@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Streaming Pipeline — Deep Dive — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html" class="on">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/architecture/03-streaming-pipeline.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Streaming Pipeline — Deep Dive</h1>
+<blockquote>
+<p><strong>Source:</strong> <code>server/src/routes/proxy.ts</code>, <code>server/src/routes/responses.ts</code>, <code>server/src/routes/anthropic.ts</code>, <code>server/src/lib/fallback-loop.ts</code></p>
+</blockquote>
+<h2>1. Design Principles</h2>
+<ul>
+<li><strong>SSE only</strong> — zero WebSockets. Every surface (<code>/v1/chat/completions</code>, <code>/v1/responses</code>, <code>/v1/messages</code>, legacy <code>/completions</code>) streams via Server-Sent Events.</li>
+<li><strong>Turn integrity</strong> — the stream is validated as a <em>turn</em>, not a transport. Headers are held until first real payload; anything dying before that fails over invisibly.</li>
+<li><strong>Failover mid-stream</strong> — if an error frame arrives before headers flush, it&#39;s retryable; after flush, an error frame is surfaced honestly (stream_error).</li>
+<li><strong>Unified fallback loop</strong> — all surfaces share <code>lib/fallback-loop.ts</code> for retry budget, cooldowns, attempt trail, exhaustion rendering.</li>
+</ul>
+<hr>
+<h2>2. OpenAI Chat Completions (<code>/v1/chat/completions</code>)</h2>
+<h3>Request Flow</h3>
+<pre><code>parse + validate (zod)
+  ├─ compression (optional, X-FreeLLM-Compress)
+  ├─ system-prompt injection (profile-enforced)
+  ├─ image downscale (normalizeMessageImages)
+  ├─ token estimation (chars/4 heuristic)
+  ├─ vision/tools gates (422 if no capable model)
+  ├─ token budget guardrail (request_max_tokens_budget)
+  ├─ response cache check (opt-in, exact-match LRU)
+  ├─ sticky session / context handoff
+  ├─ resolve routing chain (auto / pinned / group)
+  └─ runFallbackLoop()
+        ├─ route() → picks model+key
+        ├─ dispatch() → streamChatCompletion()
+        ├─ on success → recordUpstreamSuccess(), log, cache store
+        ├─ on retryable failure → recordRetryableFailure(), cooldown, skipKeys, next
+        ├─ on fatal → onFatal() (502)
+        └─ on exhaustion → exhaustedRetryError() → onExhausted() (429/502/413/404/503)
+</code></pre>
+<h3>Streaming Pump (<code>proxy.ts</code> lines ~1873–2150)</h3>
+<p><strong>State machine per attempt:</strong></p>
+<pre><code>mode = &#39;undecided&#39; | &#39;passthrough&#39; | &#39;dialect&#39;
+heldText = &#39;&#39;
+preamble = []          // role/keep-alive chunks held until mode decided
+toolCallAcc = Map&lt;index, {id, name, args}&gt;
+ttfbMs = null          // first token of ANY kind (content or reasoning)
+headerSent = false
+</code></pre>
+<p><strong>Per chunk:</strong></p>
+<ol>
+<li><strong>Metadata capture</strong>: <code>upstreamModel</code> (first frame with <code>model</code> field), <code>lastMeta</code> (id/created/model for our framing).</li>
+<li><strong>In-band error frame</strong> (<code>{error:..., choices: undefined}</code>):<ul>
+<li>Before headers: throw → failover</li>
+<li>After headers: write error frame + <code>[DONE]</code> → <code>committed</code></li>
+</ul>
+</li>
+<li><strong>Usage frame</strong>: captured wherever it lands (choice-less or on last choice), re-emitted once after our finish chunk.</li>
+<li><strong>Reasoning accumulation</strong> (#764): <code>streamReasoningText()</code> extracts <code>reasoning_content</code> / <code>reasoning</code>; added to <code>streamReasoning</code> for session memory + token accounting.</li>
+<li><strong>Tool-call deltas</strong>: buffered in <code>toolCallAcc</code>, arguments repaired against request schemas at end.</li>
+<li><strong>Content text</strong>: <code>streamChunkText()</code> extracts <code>delta.content</code>.</li>
+<li><strong>TTFB</strong> (#764): recorded on <strong>first token of any kind</strong> (content OR reasoning).</li>
+<li><strong>Mode decision</strong>:<ul>
+<li><code>undecided</code> + <code>wantsTools</code> + <code>startsWithDialectMarker(heldText)</code> → <code>dialect</code> (buffer everything)</li>
+<li><code>undecided</code> + <code>!wantsTools</code> OR <code>!couldBecomeDialectMarker</code> OR <code>heldText &gt; 256</code> → <code>passthrough</code>, flush headers, stream</li>
+<li><code>passthrough</code> → forward immediately (strip tool_calls from delta, re-emit complete at end)</li>
+<li><code>dialect</code> → keep buffering</li>
+</ul>
+</li>
+<li><strong>Empty chunks</strong> (role/keep-alive/reasoning-only): held in <code>preamble</code> until flush.</li>
+</ol>
+<p><strong>Stream end (clean):</strong></p>
+<ol>
+<li>Assemble buffered tool calls → <code>repairToolArguments()</code> against request schemas.</li>
+<li>If <code>dialect</code> mode: <code>rescueInlineToolCalls(heldText)</code> → structured <code>tool_calls</code> or failover.</li>
+<li>Emit complete tool calls (single chunk, <code>finish_reason: &#39;tool_calls&#39;</code>).</li>
+<li>Emit final chunk (<code>finish_reason: &#39;stop&#39; | &#39;length&#39; | upstreamFinish</code>).</li>
+<li>Emit captured usage frame.</li>
+<li><code>recordUpstreamSuccess()</code>, <code>logRequest()</code>, <code>observeServedModel()</code>, store in cache if applicable.</li>
+</ol>
+<p><strong>Mid-stream error:</strong></p>
+<ul>
+<li>Before headers: throw → failover (next model)</li>
+<li>After headers: write <code>stream_error</code> frame + <code>[DONE]</code> → <code>committed</code> (loop stops, no further fallback)</li>
+</ul>
+<h3>Token Accounting (Streaming)</h3>
+<ul>
+<li><strong>Output tokens</strong>: <code>ceil((text.length + reasoning.length) / 4)</code> per chunk — reasoning tokens are real consumption (#764).</li>
+<li><strong>TTFB</strong>: wall-clock to first content OR reasoning token.</li>
+<li><strong>Non-stream reconciliation</strong>: provider&#39;s <code>usage</code> block overrides estimates.</li>
+</ul>
+<hr>
+<h2>3. Anthropic Messages (<code>/v1/messages</code>)</h2>
+<h3>Translation Layer (<code>routes/anthropic.ts</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Anthropic</th>
+<th>OpenAI (internal)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>messages[]</code> (no system role)</td>
+<td><code>system</code> + <code>messages[]</code></td>
+</tr>
+<tr>
+<td><code>tool_use</code> blocks in content</td>
+<td><code>tool_calls</code> array</td>
+</tr>
+<tr>
+<td><code>tool_result</code> blocks</td>
+<td><code>tool</code> messages</td>
+</tr>
+<tr>
+<td><code>stop_reason: &#39;tool_use&#39;</code></td>
+<td><code>finish_reason: &#39;tool_calls&#39;</code></td>
+</tr>
+<tr>
+<td><code>thinking</code> budget/type</td>
+<td><code>reasoning_effort</code> / <code>max_completion_tokens</code></td>
+</tr>
+</tbody></table>
+<p><strong>Streaming</strong>: upstream OpenAI SSE → translated chunk-by-chunk to Anthropic SSE events (<code>message_start</code>, <code>content_block_start</code>, <code>content_block_delta</code>, <code>content_block_stop</code>, <code>message_delta</code>, <code>message_stop</code>). Tool-use blocks are rendered as structured <code>tool_use</code> content blocks, not inline text.</p>
+<h3>Error Mapping (exhaustion)</h3>
+<table>
+<thead>
+<tr>
+<th>FreeLLM kind</th>
+<th>Anthropic type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>auth</code></td>
+<td><code>api_error</code></td>
+</tr>
+<tr>
+<td><code>bad_request</code></td>
+<td><code>invalid_request_error</code></td>
+</tr>
+<tr>
+<td><code>rate_limit</code></td>
+<td><code>overloaded_error</code> (429)</td>
+</tr>
+<tr>
+<td><code>unavailable</code></td>
+<td><code>overloaded_error</code> (503)</td>
+</tr>
+<tr>
+<td><code>context_too_large</code></td>
+<td><code>request_too_large</code></td>
+</tr>
+<tr>
+<td><code>model_not_found</code></td>
+<td><code>not_found_error</code></td>
+</tr>
+<tr>
+<td><code>upstream</code></td>
+<td><code>api_error</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>4. Gemini (<code>/v1beta</code> via <code>/v1/chat/completions</code>)</h2>
+<h3>Request Translation (<code>providers/gemini.ts</code>)</h3>
+<ul>
+<li><strong>Parts-based content</strong>: <code>content: [{text:...}, {inline_data:...}, {function_call:...}]</code></li>
+<li><strong>System prompt</strong>: injected as first <code>user</code> turn with <code>role: &#39;user&#39;</code> + <code>parts: [{text: system}]</code> then a <code>model</code> acknowledgement (Gemini requires alternating roles).</li>
+<li><strong>Tool calls</strong>: <code>function_call</code> parts → OpenAI <code>tool_calls</code> on forward; <code>function_response</code> parts ← OpenAI <code>tool</code> messages.</li>
+<li><strong>Structured output</strong>: <code>response_format: json_schema</code> → Gemini native <code>responseSchema</code> + <code>responseMimeType: &#39;application/json&#39;</code>.</li>
+<li><strong>Thinking</strong>: <code>thinking_config: {thinking_budget: N}</code> from <code>reasoning_effort</code> / <code>max_completion_tokens</code>.</li>
+</ul>
+<h3>Streaming</h3>
+<ul>
+<li>Native Gemini SSE → normalized to OpenAI chunk shape in <code>base.ts</code> <code>streamChatCompletion()</code>.</li>
+<li>Inline tool-call dialect (<code>function_call</code> in text) rescued by same dialect detector.</li>
+<li><code>thought_signature</code> preserved on tool calls (#13).</li>
+</ul>
+<hr>
+<h2>5. Responses API Shim (<code>/v1/responses</code>)</h2>
+<blockquote>
+<p><strong>Source:</strong> <code>server/src/routes/responses.ts</code></p>
+</blockquote>
+<h3>Purpose</h3>
+<p>Codex CLI and Agents SDK speak the <strong>Responses API</strong> (stateful, <code>previous_response_id</code> chaining). The shim translates to/from chat completions so the same router/quota/failover machinery serves both.</p>
+<h3>Translation</h3>
+<table>
+<thead>
+<tr>
+<th>Responses API</th>
+<th>Chat Completions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>input</code> (string or array)</td>
+<td><code>messages[]</code></td>
+</tr>
+<tr>
+<td><code>previous_response_id</code></td>
+<td>sticky session (sessionId = response_id)</td>
+</tr>
+<tr>
+<td><code>tools</code> (function + <code>type: &#39;function&#39;</code>)</td>
+<td><code>tools</code> + <code>tool_choice</code></td>
+</tr>
+<tr>
+<td><code>text.format</code> (json_schema)</td>
+<td><code>response_format: json_schema</code></td>
+</tr>
+<tr>
+<td><code>reasoning</code> (effort/summary)</td>
+<td><code>reasoning_effort</code> + <code>max_completion_tokens</code></td>
+</tr>
+<tr>
+<td><code>stream: true</code></td>
+<td>SSE with <code>_fusion</code>-style additive frames for tool calls</td>
+</tr>
+</tbody></table>
+<h3>Streaming</h3>
+<ul>
+<li>Opens SSE immediately.</li>
+<li>Tool calls emitted as additive <code>_fusion</code> frames (no <code>choices</code>, standard clients skip) → final answer streamed as normal content deltas.</li>
+<li><code>response.output_text</code> convenience field on final non-stream response.</li>
+</ul>
+<h3>Failover</h3>
+<ul>
+<li>Shares <code>runFallbackLoop()</code> — identical retry budget, cooldowns, attempt trail.</li>
+<li>Exhaustion rendering maps to Responses API error shape.</li>
+</ul>
+<hr>
+<h2>6. Legacy Completions (<code>/v1/completions</code>)</h2>
+<p>Thin adapter over shared fallback loop:</p>
+<ul>
+<li><code>prompt</code> + <code>suffix</code> → chat messages (system: &quot;code autocomplete engine&quot;, user: prefix/suffix).</li>
+<li>Response: <code>text_completion</code> shape (choices[0].text).</li>
+<li>Streaming: <code>legacyCompletionChunk()</code> wraps upstream chunks.</li>
+<li>Same commit-point logic: headers held until first text; reasoning tokens counted (#764).</li>
+</ul>
+<hr>
+<h2>7. Fusion Virtual Model (<code>model: &quot;fusion&quot;</code>)</h2>
+<blockquote>
+<p><strong>Source:</strong> <code>server/src/services/fusion.ts</code></p>
+</blockquote>
+<ul>
+<li>Fans prompt to <strong>panel of diverse models</strong> in parallel (vision/tools filtered per member).</li>
+<li><strong>Judge model</strong> synthesizes one answer.</li>
+<li>Each sub-call routes through <strong>normal path</strong> (cooldowns, quotas, analytics).</li>
+<li>Streaming: additive <code>_fusion</code> frames for panel/judge events, then judge&#39;s synthesis as normal content deltas.</li>
+<li>Non-stream: structured-output enforcement on judge output (#516).</li>
+<li>Failover: panel members fail over within their own chains; judge failure → fallback to best-of panel.</li>
+</ul>
+<hr>
+<h2>8. Error Handling Mid-Stream</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Before Headers</th>
+<th>After Headers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>In-band <code>{error}</code> frame</td>
+<td>Throw → failover</td>
+<td>Write error frame + <code>[DONE]</code> → <code>committed</code></td>
+</tr>
+<tr>
+<td>Client disconnect</td>
+<td><code>clientGone</code> → abort in-flight, no bench</td>
+<td><code>clientGone</code> → stop pulling, <code>committed</code></td>
+</tr>
+<tr>
+<td>Hedge abort (budget expiry)</td>
+<td><code>abortInFlight()</code> → <code>HedgeAbortError</code> → loop stops, <code>timedOut</code> exhaustion</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Empty completion (no text, no tools)</td>
+<td>Throw <code>empty completion</code> → failover</td>
+<td>N/A (would have flushed)</td>
+</tr>
+<tr>
+<td>Upstream classification output (&quot;safe&quot;/&quot;unsafe&quot;)</td>
+<td>Throw → failover (a961d93)</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Tool dialect detected</td>
+<td>Buffer → rescue at end or failover</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>9. Headers Emitted on Every Response</h2>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>X-Request-ID</code></td>
+<td>UUID (or <code>x-request-id</code> from client)</td>
+</tr>
+<tr>
+<td><code>X-Routed-Via</code></td>
+<td><code>platform/model</code> (safeHeaderValue)</td>
+</tr>
+<tr>
+<td><code>X-Fallback-Attempts</code></td>
+<td>Failed hops before this response</td>
+</tr>
+<tr>
+<td><code>X-Fallback-Trail</code></td>
+<td><code>platform/model keyN=class; …</code> (max 10)</td>
+</tr>
+<tr>
+<td><code>X-Fallback-Detail</code></td>
+<td><strong>Opt-in</strong>: <code>platform/model keyN=outcome t=start+durationMs msg=summary; …</code></td>
+</tr>
+<tr>
+<td><code>Retry-After</code></td>
+<td>Seconds until soonest cooldown expiry (429 exhaustions)</td>
+</tr>
+<tr>
+<td><code>X-FreeLLM-Cache</code></td>
+<td><code>HIT</code> / <code>MISS</code> (response cache)</td>
+</tr>
+<tr>
+<td><code>X-FreeLLM-Compress</code></td>
+<td>Compression pipeline metadata</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>10. Key Functions (proxy.ts)</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>runFallbackLoop(hooks)</code></td>
+<td>Shared attempt loop (see 04-degraded-mode)</td>
+</tr>
+<tr>
+<td><code>streamChunkText(chunk)</code></td>
+<td>Extract <code>delta.content</code> (tolerates no-choices frames)</td>
+</tr>
+<tr>
+<td><code>streamReasoningText(chunk)</code></td>
+<td>Extract <code>delta.reasoning_content</code> / <code>delta.reasoning</code></td>
+</tr>
+<tr>
+<td><code>restoreSessionReasoning(messages, reasoning, platform)</code></td>
+<td>#797: replay thinking trace stripped by client</td>
+</tr>
+<tr>
+<td><code>rememberReasoning(sessionKey, modelKey, reasoning)</code></td>
+<td>Store per-session trace</td>
+</tr>
+<tr>
+<td><code>rescueInlineToolCalls(text, tools)</code></td>
+<td>Convert inline dialect → structured <code>tool_calls</code></td>
+</tr>
+<tr>
+<td><code>repairToolArguments(args, schemas)</code></td>
+<td>Fix double-encoded JSON against request schemas</td>
+</tr>
+<tr>
+<td><code>truncateMessagesForGithub(messages)</code></td>
+<td>Trim history to GitHub Models input ceiling</td>
+</tr>
+<tr>
+<td><code>normalizeOutboundContent(chunk)</code></td>
+<td>Provider-specific response normalization</td>
+</tr>
+<tr>
+<td><code>sanitizeResponse(chunk)</code></td>
+<td>Redact secrets from streamed frames</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>11. Concurrency &amp; Cancellation</h2>
+<ul>
+<li><strong>Client disconnect</strong>: <code>res.on(&#39;close&#39;)</code> → <code>clientGone = true</code>, <code>clientAbort.abort()</code> → in-flight fetch canceled, lease released immediately.</li>
+<li><strong>Hedging</strong> (1d2226a): <code>hedgeAbort</code> controller, <code>abortInFlight()</code> called when wall-clock budget expires mid-attempt. <code>HedgeAbortError</code> is <strong>non-provider-health</strong> → no cooldown/penalty, renders <code>timedOut</code> exhaustion.</li>
+<li><strong>Lease release</strong>: in <code>finally</code> block of <code>dispatch()</code>, idempotent. Optional on <code>RouteResult</code> so a <code>TypeError</code> in <code>finally</code> cannot replace the upstream error.</li>
+</ul>
+<hr>
+<h2>12. Compression Pipeline (Opt-In)</h2>
+<p><code>X-FreeLLM-Compress</code> header → <code>compressRequest(messages, {header, tools, cacheControlPrefixLength})</code> → returns compressed messages + cache key. Engines: <code>lite</code>, <code>jsoncompact</code>, <code>dedup</code>, <code>aging</code>, <code>relevance</code>, <code>hard-budget</code>, <code>filter-definitions</code>, <code>custom-filters</code>, <code>toolfilter</code>, <code>read-lifecycle</code>. Cache key includes <code>compression.cacheKey</code> so different compression levels never collide.</p>
+<hr>
+<h2>13. Response Cache (Opt-In)</h2>
+<ul>
+<li><strong>Scope</strong>: streaming and non-streaming, cacheable temperature (<code>temperature ≤ 1</code> or unset), <code>X-FreeLLM-Cache: on</code> or <code>RESPONSE_CACHE=1</code>.</li>
+<li><strong>Key</strong>: SHA-256 over canonical request (model, messages, all sampling params, tools, stop, response_format, n, seed, penalties, logit_bias, logprobs, top_logprobs, reasoning_effort, compression).</li>
+<li><strong>Store</strong>: in-memory LRU, TTL + temperature gates. Two stores — JSON bodies (persisted to SQLite) and streaming SSE (memory-only) — sharing one <code>RESPONSE_CACHE_MAX_ENTRIES</code> budget; <code>entries</code> in the stats counts both.</li>
+<li><strong>Hit</strong>: returns cached body, <code>X-Routed-Via: cache</code>, <code>X-FreeLLM-Cache: HIT</code>, <strong>zero provider quota consumed</strong>. A streaming hit replays the stored SSE byte for byte.</li>
+<li><strong>Streaming store</strong>: frames are buffered only when the request is cacheable (nothing is retained with the cache off) and dropped past a 2 MB replay ceiling. A truncated (<code>finish_reason: length</code>), errored, or aborted stream is never stored.</li>
+</ul>
+</article></main>
+</div>
+</body>
+</html>

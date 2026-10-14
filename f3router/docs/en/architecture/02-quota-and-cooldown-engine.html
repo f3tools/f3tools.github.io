@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quota & Cooldown Engine — Deep Dive — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html" class="on">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/architecture/02-quota-and-cooldown-engine.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Quota &amp; Cooldown Engine — Deep Dive</h1>
+<blockquote>
+<p><strong>Source:</strong> <code>server/src/services/ratelimit.ts</code>, <code>server/src/services/cooldown-probe.ts</code>, <code>server/src/services/provider-quota.ts</code></p>
+</blockquote>
+<h2>1. Overview</h2>
+<p>The quota engine is the <strong>gatekeeper</strong> between the router and upstream providers. It tracks four sliding windows per <code>(platform, model, key)</code> plus provider-wide pools, persists to SQLite, and learns real limits from provider error bodies. Cooldowns bench failing keys/models with an escalating ladder, and a background probe job recovers heuristic cooldowns early.</p>
+<hr>
+<h2>2. Four-Dimensional Quota Accounting</h2>
+<h3>Per-(Platform, Model, Key) Windows</h3>
+<table>
+<thead>
+<tr>
+<th>Window</th>
+<th>Width</th>
+<th>Persisted Column</th>
+<th>In-Memory Fallback</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RPM</td>
+<td>60 s</td>
+<td><code>rpm_limit</code></td>
+<td><code>timestamps[]</code></td>
+</tr>
+<tr>
+<td>RPD</td>
+<td>24 h (UTC midnight)</td>
+<td><code>rpd_limit</code></td>
+<td><code>timestamps[]</code></td>
+</tr>
+<tr>
+<td>TPM</td>
+<td>60 s</td>
+<td><code>tpm_limit</code></td>
+<td><code>{ts, tokens}[]</code></td>
+</tr>
+<tr>
+<td>TPD</td>
+<td>24 h (UTC midnight)</td>
+<td><code>tpd_limit</code></td>
+<td><code>{ts, tokens}[]</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>Sliding minute</strong> for RPM/TPM; <strong>UTC-day boundary</strong> for RPD/TPD (providers reset at midnight, not 24h rolling).</li>
+<li><code>rate_limit_usage</code> table: one row per request/token event with <code>kind = &#39;request&#39; | &#39;tokens&#39;</code>, <code>created_at_ms</code>.</li>
+<li>Retention: 1 day (pruned on insert, throttled to 1/min).</li>
+<li><strong>Degraded mode</strong>: when DB write fails, counts go to in-memory windows only (pruned on push so a long outage can&#39;t grow unbounded).</li>
+</ul>
+<h3>Provisional Usage (In-Flight Leases)</h3>
+<blockquote>
+<p><strong>The check-then-act closer.</strong> Between key selection and the post-success <code>recordRequest/recordTokens</code> write, N concurrent requests would all read the same pre-check and collectively blow through the limit. <strong>Leases make in-flight requests visible to the next caller.</strong></p>
+</blockquote>
+<pre><code class="language-typescript">acquireLease(platform, modelId, keyId, estimatedTokens) → leaseId
+releaseLease(leaseId)  // in finally block, idempotent
+</code></pre>
+<ul>
+<li>Leases count against <strong>both minute and day windows</strong> (a request in flight belongs to this minute and today).</li>
+<li>Max lease age: 2 min (backstop for leaked leases).</li>
+<li>Per-key concurrency cap (opt-in via <code>MAX_CONCURRENT_REQUESTS_PER_KEY[_PLATFORM]</code>).</li>
+</ul>
+<h3>Provider-Wide Pools</h3>
+<p>Some providers enforce <strong>one quota across the whole account</strong>, not per model:</p>
+<table>
+<thead>
+<tr>
+<th>Pool</th>
+<th>Providers</th>
+<th>Config</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Daily requests</td>
+<td>OpenRouter (1000/day free, 50/day &lt;10 credits), ModelScope (2000→1800 margin), Requesty (200→180 margin)</td>
+<td><code>PROVIDER_DAILY_REQUEST_CAP_&lt;PLATFORM&gt;</code></td>
+</tr>
+<tr>
+<td>Daily tokens</td>
+<td>NavyAI (150K/day shared, model multipliers)</td>
+<td><code>PROVIDER_DAILY_TOKEN_CAP_&lt;PLATFORM&gt;</code></td>
+</tr>
+<tr>
+<td>Minute requests</td>
+<td>NVIDIA NIM (40 RPM account-wide)</td>
+<td><code>PROVIDER_MINUTE_REQUEST_CAP_&lt;PLATFORM&gt;</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li>Counted by summing per-model windows for the same <code>platform + keyId</code>.</li>
+<li>NavyAI token multiplier parsed from <code>monthly_token_budget</code> label (e.g. <code>2x</code>) or derived from <code>tpd_limit</code>.</li>
+</ul>
+<h3>Provider Quota Keys (pooling across models)</h3>
+<p><code>inferQuotaPoolKey(platform, modelId)</code> → string like <code>openrouter::free</code>, <code>google::project</code>, <code>nvidia::account</code>. Used by analytics and routing to attribute usage to the correct shared bucket.</p>
+<ul>
+<li>Per-platform <code>inferPoolForPlatform()</code> maps each platform to its pool key shape. Aggregators with a single shared free pool (<code>routeway</code>, <code>bazaarlink</code>, <code>unorouter</code>, <code>orcarouter</code>, <code>xkiro</code>, <code>anyapi</code>, <code>navy</code>, <code>nara</code>, <code>sealion</code>, <code>aion</code>, <code>requesty</code>) get one pool; <code>openrouter</code> distinguishes <code>:free</code> from <code>:account</code>; others default to <code>::account</code> or <code>::&lt;modelId&gt;</code>.</li>
+<li><code>isSharedPool(platform)</code> returns the list of platforms that enforce one quota across the whole account — used by analytics and the <code>least-remaining</code> key selection (which skips <code>::account</code> pools since every key reports the same number).</li>
+<li><code>provider-quota.ts</code> also exposes <code>getKeyQuotaHeadroom(platform)</code> → a cached, platform-filtered read of <code>provider_quota_state</code> (5s TTL, confidence ≥ 0.7 floor, expired windows treated as full) that the router&#39;s <code>least-remaining</code> strategy reads to rank keys by remaining budget.</li>
+</ul>
+<hr>
+<h2>3. Window Utilization Snapshot (for the routing guardrail, #899)</h2>
+<p>The hard gates (<code>canMakeRequest</code> / <code>canUseTokens</code>) answer a yes/no question on the hot path. The router also needs a <strong>graded</strong> signal — &quot;how much of its window quota has this model already burned&quot; — so it can steer traffic away from a model at 95% of its daily cap before that cap actually rejects anything. This is the input to <code>rateWindowHeadroomFactor</code> in <code>scoring.ts</code>.</p>
+<h3>5-Second Snapshot (<code>modelWindowUsedFraction</code>)</h3>
+<p>Cost is the whole design constraint: this runs per chain entry per request, and the naive shape is four counts per model × key. So it is:</p>
+<ul>
+<li><strong>One grouped scan</strong> of <code>rate_limit_usage</code> (replaces four counts per model × key) plus one read of <code>api_keys</code>, <strong>memoised for 5 seconds</strong> (<code>WINDOW_USAGE_TTL_MS = 5000</code>) and shared by every entry of every chain.</li>
+<li>Per-entry work is then pure in-memory arithmetic over the model&#39;s own limit columns (which the router already has in hand).</li>
+<li>The hard gates above are <strong>unaffected</strong> — they still read live counts, so nothing here can let a request through a real limit.</li>
+</ul>
+<h3>Key Selection</h3>
+<p>The chosen key is the <strong>eligible key with the most headroom</strong> (the one the router would pick NEXT), not the worst key on the account — a platform with one exhausted key and one idle key routes perfectly well (#921). In-flight leases are deliberately <strong>not</strong> counted: they close the check-then-act race on the hard gates; this is a steering signal averaged over a whole window, and folding a per-request quantity into a cached snapshot would buy noise, not accuracy.</p>
+<h3>Pressure Calculation</h3>
+<p>A key metered on several windows takes the <strong>worst</strong> of them (the binding constraint is what 429s). Returns <code>null</code> (no opinion) when the model declares no window limits, has no routable key to measure, or the database is unreachable.</p>
+<hr>
+<h2>4. Cooldown Ladder &amp; Provenance</h2>
+<h3>Sources (CooldownSource)</h3>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Meaning</th>
+<th>Probe-Eligible?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>heuristic</code></td>
+<td>Our own guess (transient 90s, escalation ladder, auth-failure bench, empty-completion)</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr>
+<td><code>authoritative</code></td>
+<td>Backed by explicit provider Retry-After or daily-quota reset (a fact)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>credit</code></td>
+<td>402 out-of-credits — key validation proves nothing about top-up</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>tier</code></td>
+<td>403 model-not-on-tier — key validates but model stays gated</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h3>Escalation Ladder (per model+key, rolling 24h)</h3>
+<table>
+<thead>
+<tr>
+<th>Hit #</th>
+<th>Duration</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>2 min</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>10 min</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>1 h</td>
+<td></td>
+</tr>
+<tr>
+<td>4+</td>
+<td>24 h</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>Transient RPM/TPM 429</strong> with healthy daily counters → short 90s cooldown, <strong>does not count</strong> toward ladder.</li>
+<li><strong>Daily exhaustion</strong> (RPD/TPD counter ≥ cap) → takes ladder step (up to 24h).</li>
+<li><strong>Unknown limits</strong> (NULL RPD/TPD): heuristic — 2+ 429s in 1h → &quot;effectively daily exhausted&quot; → escalate <strong>but capped at 10 min</strong> (<code>UNKNOWN_LIMIT_MAX_COOLDOWN_MS</code>). Prevents Ollama/Cloudflare/etc. from looping 90s forever when every request is a 429.</li>
+<li><strong>Local endpoints</strong> (loopback/RFC1918 <code>base_url</code>): capped at <strong>5 s</strong>, never escalates (#592).</li>
+</ul>
+<h3>Retry-After Handling</h3>
+<pre><code>if (retryAfterMs &gt; ourBench) → bench = min(retryAfterMs, 24h), source = &#39;authoritative&#39;
+else → our bench stands, source = &#39;heuristic&#39;
+</code></pre>
+<p>Provider-stated reset wins; everything past it is our guess.</p>
+<h3>Special Cooldowns</h3>
+<table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Duration</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>402 Payment Required</td>
+<td>24 h</td>
+<td><code>credit</code></td>
+</tr>
+<tr>
+<td>403 Model Forbidden</td>
+<td>24 h</td>
+<td><code>tier</code></td>
+</tr>
+<tr>
+<td>Daily quota exhausted (explicit)</td>
+<td>until UTC midnight / Retry-After</td>
+<td><code>authoritative</code></td>
+</tr>
+<tr>
+<td>Auth failure (401)</td>
+<td>5 min (health cycle)</td>
+<td><code>heuristic</code></td>
+</tr>
+<tr>
+<td>Empty completion streak (≥3)</td>
+<td>normal ladder</td>
+<td><code>heuristic</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>5. Learning Real Limits from Error Bodies (#798)</h2>
+<p>When a provider rejects with its real limit in the body, we <strong>persist it</strong> so pre-checks stop us before the next 413/429.</p>
+<pre><code class="language-typescript">// Groq 413: &quot;...on tokens per minute (TPM): Limit 30000, Requested 33476&quot;
+parseProviderLimit(message) → { kind: &#39;tpm&#39;, limit: 30000 }
+learnLimitFromError(modelDbId, err) → writes to models.tpm_limit if NULL or lower
+</code></pre>
+<ul>
+<li><strong>Only tightens</strong>: fills NULL or <strong>lowers</strong> an existing limit. Never raises — hitting a ceiling means our pre-check already let too much through.</li>
+<li>Axis priority: TPD → TPM → RPD → RPM (day before minute, tokens before requests).</li>
+<li>Requires BOTH &quot;Limit N&quot; and a confident axis match — no guessing.</li>
+</ul>
+<hr>
+<h2>6. Cooldown-Probe Early Recovery (<code>cooldown-probe.ts</code>)</h2>
+<h3>Goal</h3>
+<p>Heuristic cooldowns are pessimistic. When the provider recovers sooner (minute window rolled over, incident ended), capacity sits idle until the timer expires. The probe job <strong>validates the key</strong> and clears heuristic cooldowns early.</p>
+<h3>Algorithm</h3>
+<ul>
+<li><strong>Scan interval</strong>: 60 s (cheap indexed SELECT on <code>rate_limit_cooldowns</code> where <code>source = &#39;heuristic&#39;</code>).</li>
+<li><strong>Ripeness</strong>: cooldown must have served ≥50% of its bench <strong>AND</strong> have ≥60 s remaining.</li>
+<li><strong>Per-key backoff</strong>: 2m → 4m → 8m → 15m cap (failed probe = back off, bench unchanged).</li>
+<li><strong>First-sighting stagger</strong>: on restart, all persisted cooldowns are sighted at once. First probe scheduled at <code>now + jitter(0..45s)</code> to avoid thundering herd.</li>
+<li><strong>Budget</strong>: <code>COOLDOWN_PROBE_MAX_PER_PASS</code> (default 3, env-tunable).</li>
+<li><strong>On valid probe</strong>: clear <strong>all</strong> heuristic cooldowns for that key (across models), log <code>cooldown_recovered</code> event.</li>
+<li><strong>Never probes</strong>: authoritative/credit/tier cooldowns (filtered at query).</li>
+</ul>
+<h3>Kill Switch</h3>
+<p><code>COOLDOWN_PROBE_DISABLED=1</code></p>
+<hr>
+<h2>7. Key Functions (ratelimit.ts)</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>canMakeRequest(platform, modelId, keyId, limits)</code></td>
+<td>Pre-check RPM+RPD + in-flight leases</td>
+</tr>
+<tr>
+<td><code>canUseTokens(platform, modelId, keyId, estTokens, limits)</code></td>
+<td>Pre-check TPM+TPD + in-flight leases</td>
+</tr>
+<tr>
+<td><code>canUseProvider(platform, keyId)</code></td>
+<td>Provider-wide daily request cap</td>
+</tr>
+<tr>
+<td><code>canUseProviderMinute(platform, keyId)</code></td>
+<td>Provider-wide minute request cap</td>
+</tr>
+<tr>
+<td><code>canUseProviderTokens(platform, keyId, modelId, estTokens)</code></td>
+<td>Provider-wide daily token cap</td>
+</tr>
+<tr>
+<td><code>recordRequest/recordTokens</code></td>
+<td>Post-success accounting (DB + in-flight release)</td>
+</tr>
+<tr>
+<td><code>acquireLease/releaseLease</code></td>
+<td>In-flight concurrency + provisional usage</td>
+</tr>
+<tr>
+<td><code>getCooldownDecisionForLimit(...)</code></td>
+<td>Full ladder + Retry-After + provenance</td>
+</tr>
+<tr>
+<td><code>setCooldown(platform, modelId, keyId, durationMs, source)</code></td>
+<td>Persist + memory</td>
+</tr>
+<tr>
+<td><code>isOnCooldown(platform, modelId, keyId)</code></td>
+<td>Check memory → DB → expiry</td>
+</tr>
+<tr>
+<td><code>getProbeableCooldowns()</code></td>
+<td>Heuristic-only, for probe job</td>
+</tr>
+<tr>
+<td><code>clearCooldownEarly(platform, modelId, keyId)</code></td>
+<td>Probe recovery (keeps escalation history)</td>
+</tr>
+<tr>
+<td><code>parseProviderLimit(message)</code></td>
+<td>Extract <code>{kind, limit}</code> from error body</td>
+</tr>
+<tr>
+<td><code>learnLimitFromError(modelDbId, err)</code></td>
+<td>Persist if tightens</td>
+</tr>
+<tr>
+<td><code>getSoonestCooldownExpiry()</code></td>
+<td>For <code>Retry-After</code> header + exhaustion message</td>
+</tr>
+<tr>
+<td><code>modelWindowUsedFraction(model, limits, now)</code></td>
+<td>0..1 binding-window utilization (5s snapshot)</td>
+</tr>
+<tr>
+<td><code>invalidateWindowUsage()</code></td>
+<td>Drop the memoised window snapshot (tests)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>8. Key Functions (cooldown-probe.ts)</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>runCooldownProbePass(opts?)</code></td>
+<td>One scan → probe ripe keys → clear on valid</td>
+</tr>
+<tr>
+<td><code>isRipe(cooldown, now)</code></td>
+<td>≥50% served + ≥60s remaining</td>
+</tr>
+<tr>
+<td><code>startCooldownProbe(scheduler)</code></td>
+<td>Registers 60s interval job</td>
+</tr>
+<tr>
+<td><code>resetCooldownProbeState()</code></td>
+<td>Test seam</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>9. Persistence Schema (relevant tables)</h2>
+<pre><code class="language-sql">-- Per-(platform,model,key) usage events
+CREATE TABLE rate_limit_usage (
+  platform TEXT, model_id TEXT, key_id INTEGER,
+  kind TEXT CHECK(kind IN (&#39;request&#39;,&#39;tokens&#39;)),
+  tokens INTEGER, created_at_ms INTEGER
+);
+CREATE INDEX idx_rate_limit_usage_lookup
+  ON rate_limit_usage(platform, model_id, key_id, kind, created_at_ms);
+
+-- Cooldowns with provenance
+CREATE TABLE rate_limit_cooldowns (
+  platform TEXT, model_id TEXT, key_id INTEGER,
+  expires_at_ms INTEGER, source TEXT CHECK(source IN (&#39;heuristic&#39;,&#39;authoritative&#39;,&#39;credit&#39;,&#39;tier&#39;)),
+  set_at_ms INTEGER,
+  PRIMARY KEY (platform, model_id, key_id)
+);
+
+-- Server logs (warn/error only)
+CREATE TABLE server_logs (
+  id INTEGER PRIMARY KEY, level TEXT, source TEXT, provider TEXT,
+  model TEXT, event TEXT, request_id TEXT, message TEXT, created_at_ms INTEGER
+);
+</code></pre>
+<hr>
+<h2>10. Environment Variables</h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>MAX_CONCURRENT_REQUESTS_PER_KEY</code></td>
+<td>null (unlimited)</td>
+<td>Global per-key concurrency cap</td>
+</tr>
+<tr>
+<td><code>MAX_CONCURRENT_REQUESTS_PER_KEY_&lt;PLATFORM&gt;</code></td>
+<td>null</td>
+<td>Platform-specific override</td>
+</tr>
+<tr>
+<td><code>PROVIDER_DAILY_REQUEST_CAP_&lt;PLATFORM&gt;</code></td>
+<td>see table</td>
+<td>Provider-wide daily request cap (0 = disable)</td>
+</tr>
+<tr>
+<td><code>PROVIDER_DAILY_TOKEN_CAP_&lt;PLATFORM&gt;</code></td>
+<td>see table</td>
+<td>Provider-wide daily token cap</td>
+</tr>
+<tr>
+<td><code>PROVIDER_MINUTE_REQUEST_CAP_&lt;PLATFORM&gt;</code></td>
+<td>see table</td>
+<td>Provider-wide minute request cap</td>
+</tr>
+<tr>
+<td><code>COOLDOWN_PROBE_DISABLED</code></td>
+<td>0</td>
+<td>Kill switch for probe job</td>
+</tr>
+<tr>
+<td><code>COOLDOWN_PROBE_MAX_PER_PASS</code></td>
+<td>3</td>
+<td>Probes per 60s scan</td>
+</tr>
+<tr>
+<td><code>DEGRADED_HEALTHY_RATIO</code></td>
+<td>0.5</td>
+<td>Degraded mode threshold (see 04-degraded-mode)</td>
+</tr>
+<tr>
+<td><code>DEGRADED_MIN_PROVIDERS</code></td>
+<td>3</td>
+<td>Min providers for degraded eval</td>
+</tr>
+<tr>
+<td><code>DEGRADED_ENTRY_GRACE_MS</code></td>
+<td>60000</td>
+<td>Time below threshold before entry</td>
+</tr>
+<tr>
+<td><code>DEGRADED_EXIT_GRACE_MS</code></td>
+<td>120000</td>
+<td>Time above threshold before exit</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>11. Flow Diagram: Request → Quota Check → Dispatch → Account</h2>
+<pre><code>routeRequest()
+  ├─ canMakeRequest()        → RPM + RPD + in-flight leases
+  ├─ canUseTokens()          → TPM + TPD + in-flight leases
+  ├─ canUseProvider()        → provider daily request cap
+  ├─ canUseProviderMinute()  → provider minute request cap
+  ├─ canUseProviderTokens()  → provider daily token cap
+  ├─ canUseKeyConcurrency()  → per-key concurrency cap
+  └─ isOnCooldown()          → heuristic/authoritative bench
+        ↓
+acquireLease()  (provisional usage now visible to next caller)
+        ↓
+dispatch to provider
+        ↓
+success:
+  recordRequest()  → DB + releaseLease()
+  recordTokens()   → DB + releaseLease()
+  clear cooldown hits / null-limit hits
+failure (retryable):
+  recordRetryableFailure() → cooldownDecisionForError() → setCooldown()
+  recordRateLimitHit() / recordModelFailure() (model penalty)
+  learnLimitFromError()    (if provider reported ceiling)
+  skipKeys.add(platform:modelId:keyId)
+  skipModels.add(modelDbId) on 403/404/context-too-large
+  skipPlatforms.add(platform) on 5xx/timeout (#788)
+</code></pre>
+</article></main>
+</div>
+</body>
+</html>

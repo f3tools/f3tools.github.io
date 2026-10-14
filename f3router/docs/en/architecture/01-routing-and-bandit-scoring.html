@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Routing & Bandit Scoring — Deep Dive — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html" class="on">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/architecture/01-routing-and-bandit-scoring.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Routing &amp; Bandit Scoring — Deep Dive</h1>
+<blockquote>
+<p><strong>Source:</strong> <code>server/src/services/router.ts</code>, <code>server/src/services/scoring.ts</code></p>
+</blockquote>
+<h2>1. Overview</h2>
+<p>The router picks one <code>(platform, model, key)</code> tuple per request. It is <strong>not</strong> a round-robin load balancer — it is a contextual bandit that continuously learns from live traffic and composes a score from five normalized axes:</p>
+<pre><code>base = w_rel·reliability + w_speed·speed + w_intel·intelligence   (convex, weights sum to 1)
+effective = base × headroomFactor × rateLimitFactor               (guardrail multipliers ∈ [floor, 1])
+</code></pre>
+<p>The <strong>weights</strong> come from a selectable strategy (<code>balanced</code> / <code>smartest</code> / <code>fastest</code> / <code>reliable</code> / <code>custom</code> / <code>priority</code>). The default is <code>balanced</code> (0.5 / 0.25 / 0.25). Operators can switch strategies from the dashboard or via <code>PUT /api/fallback/routing</code>.</p>
+<p>Key selection within a model is driven by a separate <code>KeySelectionStrategy</code> (<code>auto</code> / <code>least-remaining</code>), independent of the model-ranking bandit so the two concerns don&#39;t interfere (#919, #930).</p>
+<hr>
+<h2>2. Chain Construction</h2>
+<p>The enabled fallback chain is sourced from (in priority order):</p>
+<ol>
+<li><strong>Active profile</strong> (<code>profile_models</code> table) — named chains like &quot;coding&quot;, &quot;long-context&quot;</li>
+<li><strong>Global fallback_config</strong> — the legacy single chain</li>
+<li><strong>Global sort alias</strong> — <code>auto:smart</code>, <code>auto:fast</code>, <code>auto:cheap</code>, <code>auto:reliable</code>, <code>auto:balanced</code></li>
+<li><strong>Profile by name</strong> — <code>auto:my-profile</code></li>
+</ol>
+<p>Each chain row (<code>ChainRow</code>) carries the model&#39;s static metadata (<code>intelligence_rank</code>, <code>size_label</code>, <code>monthly_token_budget</code>, rate limits, capabilities) plus the <strong>endpoint scope</strong> (<code>&#39;&#39;</code> for catalog models, <code>&#39;custom:&lt;base_url_hash&gt;&#39;</code> for relay models) so two relays serving the same <code>model_id</code> are scored and rate-limited independently.</p>
+<h3>Match Tier</h3>
+<p><code>match_tier</code> (default 0) is an <strong>outer sort key</strong> that dominates score. It is set only when a unified group resolves a slug (e.g. <code>glm-4.7</code>) to a provider-specific model (<code>z-ai/glm-4.5</code>) — the matched member gets <code>match_tier = 1</code> so it never outranks a direct <code>model_id</code> request, no matter how good its live numbers are.</p>
+<hr>
+<h2>3. Reliability — Thompson Sampling with Beta Posteriors</h2>
+<h3>Decay-Weighted Samples</h3>
+<p>Reliability is not a raw success rate. The analytics window is 7 days with a <strong>2-day half-life</strong> exponential decay:</p>
+<pre><code>weight(age_days) = 0.5^(age_days / 2)
+</code></pre>
+<p>Each request bucket (grouped by <code>platform, model_id, key_id, age_days</code>) contributes decay-weighted pseudo-counts to <code>successes</code> and <code>failures</code>. Timeouts count as <strong>failures for reliability</strong> but <strong>contribute to speed</strong> (wall-clock latency, zero tokens).</p>
+<h3>Posterior &amp; Sampling</h3>
+<pre><code>α = successes + community_successes + 1   (Beta(1,1) uniform prior)
+β = failures  + community_failures  + 1
+</code></pre>
+<ul>
+<li><strong>Routing (live)</strong>: <code>reliability = sampleBeta(α, β)</code> — Thompson sampling. Exploration is automatic and proportional to uncertainty.</li>
+<li><strong>Dashboard (display)</strong>: <code>reliability = α / (α + β)</code> — expected value, stable for sorting.</li>
+</ul>
+<h3>Community Prior (opt-in)</h3>
+<p>When <code>routing_community_prior_enabled = 1</code>, de-poisoned aggregated counts from other self-hosted instances are folded into the posterior as a starting balance. Each prior is capped at <strong>50 effective samples</strong> so local evidence (decay-weighted, ~hundreds of samples on a busy install) always dominates within a few hundred requests.</p>
+<h3>Exploration Floor (10%)</h3>
+<p>When <code>routing_explore_enabled = 1</code> (off by default), an unmeasured model (decay-weighted <code>successes + failures &lt; 5</code>) gets a <strong>guaranteed 10% chance</strong> to be tried first, preventing starvation by prior-heavy rivals. The bandit&#39;s Thompson sampling already explores; this is a hard floor.</p>
+<hr>
+<h2>4. Speed Axis — Throughput + TTFB Blended</h2>
+<pre><code>throughputScore(tok/s) = 1 - exp(-tok/s / 60)          # saturating, 60 tok/s ≈ 0.63
+ttfbScore(ms)          = linear ramp 300ms→1.0 … 5000ms→0.0
+speedScore             = 0.6·throughput + 0.4·ttfb       # when both present
+</code></pre>
+<ul>
+<li>No successful samples → returns <code>SPEED_PRIOR = 0.6</code> (optimistic, so unmeasured models get explored on speed too).</li>
+<li>Throughput-only (no TTFB) → throughput alone.</li>
+<li>TTFB-only (no throughput) → TTFB alone.</li>
+</ul>
+<p><strong>Timeouts feed speed</strong> (#619): a timeout contributes its capped wall-clock latency (max 120s) to the throughput denominator with <strong>zero output tokens</strong>, and the same latency as a TTFB sample (which lands past <code>TTFB_WORST_MS</code>, earning no latency credit). A model that hangs constantly can no longer keep a stellar speed number.</p>
+<h3>Observed Speed Rank Writeback</h3>
+<p>Every 10 minutes, models with ≥20 decay-weighted speed-bearing samples (successes + timeouts) and no user-set <code>speed_rank</code> override have their observed speed projected back onto the catalog&#39;s 1..10 <code>speed_rank</code> scale (1 = fastest). This keeps the dashboard&#39;s sort-by-speed preset honest for relay models.</p>
+<hr>
+<h2>5. Intelligence Axis — Tier-First, √-Compressed Rank</h2>
+<pre><code>tierValue: Frontier=4, Large=3, Medium=2, Small=1, unknown=0
+intelligenceComposite = tierValue * 1000 - sqrt(rank) * 31
+</code></pre>
+<ul>
+<li><strong>Tier dominates strictly</strong>: worst rank in a tier (√1000·31 ≈ 980) still beats best rank of tier below (1000).</li>
+<li><strong>Rank edits are visible</strong>: √ compression makes a change from rank 1→3→10 move the axis noticeably, unlike the old linear rank which was drowned by the tier multiplier.</li>
+<li>Min-max normalized across the enabled chain to [0,1].</li>
+</ul>
+<p>Custom models are seeded at the catalog median tier (&quot;unknown&quot; = no opinion, not &quot;worst&quot;).</p>
+<hr>
+<h2>6. Guardrails — Multiplicative, Never Reordering Good Models</h2>
+<h3>Headroom Factor (quota protection)</h3>
+<pre><code>remaining = 1 - usedTokens / budgetTokens
+if remaining &gt;= rampStart:  factor = 1.0
+else:                       factor = floor + (1 - floor) * (remaining / rampStart)
+</code></pre>
+<ul>
+<li><code>budgetTokens</code> = <code>monthly_token_budget</code> × <code>usableKeyCount(platform)</code> — pools N keys&#39; free tiers.</li>
+<li>Unknown budget (0 or NULL) → factor = 1 (no opinion).</li>
+</ul>
+<h3>Tunable Headroom Thresholds (env / settings: <code>routing_headroom_ramp_start</code>, <code>routing_headroom_floor</code>)</h3>
+<p>The ramp is now operator-tunable via <code>GET/PUT /api/settings/headroom</code> (#989, #899). The thresholds are read <strong>once per chain</strong> instead of per model:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>rampStart</code> (<code>HEADROOM_RAMP_START</code>)</td>
+<td>0.2 (20% remaining)</td>
+<td>Fraction at which demotion begins</td>
+</tr>
+<tr>
+<td><code>floor</code> (<code>HEADROOM_FLOOR</code>)</td>
+<td>0.1 (10% of score)</td>
+<td>Score floor at 0 remaining budget</td>
+</tr>
+</tbody></table>
+<p>Out-of-range / non-finite operator input falls back to the default rather than silently clamping to a legal-but-unintended value. The <strong>same</strong> ramp and thresholds also drive the rate-window headroom guardrail (see #8) — a single pair of operator-tuned thresholds governs both.</p>
+<h3>Rate-Limit Factor (live penalty)</h3>
+<pre><code>penalty ∈ [0, 10]   (from 429 escalation ladder, decays 1 per 2 min)
+factor = 1 - (penalty / 10) * 0.6   # at max penalty, keeps 40% of score
+</code></pre>
+<ul>
+<li>Demotes hard but never excludes — model recovers as penalty decays.</li>
+</ul>
+<h3>Rate-Window Headroom Factor (RPD/TPD/RPM/TPM demotion, #899)</h3>
+<p>The monthly-budget guardrail only has an opinion about models that declare a <code>monthly_token_budget</code>. The far more common free-tier shape is a per-day request or token cap (RPD/TPD plus per-minute RPM/TPM), which was previously <strong>binary</strong>: the hard gates reject at 100% and the router happily keeps a model pinned at #1 until the very request that exhausts it, then eats a 429 and falls through.</p>
+<p>The fix: the same tunable ramp, driven by <strong>live window utilization</strong> instead of monthly tokens:</p>
+<pre><code>usedFraction = consumed / limit   (0 = idle, 1 = exhausted)  — worst of the four windows
+factor = headroomRamp(1 - usedFraction, opts)                — same tunable thresholds
+</code></pre>
+<ul>
+<li><code>usedFraction</code> is memoized inside <code>ratelimit.ts</code> as a <strong>5-second snapshot</strong> (<code>WINDOW_USAGE_TTL_MS = 5000</code>) — one grouped scan of <code>rate_limit_usage</code> plus one read of <code>api_keys</code>, shared by every entry of every chain. The hard gates are unaffected — they still read live counts.</li>
+<li><code>null</code> means the model declares no window limits, or has no routable key to measure — factor = 1 (no opinion).</li>
+<li><strong>Combined headroom</strong>: the router takes <code>Math.min(monthlyHeadroom, windowHeadroom)</code> — the <strong>worse</strong> of the two, never their product (which would push a model low on both to floor², below the operator-configured floor).</li>
+</ul>
+<p>The chosen key is the <strong>eligible key with the most headroom</strong> (the one the router would pick NEXT), not the worst key — a platform with one exhausted key and one idle key routes perfectly well (#921).</p>
+<h3>Peak-Hours Adjustment (opt-in, #760, #909)</h3>
+<p>During an operator-declared peak window, free relays are congested, so a model&#39;s raw throughput is a weaker signal than its reliability: part of the speed weight is moved onto reliability.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>enabled</code></td>
+<td><code>false</code></td>
+<td>Opt-in by design — routing that silently changes with the wall clock is impossible to reason about</td>
+</tr>
+<tr>
+<td><code>startHour</code> / <code>endHour</code></td>
+<td>18 / 6 (spans midnight)</td>
+<td>Window in the operator&#39;s IANA timezone</td>
+</tr>
+<tr>
+<td><code>timezone</code></td>
+<td><code>UTC</code></td>
+<td>IANA name; read via <code>Intl</code> (never <code>Date#getHours</code>, since the host is frequently UTC while the traffic it serves is not)</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>Shift amount</strong>: <code>PEAK_SPEED_TO_RELIABILITY = 0.6</code> (60% of the speed weight moves onto reliability).</li>
+<li><strong>Exempt strategies</strong> (<code>PEAK_EXEMPT_STRATEGIES</code>): <code>fastest</code> and <code>reliable</code> are <strong>exempt</strong> — they are the two ends of the speed↔reliability axis, and an operator who picked one has already decided which end they want. <code>priority</code> and <code>custom</code> are also never rewritten (the operator&#39;s explicit choice).</li>
+<li>The adjustment applies only to the mixed presets (<code>balanced</code>, <code>smartest</code>), where trading some speed for reliability stays inside the span the presets already describe.</li>
+<li><code>peakAdjustedWeights()</code> returns <code>{ weights, adjusted }</code> — the dashboard labels the weight summary from the <code>adjusted</code> flag.</li>
+<li><code>startHour === endHour</code> is an <strong>empty</strong> window (not 24-hour) — an operator who drags both ends to the same value means &quot;nothing&quot;.</li>
+</ul>
+<hr>
+<h2>7. Per-Model Weight Overrides (env: <code>MODEL_ROUTING_OVERRIDES</code>)</h2>
+<pre><code>MODEL_ROUTING_OVERRIDES=&#39;{&quot;gpt-4o&quot;: {&quot;weight&quot;: 0.5}, &quot;llama-3.3-70b&quot;: {&quot;weight&quot;: 1.5}}&#39;
+</code></pre>
+<p>Scales the <strong>final effective score</strong> (after guardrails) so a slow/poor model is demoted without being disabled. A manual <code>priority</code> chain can still select it.</p>
+<hr>
+<h2>8. In-Model Key Selection (Bandit per Key)</h2>
+<p>When a model has multiple keys, keys are ordered by a <strong>per-key Thompson score</strong>:</p>
+<pre><code>keyReliability = sampleBeta(α_key + community_α, β_key + community_β)
+keySpeed       = speedScore(keyStats.tokPerSec, keyStats.avgTtfbMs)
+keyScore       = 0.75·keyReliability + 0.25·keySpeed
+</code></pre>
+<p>Returns <code>null</code> (fall back to round-robin) when &lt;2 keys have recorded data. Catches expired/drained/region-blocked keys that the rolled-up model bucket cannot see.</p>
+<hr>
+<h2>9. Fallback Loop &amp; Exhaustion Diagnostics</h2>
+<p>The shared loop (<code>lib/fallback-loop.ts</code>) drives every surface (<code>/v1/chat/completions</code>, <code>/v1/responses</code>, <code>/v1/messages</code>, legacy <code>/completions</code>):</p>
+<ul>
+<li><strong>Max 20 retries</strong> (configurable).</li>
+<li><strong>Wall-clock retry budget</strong> (default 45s, setting <code>fallback_time_budget_ms</code>). Stops starting new attempts after budget; first retry always allowed.</li>
+<li><strong>Hedging</strong> (1d2226a): when budget expires mid-attempt, <code>abortInFlight()</code> cancels the upstream fetch instead of waiting for a stall.</li>
+<li><strong>Circuit breaker</strong>: <code>max_consecutive_upstream_fails</code> (default 0 = off) stops the loop with 503 when the pool looks unhealthy.</li>
+<li><strong>Per-attempt trail</strong>: <code>X-Fallback-Trail</code> header + <code>X-Fallback-Detail</code> (opt-in) with timings and redacted error summaries.</li>
+<li><strong>Synchronous exhaustion</strong> (zero upstream calls): <code>RouteError.diagnostics</code> carries one line per considered model with the reason it could not serve (no key, cooldown, provider cap, rpm/rpd, tpm/tpd, context too small, …). <code>summarizeExhaustion()</code> rolls this into a client-safe bucketed message (e.g. &quot;All models exhausted: 5 routes checked (3 rate-limited or on cooldown, 2 no usable key configured). Add more API keys or wait for rate limits to reset. Soonest reset ~2m.&quot;).</li>
+</ul>
+<h3>Failure Classification &amp; Bookkeeping</h3>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Skip</th>
+<th>Cooldown</th>
+<th>Model Penalty</th>
+<th>Limit Learning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>401 invalid key</td>
+<td>key only</td>
+<td>5 min (health cycle)</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>402 payment required</td>
+<td>key only</td>
+<td>24h</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>403 model forbidden</td>
+<td>model</td>
+<td>24h</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>429 daily exhausted</td>
+<td>model+key</td>
+<td>until UTC midnight / Retry-After</td>
+<td>heavy (3)</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>429 transient (rpm/tpm)</td>
+<td>key only</td>
+<td>90s / escalation ladder</td>
+<td>light (1)</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>5xx / timeout / transport</td>
+<td><strong>platform</strong> (#788)</td>
+<td>90s / ladder</td>
+<td>light (1)</td>
+<td>no</td>
+</tr>
+<tr>
+<td>empty completion (reasoning)</td>
+<td>key only</td>
+<td><strong>exempt</strong> (streak ≤3)</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>context too large</td>
+<td>model</td>
+<td>—</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>response_format ignored</td>
+<td>model</td>
+<td>—</td>
+<td>no</td>
+<td>no</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>Model-level failure benching</strong> (#806): 3 retryable failures across keys within 15 min → bench model on <strong>all its keys</strong> for 10 min (heuristic, probe-eligible).</li>
+<li><strong>Empty-completion streak limit</strong> (#751): 3 consecutive reasoning-truncated completions on same model+key lifts the exemption.</li>
+</ul>
+<hr>
+<h2>10. Sticky Sessions</h2>
+<ul>
+<li>Key = SHA-1(first user message [:: strategyKey]), TTL 30 min.</li>
+<li>Prevents mid-conversation model switches → hallucination spike.</li>
+<li>Session-affine reasoning trace memory (#797): restores <code>reasoning_content</code> stripped by clients on replay, scoped to the model that produced it.</li>
+</ul>
+<hr>
+<h2>11. Unified Model Groups (Unify)</h2>
+<p>When enabled, logical models (e.g. <code>glm-4.7</code>) collapse multiple providers into one <code>/v1/models</code> entry. Routing <strong>strictly fails over within the group</strong> — never to a different model. <code>match_tier = 1</code> on slug-resolved members prevents silent substitution.</p>
+<hr>
+<h2>12. Strategy Presets</h2>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Reliability</th>
+<th>Speed</th>
+<th>Intelligence</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>balanced</td>
+<td>0.50</td>
+<td>0.25</td>
+<td>0.25</td>
+</tr>
+<tr>
+<td>smartest</td>
+<td>0.35</td>
+<td>0.10</td>
+<td>0.55</td>
+</tr>
+<tr>
+<td>fastest</td>
+<td>0.35</td>
+<td>0.55</td>
+<td>0.10</td>
+</tr>
+<tr>
+<td>reliable</td>
+<td>0.70</td>
+<td>0.15</td>
+<td>0.15</td>
+</tr>
+<tr>
+<td>custom</td>
+<td>user-tuned (normalized)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>priority</td>
+<td>manual order + 429 penalty (dense rank + penalty)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3>Key Selection Strategy (#919, #930)</h3>
+<p>Independent of the routing strategy on purpose — model ranking and key selection are independent choices, and folding this into the strategy enum would make switching key policy also switch (or disable) the model bandit.</p>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>auto</code> (default)</td>
+<td>Per-key bandit score when ≥2 keys have recorded data, else round-robin</td>
+</tr>
+<tr>
+<td><code>least-remaining</code></td>
+<td>Additionally rank by observed remaining quota — roomiest key first, so the key nearest its cap is held back instead of being the next to 429</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>least-remaining</code> layers <strong>on top</strong> of the existing order (bandit ranking when there&#39;s data, else the round-robin rotation) — ties fall back to that order instead of rowid.</li>
+<li>Account-scoped pools (<code>&lt;platform&gt;::account</code>) are <strong>skipped</strong> for remaining-quota weighting, since every key reports the same shared number and reordering would only churn the rotation (#919).</li>
+<li>Reads quota headroom through the cached platform-filtered <code>getKeyQuotaHeadroom()</code> query.</li>
+<li>A key the quota tracker has never seen gets a neutral <code>UNKNOWN_QUOTA_HEADROOM = 0.5</code> — no opinion, not a reason to prefer or avoid.</li>
+</ul>
+<hr>
+<h2>13. Key Functions (router.ts)</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>routeRequest(...)</code></td>
+<td>Main entry: picks route, applies all filters (vision, tools, sticky, group, response_format)</td>
+</tr>
+<tr>
+<td><code>orderChain(chain, strategy, sampled)</code></td>
+<td>Orders chain by strategy; <code>sampled=true</code> for live routing, <code>false</code> for stable dashboard</td>
+</tr>
+<tr>
+<td><code>scoreChainEntry(...)</code></td>
+<td>Computes five axes + guardrails → final score</td>
+</tr>
+<tr>
+<td><code>orderKeysByScore(entry, keys)</code></td>
+<td>Per-key Thompson ordering</td>
+</tr>
+<tr>
+<td><code>orderKeysByRemainingQuota(entry, ordered)</code></td>
+<td>Re-sorts by observed remaining quota (roomiest first)</td>
+</tr>
+<tr>
+<td><code>quotaWeightingApplies(entry)</code></td>
+<td>Whether remaining-quota weighting is meaningful for this chain entry</td>
+</tr>
+<tr>
+<td><code>resolveRoutingChain(modelString)</code></td>
+<td>Parses <code>auto</code>, <code>auto:smart</code>, <code>auto:profile-name</code></td>
+</tr>
+<tr>
+<td><code>getKeySelectionStrategy()</code> / <code>setKeySelectionStrategy(s)</code></td>
+<td>Read/write the <code>key_selection_strategy</code> setting</td>
+</tr>
+<tr>
+<td><code>getHeadroomThresholds()</code> / <code>setHeadroomThresholds(rampStart, floor)</code></td>
+<td>Read/write tunable headroom thresholds</td>
+</tr>
+<tr>
+<td><code>getPeakHoursConfig()</code> / <code>setPeakHoursConfig(patch)</code></td>
+<td>Read/write peak-hours settings</td>
+</tr>
+<tr>
+<td><code>getActiveRoutingWeights()</code></td>
+<td>Active weight vector + whether peak adjustment moved it</td>
+</tr>
+<tr>
+<td><code>recordRateLimitHit/recordModelFailure/recordSuccess</code></td>
+<td>Penalty mutations</td>
+</tr>
+<tr>
+<td><code>summarizeExhaustion(diag, soonestResetMs)</code></td>
+<td>Client-safe exhaustion message</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>14. Key Functions (scoring.ts)</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>reliabilityPosterior(s, f, community?)</code></td>
+<td>Returns <code>{alpha, beta}</code></td>
+</tr>
+<tr>
+<td><code>expectedReliability(s, f, community?)</code></td>
+<td>Deterministic α/(α+β)</td>
+</tr>
+<tr>
+<td><code>sampleBeta(α, β)</code></td>
+<td>Marsaglia &amp; Tsang via two Gamma draws</td>
+</tr>
+<tr>
+<td><code>speedScore(tok/s, ttfbMs)</code></td>
+<td>Blended [0,1] speed</td>
+</tr>
+<tr>
+<td><code>intelligenceComposite(sizeLabel, rank)</code></td>
+<td>Tier-first composite</td>
+</tr>
+<tr>
+<td><code>intelligenceScore(composite, min, max)</code></td>
+<td>Min-max normalize</td>
+</tr>
+<tr>
+<td><code>headroomFactor(used, budget, opts?)</code></td>
+<td>Quota guardrail multiplier (tunable thresholds)</td>
+</tr>
+<tr>
+<td><code>rateWindowHeadroomFactor(usedFraction, opts?)</code></td>
+<td>Live window-utilization guardrail</td>
+</tr>
+<tr>
+<td><code>rateLimitFactor(penalty)</code></td>
+<td>Penalty guardrail multiplier</td>
+</tr>
+<tr>
+<td><code>combineScore(inputs, weights)</code></td>
+<td>Convex base × guardrails</td>
+</tr>
+<tr>
+<td><code>peakAdjustedWeights(base, strategy, config, now)</code></td>
+<td>Peak-hours reweighting + whether it fired</td>
+</tr>
+<tr>
+<td><code>isPeakHours(config, now)</code></td>
+<td>Whether <code>now</code> falls inside the configured window</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>15. Cache Key v4 (#901)</h2>
+<p>The exact-match response cache key is now at <strong>version 4</strong>. Default-valued sampling params (<code>top_p: 1</code>, <code>n: 1</code>, <code>presence_penalty: 0</code>, <code>frequency_penalty: 0</code>) are normalized down to <code>undefined</code> so a client that always serializes the full param set shares a cache entry with one that omits the defaults. <code>reasoning_effort</code> and <code>compression</code> were also added to the key. Bump version when changing the key shape — <code>v: 4</code> is embedded in the canonical JSON.</p>
+</article></main>
+</div>
+</body>
+</html>

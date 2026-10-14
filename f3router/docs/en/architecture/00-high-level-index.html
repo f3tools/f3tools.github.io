@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Architecture & internals — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html" class="on">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/architecture/00-high-level-index.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Architecture &amp; internals</h1>
+<p><a href="https://github.com/f3tools/f3router/blob/main/README.md" target="_blank" rel="noreferrer">← Back to README</a> · <a href="/f3router/docs/en/index.html">Documentation index</a> · <a href="/f3router/docs/en/architecture/index.html">Deep-dive domain</a></p>
+<p>f3router is a self-hosted OpenAI-compatible gateway that stacks the free tiers of ~34 providers behind a single <code>f3router-…</code> bearer token. An Express proxy exposes <code>/v1/chat/completions</code> (plus <code>/v1/responses</code>, <code>/v1/messages</code>, <code>/v1/completions</code>, <code>/v1/embeddings</code> and <code>/v1/models</code>) and, per request, the router selects the best healthy model that is under all of its rate limits, decrypts its upstream key in memory, and streams the response back.</p>
+<p>Because no single free tier is generous enough to live on, the router treats the catalog as a pooled fallback chain: it scores live reliability, speed, capability and headroom via a Thompson-sampling bandit, enforces RPM/RPD/TPM/TPD and provider-wide caps with a persistent ledger, and fails over across up to 20 attempts within a wall-clock budget. When the top of the chain exhausts its daily caps the endpoint gracefully degrades to the next healthy tier and resets at UTC midnight.</p>
+<p>See <a href="/f3router/docs/en/architecture/index.html">OVERVIEW.md</a> for deep-dives.</p>
+<ul>
+<li><a href="#how-it-works">How it works</a></li>
+<li><a href="#not-yet-supported">Not yet supported</a></li>
+<li><a href="#limitations">Limitations</a></li>
+<li><a href="#terms-of-service-review">Terms of Service review</a></li>
+</ul>
+<h2>How it works</h2>
+<p><img src="https://github.com/f3tools/f3router/blob/main/repo-assets/router-flow.png" alt="One request in, the best free model out — the fallback chain with live scores, cooldowns, and quota tracking" loading="lazy"></p>
+<pre><code>┌──────────────────┐   Bearer f3router-…   ┌─────────────────────────┐
+│  OpenAI SDK /    │ ──────────────────────▶ │  Express proxy (:3001)  │
+│  curl / any      │ ◀────────────────────── │  /v1/chat/completions   │
+│  OpenAI client   │      streamed tokens    └────────────┬────────────┘
+└──────────────────┘                                      │
+                                                          ▼
+                             ┌────────────────────────────────────────────────┐
+                             │  Router                                        │
+                             │   1. Pick highest-priority model that          │
+                             │      (a) has a healthy key and                 │
+                             │      (b) is under all its rate limits.         │
+                             │   2. Decrypt key, call provider SDK.           │
+                             │   3. On 429/5xx → cooldown + retry next model. │
+                             └────────────────────────────────────────────────┘
+                                          │
+   ┌──────────────┬────────────┬──────────┴─────────┬─────────────┬──────────┐
+   ▼              ▼            ▼                    ▼             ▼          ▼
+ Google         Groq        Cerebras           OpenRouter        HF       …29 more
+</code></pre>
+<ul>
+<li><strong>Router</strong> (<code>server/src/services/router.ts</code>) — picks a model per request.</li>
+<li><strong>Rate-limit ledger</strong> (<code>server/src/services/ratelimit.ts</code>) — in-memory RPM/RPD/TPM/TPD counters backed by SQLite, with cooldowns on 429s.</li>
+<li><strong>Provider adapters</strong> (<code>server/src/providers/*.ts</code>) — one file per provider, implementing the <code>Provider</code> base class: <code>chatCompletion()</code> and <code>streamChatCompletion()</code>.</li>
+<li><strong>Health service</strong> (<code>server/src/services/health.ts</code>) — periodic probe keeps key status fresh.</li>
+<li><strong>Dashboard</strong> (<code>client/</code>) — React + Vite + shadcn/ui admin surface.</li>
+<li><strong>Storage</strong> — SQLite (<code>better-sqlite3</code>) with AES-256-GCM envelope encryption for keys.</li>
+<li><strong>Tool-call rescue</strong> (<code>server/src/lib/tool-call-rescue.ts</code>) — models that emit tool calls as plain text instead of structured JSON are rescued into real <code>tool_calls</code> automatically, and tool requests only route to models that actually support them.</li>
+<li><strong>Key import &amp; export</strong> — bulk-import keys by pasting a <code>.env</code> file (with preview and per-key selection), export back out as JSON, <code>.env</code>, or CSV.</li>
+</ul>
+<blockquote>
+<p>Routing strategies, bandit scoring, quota and cooldown accounting, streaming, degraded-mode failover and the provider catalog are covered at implementation depth in the deep-dives — See <a href="/f3router/docs/en/architecture/index.html">OVERVIEW.md</a> for deep-dives.</p>
+</blockquote>
+<h2>Not yet supported</h2>
+<p>The scope is deliberately narrow. If a feature isn&#39;t in the README&#39;s feature list and isn&#39;t below, assume it isn&#39;t there yet.</p>
+<ul>
+<li><strong>Moderation</strong> (<code>/v1/moderations</code>)</li>
+<li><strong><code>n &gt; 1</code></strong> (multiple completions per request)</li>
+<li><strong>Per-user billing / multi-tenant auth</strong> — single-user by design</li>
+</ul>
+<p>PRs that add any of these are very welcome. See <a href="https://github.com/f3tools/f3router/blob/main/README.md#contributing" target="_blank" rel="noreferrer">Contributing</a>.</p>
+<h2>Limitations</h2>
+<p>Stacking free tiers has real trade-offs. Be honest with yourself about them:</p>
+<ul>
+<li><strong>Quota and availability are the ceiling, not model class.</strong> The catalog does carry frontier-class rows — GPT-5.x, Grok 4.x, Kimi K3, DeepSeek V4 Pro, and Gemini 3.x all show up on somebody&#39;s free tier. What you don&#39;t get is <em>sustained</em> access to them: those are exactly the rows with the smallest daily allowances, the longest queues, and the highest chance of being pulled or paywalled at short notice. Budget for capacity and uptime, not for a capability limit.</li>
+<li><strong>Intelligence degrades as the day progresses.</strong> Your top-ranked models (usually Gemini 3.6 Flash, DeepSeek V4, Kimi K2.6) have the lowest daily caps. Once they hit their limits, the router falls down your priority chain to smaller/weaker models. Expect the effective intelligence of the endpoint to drop in the late hours of each day — then reset at UTC midnight.</li>
+<li><strong>Latency is highly variable.</strong> Cerebras and Groq are extremely fast; others are not. You get whichever one is available.</li>
+<li><strong>Free tiers can change without notice.</strong> Providers regularly tighten, loosen, or remove free tiers. When that happens you&#39;ll see 429s or auth errors until the catalog update reaches you — live-feed installs get those fixes within days, free installs on the 30-day trail. Re-seed scripts live in <code>server/src/scripts/</code>.</li>
+<li><strong>No SLA, by definition.</strong> If you need reliability, use a paid provider with a contract.</li>
+<li><strong>Local-first.</strong> There&#39;s no multi-tenant auth. Run this for yourself; don&#39;t expose it to the internet.</li>
+</ul>
+<h2>Terms of Service review</h2>
+<p>A self-hosted, single-user, personal-use setup was re-reviewed against each provider&#39;s ToS (May 2026). Summary:</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Verdict</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Google Gemini</td>
+<td>⚠️ Caution</td>
+<td>March 2026 ToS narrows scope to <em>&quot;professional or business purposes, not for consumer use&quot;</em> — a self-hosted developer proxy is still defensible, but the clause is new.</td>
+</tr>
+<tr>
+<td>Groq</td>
+<td>✅ Likely OK</td>
+<td>GroqCloud Services Agreement permits Customer Application integration.</td>
+</tr>
+<tr>
+<td>Cerebras</td>
+<td>✅ Likely OK</td>
+<td>Permitted; explicitly forbids selling/transferring API keys.</td>
+</tr>
+<tr>
+<td>Mistral</td>
+<td>✅ Likely OK</td>
+<td>APIs allowed for personal/internal business use.</td>
+</tr>
+<tr>
+<td>OpenRouter</td>
+<td>✅ Likely OK</td>
+<td>April 2026 ToS sharpens the no-resale / no-competing-service clause; private single-user proxy still fine.</td>
+</tr>
+<tr>
+<td>Cloudflare Workers AI</td>
+<td>⚠️ Ambiguous</td>
+<td>No anti-proxy clause; covered by general Self-Serve Subscription Agreement.</td>
+</tr>
+<tr>
+<td>NVIDIA NIM</td>
+<td>⚠️ Caution</td>
+<td>Trial ToS §1.2 / §1.4: <em>&quot;evaluation only, not production.&quot;</em> Free access is a recurring 40 RPM rate limit (the 2025 credit system was discontinued), but the evaluation-only scope stands.</td>
+</tr>
+<tr>
+<td>GitHub Models</td>
+<td>⚠️ Caution</td>
+<td>Free tier explicitly scoped to <em>&quot;experimentation&quot;</em> and <em>&quot;prototyping.&quot;</em></td>
+</tr>
+<tr>
+<td>Cohere</td>
+<td>❌ Avoid</td>
+<td>Terms §14 still forbids <em>&quot;personal, family or household purposes.&quot;</em></td>
+</tr>
+<tr>
+<td>Zhipu (open.bigmodel.cn)</td>
+<td>✅ Likely OK</td>
+<td>Personal/non-commercial research carve-out still in the platform docs.</td>
+</tr>
+<tr>
+<td>Z.ai (api.z.ai)</td>
+<td>⚠️ Caution</td>
+<td>New row — Singapore entity (distinct from Zhipu CN). §III.3(l) anti-traffic-redirect clause could plausibly be read against a proxy; no explicit personal-use carve-out.</td>
+</tr>
+<tr>
+<td>Ollama Cloud</td>
+<td>✅ Likely OK</td>
+<td>New row — Free plan permits cloud-model access (1 concurrent, 5-hour session caps). No anti-proxy / anti-resale clauses found. <em>(Integration tracked in #14.)</em></td>
+</tr>
+<tr>
+<td>OVH AI Endpoints</td>
+<td>✅ Likely OK</td>
+<td>New row (June 2026) — anonymous access is officially documented (2 req/min per IP per model). OVH reserves the right to introduce token/consumption caps.</td>
+</tr>
+<tr>
+<td>AI Horde</td>
+<td>✅ Likely OK</td>
+<td>New row (June 2026) — a free, community-powered commons run by the Haidra non-profit; anonymous use is officially supported (key <code>0000000000</code>, lowest queue priority). No anti-proxy / anti-resale clause. The OpenAI proxy is a pilot and may be restricted by usage. <em>(Integration #345.)</em></td>
+</tr>
+</tbody></table>
+<p>Rules of thumb that keep most providers happy: <strong>one account per provider</strong>, <strong>no reselling</strong>, <strong>no sharing your endpoint with other humans</strong>, <strong>don&#39;t hammer a free tier as a paid production backend</strong>. This is informational, not legal advice — read each provider&#39;s ToS and make your own call.</p>
+<p>Removed since the April 2026 review: Moonshot and MiniMax direct integrations were dropped from the catalog (Moonshot — moved to paid only; MiniMax — superseded by the OpenRouter <code>minimax/minimax-m2.5:free</code> route).</p>
+</article></main>
+</div>
+</body>
+</html>

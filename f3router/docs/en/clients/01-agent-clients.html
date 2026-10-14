@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clients & coding agents — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html" class="on">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/clients/01-agent-clients.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Clients &amp; coding agents</h1>
+<p><a href="/f3router/docs/en/index.html">← Back to README</a> · <a href="/f3router/docs/en/index.html">Documentation index</a> · <a href="/f3router/docs/en/clients/02-supported-agents.html">All supported agents</a></p>
+<ul>
+<li><a href="#openai-compatible-clients">OpenAI-compatible clients</a></li>
+<li><a href="#coding-agents">Coding agents</a></li>
+<li><a href="#qwenpaw">QwenPaw</a></li>
+<li><a href="#native-gemini-clients">Native Gemini clients</a></li>
+<li><a href="#ollama-clients">Ollama clients</a></li>
+<li><a href="#headerless-clients">Headerless clients</a></li>
+<li><a href="#mcp-server">MCP server</a></li>
+<li><a href="#vs-code-ghost-text-autocomplete-continue">VS Code ghost-text autocomplete (Continue)</a></li>
+<li><a href="#context-handoff">Context Handoff</a></li>
+</ul>
+<h2>OpenAI-compatible clients</h2>
+<p>Any client that can target an OpenAI-compatible base URL can use f3router:</p>
+<ul>
+<li><strong>LangChain, LlamaIndex, official OpenAI SDKs</strong>: set <code>base_url</code> to
+<code>http://localhost:3001/v1</code> and use the unified key from the dashboard.</li>
+<li><strong>Local GPU boxes</strong>: add custom OpenAI-compatible endpoints for Ollama,
+llama.cpp, LM Studio, vLLM, or an internal gateway.</li>
+</ul>
+<h2>Coding agents</h2>
+<p>Use the generator instead of hand-editing a client configuration:</p>
+<pre><code class="language-bash">export F3ROUTER_API_KEY=&lt;unified-key&gt;   # or pass --api-key on each command
+npx f3router setup-claude --url http://localhost:3001 --dry-run
+npx f3router setup-claude --url http://localhost:3001
+npx f3router setup-dsh --url http://localhost:3001 --api-key &lt;unified-key&gt;
+</code></pre>
+<p><code>--dry-run</code> prints a diff. Real writes merge with the existing configuration
+and create a timestamped backup first. <code>--profile &lt;name&gt;</code> creates a named
+Claude/Codex profile. The live <code>/v1/models</code> catalog supplies the model ids and
+context windows.</p>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Automated command</th>
+<th>Manual base URL</th>
+<th>Wire</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Claude Code</strong></td>
+<td><code>setup-claude</code> or credential-free-on-disk <code>launch</code></td>
+<td><code>http://localhost:3001</code></td>
+<td>Anthropic Messages</td>
+</tr>
+<tr>
+<td><strong>Codex CLI</strong></td>
+<td><code>setup-codex</code> or <code>launch-codex</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>Responses (<code>wire_api = &quot;responses&quot;</code>)</td>
+</tr>
+<tr>
+<td><strong>Cline</strong></td>
+<td><code>setup-cline</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat</td>
+</tr>
+<tr>
+<td><strong>Continue</strong></td>
+<td><code>setup-continue</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat / legacy Completions</td>
+</tr>
+<tr>
+<td><strong>Aider</strong></td>
+<td><code>setup-aider</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat</td>
+</tr>
+<tr>
+<td><strong>OpenCode</strong></td>
+<td><code>setup-opencode</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat</td>
+</tr>
+<tr>
+<td><strong>Goose</strong></td>
+<td><code>setup-goose</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat</td>
+</tr>
+<tr>
+<td><strong>Qwen Code</strong></td>
+<td><code>setup-qwen</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat (native Gemini also works)</td>
+</tr>
+<tr>
+<td><strong>Roo Code</strong></td>
+<td><code>setup-roo</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat</td>
+</tr>
+<tr>
+<td><strong>Kilo Code</strong></td>
+<td><code>setup-kilo</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat</td>
+</tr>
+<tr>
+<td><strong>Crush</strong></td>
+<td><code>setup-crush</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat</td>
+</tr>
+<tr>
+<td><strong>DeepSeek Harness</strong></td>
+<td><code>setup-dsh</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat (<code>api: openai-completions</code>)</td>
+</tr>
+<tr>
+<td><strong>MiMo Code</strong></td>
+<td><code>setup-mimo</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat</td>
+</tr>
+<tr>
+<td><strong>AtomCode</strong></td>
+<td><code>setup-atomcode</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat (<code>type = &quot;openai&quot;</code>)</td>
+</tr>
+<tr>
+<td><strong>OpenClaw</strong></td>
+<td><code>setup-openclaw</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat (<code>api: openai-completions</code>)</td>
+</tr>
+<tr>
+<td><strong>Hermes Agent</strong></td>
+<td><code>setup-hermes</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat (<code>provider: custom</code>)</td>
+</tr>
+<tr>
+<td><strong>Pi</strong></td>
+<td><code>setup-pi</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat (<code>api: openai-completions</code>)</td>
+</tr>
+<tr>
+<td><strong>Reasonix</strong></td>
+<td><code>setup-reasonix</code></td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat (<code>kind = &quot;openai&quot;</code>)</td>
+</tr>
+<tr>
+<td><strong>QwenPaw</strong></td>
+<td>Manual setup</td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat (<code>chat.completions</code>)</td>
+</tr>
+<tr>
+<td><strong>Cursor</strong></td>
+<td><code>setup-cursor</code> prints the guide</td>
+<td>public <code>https://…/v1</code></td>
+<td>OpenAI Chat</td>
+</tr>
+<tr>
+<td><strong>Anything else</strong></td>
+<td><code>setup-generic</code> prints a ready block</td>
+<td><code>http://localhost:3001/v1</code></td>
+<td>OpenAI Chat</td>
+</tr>
+</tbody></table>
+<p>The root-vs-<code>/v1</code> distinction matters: Claude Code expects the server root
+because it appends the Anthropic Messages path. OpenAI-compatible clients in
+this table—including Cline, Aider, Goose, Codex, Continue, OpenCode, Qwen,
+Roo, Kilo, Crush, MiMo Code, AtomCode, OpenClaw, Hermes Agent, Pi, Reasonix, QwenPaw, and DeepSeek Harness—expect their configured
+base URL to include <code>/v1</code>.</p>
+<h3>DeepSeek Harness (<code>dsh</code>)</h3>
+<p><a href="https://github.com/deepseek-ai/deepseek-harness" target="_blank" rel="noreferrer">DeepSeek Harness</a> keeps
+every provider as a route under <code>llm-pi-ai.providers</code> in
+<code>$DSH_HOME/settings.yaml</code> (<code>~/.dsh</code> by default). <code>setup-dsh</code> adds a
+<code>f3router</code> route there — <code>api: openai-completions</code>, the gateway&#39;s <code>/v1</code>
+base URL, and the live catalog as the route&#39;s <code>models</code> list, which DSH
+requires for a provider its installed catalog does not ship — and makes
+<code>f3router/auto</code> the default model. The key goes into <code>$DSH_HOME/.env</code>
+(mode 0600) as <code>F3ROUTER_API_KEY</code>, the environment layer DSH reads on its
+own, so nothing needs exporting. Both writes are structural merges: other
+routes, comments, and settings in the file are left as they were.</p>
+<pre><code class="language-bash">npx f3router setup-dsh --url http://localhost:3001 --api-key &lt;unified-key&gt;
+npx @deepseek-ai/dsh web
+</code></pre>
+<p>Settings are hot-reloaded, so a running <code>dsh</code> uses the route on its next
+request. <code>--profile &lt;name&gt;</code> adds a second route (<code>f3router-&lt;name&gt;</code>) without
+changing the default model; <code>--model &lt;id&gt;</code> pins the default. Routes are
+declared text-only — add <code>input: [text, image]</code> to a model entry under
+<code>f3router.models</code> to send it images. <code>DSH_HOME</code> is honoured when set.</p>
+<h3>MiMo Code (<code>mimo</code>)</h3>
+<p><a href="https://mimo.xiaomi.com/mimocode" target="_blank" rel="noreferrer">MiMo Code</a> is an OpenCode derivative, so it
+takes any OpenAI-compatible endpoint as a custom entry under <code>provider</code> — an
+<code>npm</code> package to speak with (<code>@ai-sdk/openai-compatible</code>), the credentials in
+<code>options</code>, and a <code>models</code> map. <code>setup-mimo</code> writes that entry as <code>f3router</code>
+and names <code>f3router/&lt;model&gt;</code> as the default <code>model</code>.</p>
+<p>The file is <code>config.json</code> in MiMo&#39;s own global config directory:
+<code>$XDG_CONFIG_HOME/mimocode</code> (<code>~/.config/mimocode</code> on macOS and Linux), or
+<code>$MIMOCODE_HOME/config</code> when <code>MIMOCODE_HOME</code> is set. That directory merges
+<code>config.json</code>, <code>mimocode.json</code> and <code>mimocode.jsonc</code> in that order, so the
+generated file is the weakest layer and anything you hand-write in
+<code>mimocode.json</code> still wins. The write itself is a structural merge, so other
+providers and settings already in <code>config.json</code> are left as they were.</p>
+<pre><code class="language-bash">npx f3router setup-mimo --url http://localhost:3001
+export F3ROUTER_API_KEY=&lt;unified-key&gt;
+mimo
+</code></pre>
+<p>The key is referenced as <code>{env:F3ROUTER_API_KEY}</code>, MiMo&#39;s own substitution
+syntax, so it stays out of the config file. There is no <code>MIMOCODE_API_KEY</code> or
+<code>MIMOCODE_BASE_URL</code>: MiMo&#39;s environment variables locate resources and toggle
+features, they are not a general fallback for config fields. Each model is
+declared with the <code>limit.context</code> and <code>limit.output</code> pair MiMo&#39;s schema
+requires, both taken from the live catalog.</p>
+<h3>AtomCode (<code>atomcode</code>)</h3>
+<p><a href="https://atomcode.atomgit.com/docs/en/" target="_blank" rel="noreferrer">AtomCode</a> is AtomGit&#39;s terminal
+coding agent, written in Rust. It reads <code>~/.atomcode/config.toml</code>, where a
+root <code>default_provider</code> key names one <code>[providers.&lt;id&gt;]</code> table and
+<code>type = &quot;openai&quot;</code> makes that table speak the OpenAI-compatible wire.
+<code>setup-atomcode</code> writes a <code>[providers.f3router]</code> table — <code>base_url</code> on the
+gateway&#39;s <code>/v1</code>, the unified key as <code>api_key</code>, the chosen model and its
+<code>context_window</code> from the live catalog — and sets <code>default_provider</code> to it.
+The write is a structural merge: the root key is placed above any existing
+tables, only the <code>f3router</code> table is replaced, and other <code>[providers.*]</code>
+tables and settings in the file are left as they were.</p>
+<pre><code class="language-bash">npx f3router setup-atomcode --url http://localhost:3001 --api-key &lt;unified-key&gt;
+atomcode
+</code></pre>
+<p>AtomCode has no environment-variable fallback for the key, so it is written
+into the config file; the file is created with mode 0600 and a timestamped
+backup is taken before an existing one is changed. <code>--model &lt;id&gt;</code> pins the
+default model.</p>
+<h3>OpenClaw</h3>
+<p><a href="https://docs.openclaw.ai/" target="_blank" rel="noreferrer">OpenClaw</a> is the always-on personal assistant
+that answers on WhatsApp, Telegram, Discord and the other channels its
+gateway connects to. It reads one JSON5 document, <code>~/.openclaw/openclaw.json</code>,
+and every model endpoint is an entry under <code>models.providers</code>; a provider its
+bundled catalog does not know must spell out <code>baseUrl</code>, <code>api</code> and a non-empty
+<code>models</code> list. <code>setup-openclaw</code> writes a <code>f3router</code> provider there —
+<code>api: openai-completions</code>, the gateway&#39;s <code>/v1</code> base URL, the live catalog as
+its <code>models</code> list — and makes <code>f3router/auto</code> the default model under
+<code>agents.defaults.model.primary</code>. The key is referenced as
+<code>${F3ROUTER_API_KEY}</code>, OpenClaw&#39;s own substitution, and the value goes into
+<code>~/.openclaw/.env</code> (mode 0600), the global env file OpenClaw loads on its own,
+so nothing needs exporting. Both writes are structural merges: other
+providers, <code>fallbacks</code> on the default model, and every other setting in the
+file are left as they were.</p>
+<pre><code class="language-bash">npx f3router setup-openclaw --url http://localhost:3001 --api-key &lt;unified-key&gt;
+npm install -g openclaw@latest --allow-scripts=openclaw
+openclaw agent exec --model f3router/auto &quot;Say hello&quot;   # no gateway daemon needed
+</code></pre>
+<p>A running <code>openclaw gateway</code> needs a restart to pick the change up.
+<code>--profile &lt;name&gt;</code> adds a second provider (<code>f3router-&lt;name&gt;</code>) without
+changing the default model; <code>--model &lt;id&gt;</code> pins the default. OpenClaw sends a
+bare SDK user agent to custom endpoints, so the provider carries a static
+<code>User-Agent: openclaw</code> header — that is what lights the &quot;seen recently&quot; badge
+on the Agents page. Models are declared text-only; add <code>input: [&quot;text&quot;, &quot;image&quot;]</code> to a model entry under <code>models.providers.f3router.models</code> to send
+it images. <code>OPENCLAW_CONFIG_PATH</code>, <code>OPENCLAW_STATE_DIR</code> and <code>OPENCLAW_HOME</code> are
+honoured when set.</p>
+<h3>Hermes Agent (<code>hermes</code>)</h3>
+<p><a href="https://hermes-agent.nousresearch.com/docs/" target="_blank" rel="noreferrer">Hermes Agent</a> is Nous
+Research&#39;s self-improving agent, in the terminal or behind Telegram, Discord
+and the other messengers its gateway serves. <code>~/.hermes/config.yaml</code> is its
+single source of truth for the endpoint: <code>OPENAI_BASE_URL</code> is ignored for
+anything but api.openai.com and <code>OPENAI_API_KEY</code> is only sent to OpenAI hosts,
+so a custom endpoint has to be declared in the <code>model</code> block. <code>setup-hermes</code>
+writes that block — <code>provider: custom</code>, <code>api_mode: chat_completions</code>, the
+gateway&#39;s <code>/v1</code> as <code>base_url</code>, the chosen model as <code>default</code> with its
+<code>context_length</code> from the live catalog — and references the key as
+<code>api_key: &quot;${F3ROUTER_API_KEY}&quot;</code>, Hermes&#39;s own substitution, with the value
+in <code>~/.hermes/.env</code> (mode 0600), which Hermes loads on its own. A fresh
+install ships <code>model: &quot;&quot;</code>, the &quot;not configured&quot; sentinel; replacing it is
+exactly what <code>hermes setup</code> would do, and it is what lets a headless first
+run skip the wizard. Every other key in the file is left as it was.</p>
+<pre><code class="language-bash">npx f3router setup-hermes --url http://localhost:3001 --api-key &lt;unified-key&gt;
+curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash -s -- --skip-setup
+hermes -z &quot;Say hello&quot;
+</code></pre>
+<p>A running <code>hermes gateway</code> needs a restart to pick the change up.
+<code>--profile &lt;name&gt;</code> adds a <code>providers.f3router-&lt;name&gt;</code> entry instead —
+picked inside a chat with <code>/model custom:f3router-&lt;name&gt;:auto</code> — and leaves
+the default model alone; <code>--model &lt;id&gt;</code> pins the default. Hermes sends a bare
+SDK user agent to custom endpoints, so the block carries
+<code>default_headers: { User-Agent: hermes-agent }</code>, which is what the Agents
+page&#39;s &quot;seen recently&quot; badge keys on. <code>HERMES_HOME</code> is honoured when set.</p>
+<h3>Pi (<code>pi</code>)</h3>
+<p><a href="https://pi.dev" target="_blank" rel="noreferrer">Pi</a> is a minimal terminal agent harness you extend with your
+own extensions, skills and prompt templates. Endpoints it does not ship are
+provider entries in <code>~/.pi/agent/models.json</code>. <code>setup-pi</code> adds a <code>f3router</code>
+provider there — <code>api: openai-completions</code>, the gateway&#39;s <code>/v1</code> as <code>baseUrl</code>,
+and every model in the live catalog with its context window, the chosen model
+first — then sets <code>defaultProvider</code> and <code>defaultModel</code> in
+<code>~/.pi/agent/settings.json</code> so a fresh <code>pi</code> starts on it. Pi does not load a
+<code>.env</code> file of its own, so the key is written into <code>models.json</code>, which is
+created with mode 0600. Other providers and settings in both files are left
+as they were.</p>
+<pre><code class="language-bash">npx f3router setup-pi --url http://localhost:3001 --api-key &lt;unified-key&gt;
+npm install -g @earendil-works/pi-coding-agent
+pi -p &quot;Say hello&quot;
+</code></pre>
+<p>A running session reloads <code>models.json</code> when <code>/model</code> is opened.
+<code>--profile &lt;name&gt;</code> adds a <code>f3router-&lt;name&gt;</code> provider instead, picked with
+<code>pi --model f3router-&lt;name&gt;/&lt;model&gt;</code> or from <code>/model</code>, and leaves the
+default model alone; <code>--model &lt;id&gt;</code> pins the default. Models are declared
+text-only with <code>reasoning: false</code>. To send images to a vision model, add
+<code>&quot;image&quot;</code> to its <code>input</code>. Pi sends a bare SDK user agent to custom endpoints,
+so the provider carries <code>headers: { &quot;User-Agent&quot;: &quot;pi-coding-agent&quot; }</code>, which
+is what the Agents page&#39;s &quot;seen recently&quot; badge keys on.
+<code>PI_CODING_AGENT_DIR</code> is honoured when set.</p>
+<h3>Reasonix (<code>reasonix</code>)</h3>
+<p><a href="https://github.com/esengine/DeepSeek-Reasonix" target="_blank" rel="noreferrer">Reasonix</a> is a DeepSeek-native
+terminal coding agent built around prefix-cache stability. Every endpoint is a
+<code>[[providers]]</code> entry in <code>~/.reasonix/config.toml</code> (<code>%APPDATA%\reasonix</code> on
+Windows, <code>$REASONIX_HOME</code> when set). <code>setup-reasonix</code> adds one named
+<code>f3router</code> — <code>kind = &quot;openai&quot;</code>, the gateway&#39;s <code>/v1</code> as <code>base_url</code>, and every
+model in the live catalog, the chosen model first — and points <code>default_model</code>
+at <code>f3router/&lt;model&gt;</code>. The entry names its key with
+<code>api_key_env = &quot;F3ROUTER_API_KEY&quot;</code>; the value goes to <code>~/.reasonix/.env</code>
+(0600), which Reasonix loads itself, so nothing needs exporting. Your other
+<code>[[providers]]</code> entries and settings are left as they were, and a rerun
+replaces only the <code>f3router</code> entry.</p>
+<pre><code class="language-bash">npx f3router setup-reasonix --url http://localhost:3001 --api-key &lt;unified-key&gt;
+npm install -g reasonix
+reasonix -p &quot;Say hello&quot;
+</code></pre>
+<p>Every catalog model is in <code>/model</code> as <code>f3router/&lt;id&gt;</code>. <code>--profile &lt;name&gt;</code>
+adds a <code>f3router-&lt;name&gt;</code> entry instead, picked with
+<code>reasonix --model f3router-&lt;name&gt;/&lt;model&gt;</code>, and leaves the default model
+alone; <code>--model &lt;id&gt;</code> pins the default. A zero <code>price</code> keeps Reasonix&#39;s cost
+readout at $0. Reasonix Studio only lists the providers in
+<code>[desktop].provider_access</code> when that list is set, so add <code>&quot;f3router&quot;</code> there
+(or under Settings → Model → Access). Reasonix sends <code>Reasonix/&lt;version&gt;</code> as
+its user agent, which is what the Agents page&#39;s &quot;seen recently&quot; badge keys on.</p>
+<h3>QwenPaw</h3>
+<p><a href="https://github.com/agentscope-ai/QwenPaw" target="_blank" rel="noreferrer">QwenPaw</a> supports custom providers
+that use the OpenAI <code>chat.completions</code> API. Start f3router, create or copy a
+unified key from its dashboard, then open <strong>Settings → Models</strong> in the QwenPaw
+Console:</p>
+<ol>
+<li>Under <strong>Providers</strong>, choose <strong>Add Provider</strong>.</li>
+<li>Give it a <strong>Provider ID</strong> such as <code>f3router</code> and a <strong>Provider Name</strong> such
+as <code>f3router</code>, and set the API compatibility mode to OpenAI
+<code>chat.completions</code>.</li>
+<li>Open the new provider&#39;s settings and set <strong>Base URL</strong> to
+<code>http://localhost:3001/v1</code> and <strong>API Key</strong> to your f3router unified key.</li>
+<li>On the provider&#39;s models page, add a model. Use <code>auto</code> as the <strong>Model ID</strong>
+to let f3router route the request, or copy a current id from
+<code>GET http://localhost:3001/v1/models</code>.</li>
+<li>Save, then pick the model as the default (or per chat) and send a test
+message.</li>
+</ol>
+<p>If QwenPaw runs in a container, <code>localhost</code> refers to that container rather
+than the host running f3router. Use a hostname or host-gateway address that
+the QwenPaw container can reach, while keeping the <code>/v1</code> suffix. Do not put the
+unified key in a URL, screenshot, or issue report. See QwenPaw&#39;s
+<a href="https://qwenpaw.agentscope.io/docs/models" target="_blank" rel="noreferrer">official model configuration guide</a>
+for the current Console field names.</p>
+<h2>Native Gemini clients</h2>
+<p>Gemini CLI and Gemini-lineage clients can speak Google&#39;s wire format directly:</p>
+<pre><code class="language-bash">export GOOGLE_GEMINI_BASE_URL=http://localhost:3001
+export GEMINI_API_KEY=f3router-your-unified-key
+gemini
+</code></pre>
+<p>The native surface implements <code>GET /v1beta/models</code>, model metadata,
+<code>generateContent</code>, <code>streamGenerateContent</code> (including <code>?alt=sse</code>), and
+<code>countTokens</code>. Authentication accepts <code>x-goog-api-key</code>, Bearer, or Gemini&#39;s
+<code>?key=</code> fallback. Prefer the header: query credentials leak into history and
+proxy logs.</p>
+<p>The <strong>Keys → Agents</strong> tab maps Gemini Pro, Flash, and Flash-Lite family names to
+Auto or a pinned catalog model.</p>
+<h2>Ollama clients</h2>
+<p>Ollama emulation is off by default. Enable one of these modes on
+<strong>Keys → Agents</strong>:</p>
+<ul>
+<li><code>open-loopback</code>: no key on this machine only. The socket peer must be
+<code>127.0.0.1</code>/<code>::1</code>; enabling desktop LAN access does not widen it.
+<strong>Docker note:</strong> inside a container the socket peer is the Docker bridge
+IP, not loopback, so this mode refuses even host-local traffic through a
+published port — use <code>key-required</code> for Docker deployments.</li>
+<li><code>key-required</code>: clients must send <code>Authorization: Bearer &lt;unified-key&gt;</code>.</li>
+</ul>
+<p>The exact endpoints are <code>/api/tags</code>, <code>/api/chat</code>, <code>/api/generate</code>, <code>/api/show</code>,
+<code>/api/version</code>, <code>/api/embed</code>, and legacy <code>/api/embeddings</code>. Streaming uses
+newline-delimited JSON, not SSE. Point Zed, JetBrains AI Assistant, or another
+Ollama-capable client at <code>http://localhost:3001</code>.</p>
+<h2>Headerless clients</h2>
+<p>If a client cannot set headers, create a separately revocable token on
+<strong>Keys → Agents</strong> and use:</p>
+<pre><code class="language-text">http://localhost:3001/v1/t/&lt;token&gt;/chat/completions
+http://localhost:3001/v1/t/&lt;token&gt;/responses
+http://localhost:3001/v1/t/&lt;token&gt;/models
+</code></pre>
+<p>The same prefix exposes <code>/api/chat</code> and <code>/api/tags</code>. Never put the unified API
+key in a URL. URL tokens have independent hashes and immediate revocation
+because URLs routinely leak into shell history, reverse-proxy logs, and
+telemetry.</p>
+<h2>MCP server</h2>
+<p>On top of the OpenAI-compatible API, the router is an <strong>MCP server</strong>: agents can ask a
+f3router model to perform a text task and introspect the gateway mid-session (usable
+models and the params each one honors, provider health, usage and cache stats, routing
+strategy).</p>
+<p>The MCP surface is a setting rather than an always-on endpoint (#925). <strong>Fresh installs
+start with it off</strong>; installs that already had provider keys configured when they upgraded
+keep it on, so an existing Claude Code or Cline session does not break on upgrade. Toggle
+it on the Keys page under <strong>Agent compatibility</strong>, or from the API:</p>
+<pre><code class="language-bash">curl -X PUT http://localhost:3001/api/settings/enable-mcp \
+  -H &quot;Authorization: Bearer &lt;dashboard-token&gt;&quot; -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;enabled&quot;: true}&#39;
+</code></pre>
+<p>While it is off, every verb on <code>/mcp</code> answers <code>403</code> with a JSON-RPC error saying so.</p>
+<p>For Claude Code:</p>
+<pre><code class="language-bash">claude mcp add --transport http f3router http://localhost:3001/mcp \
+  --header &quot;Authorization: Bearer f3router-your-unified-key&quot;
+</code></pre>
+<p>Any MCP client that speaks Streamable HTTP works the same way: point it at <code>/mcp</code> with the
+unified key as a Bearer token.</p>
+<h3>ChatGPT (private Secure MCP Tunnel)</h3>
+<p><code>ask_f3router</code> makes f3router directly callable from a ChatGPT conversation. It uses
+the same <code>/v1/chat/completions</code> implementation as every OpenAI-compatible client, so model
+routing, fallback, response caching, prompt compression, token accounting, execution ids,
+and redacted provider errors stay consistent. The result includes the answer, requested and
+served model, usage, route, fallback trail, cache/compression state, and execution id.</p>
+<p>The three relevant settings are deliberately separate:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Where it lives</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Base URL</td>
+<td><code>mcp.server_urls[].url</code> in tunnel-client</td>
+<td><code>http://127.0.0.1:3001/mcp</code></td>
+</tr>
+<tr>
+<td>API key</td>
+<td><code>F3ROUTER_MCP_AUTHORIZATION</code> environment variable</td>
+<td><code>Bearer f3router-...</code></td>
+</tr>
+<tr>
+<td>Default model</td>
+<td>f3router <code>MCP_INFERENCE_DEFAULT_MODEL</code></td>
+<td><code>auto</code>, a model id, or <code>auto:&lt;profile&gt;</code></td>
+</tr>
+</tbody></table>
+<ol>
+<li><p>Enable the MCP surface as shown above. Optionally set the default model before starting
+f3router:</p>
+<pre><code class="language-bash">MCP_INFERENCE_DEFAULT_MODEL=auto
+MCP_INFERENCE_TIMEOUT_MS=120000
+</code></pre>
+</li>
+<li><p>Copy <a href="https://github.com/f3tools/f3router/blob/main/examples/chatgpt/tunnel-client.yaml.example" target="_blank" rel="noreferrer"><code>examples/chatgpt/tunnel-client.yaml.example</code></a>
+outside the repository or into an ignored local file, replace its non-secret <code>tunnel_id</code>,
+and provide both secrets only through the process environment. The f3router variable
+contains the complete HTTP header value, including <code>Bearer </code>:</p>
+<pre><code class="language-powershell">$env:CONTROL_PLANE_API_KEY = &#39;&lt;OpenAI tunnel runtime key&gt;&#39;
+$env:F3ROUTER_MCP_AUTHORIZATION = &#39;Bearer &lt;f3router unified key&gt;&#39;
+tunnel-client doctor --profile-file .\tunnel-client.yaml --explain
+tunnel-client run --profile-file .\tunnel-client.yaml
+</code></pre>
+<pre><code class="language-bash">export CONTROL_PLANE_API_KEY=&#39;&lt;OpenAI tunnel runtime key&gt;&#39;
+export F3ROUTER_MCP_AUTHORIZATION=&#39;Bearer &lt;f3router unified key&gt;&#39;
+tunnel-client doctor --profile-file ./tunnel-client.yaml --explain
+tunnel-client run --profile-file ./tunnel-client.yaml
+</code></pre>
+</li>
+<li><p>In ChatGPT, enable <strong>Settings → Security and login → Developer mode</strong>. Open the Plugins
+directory, create a developer-mode plugin, choose <strong>Tunnel</strong>, and select the tunnel id.
+Review the discovered tools before saving. Start with <code>healthcheck</code>; use
+<code>ask_f3router</code> for inference and <code>list_models</code> when selecting an explicit model.</p>
+</li>
+</ol>
+<p>The tunnel&#39;s static MCP headers are sent only to the configured f3router origin. Do not
+put either API key in the YAML file, MCP URL, screenshots, logs, or commits. A public plugin
+deployment is a different security model and needs a stable public HTTPS endpoint plus the
+authentication required by ChatGPT; the private tunnel above is the local-first path.</p>
+<p>f3router is local-first and single-user by design. Your provider keys stay in
+your SQLite database, encrypted at rest, and requests go from your machine to the
+upstream providers you enabled.</p>
+<h2>VS Code ghost-text autocomplete (Continue)</h2>
+<p>f3router exposes <code>/v1/completions</code> for editor autocomplete clients that send legacy OpenAI prompt/suffix requests. Example Continue config:</p>
+<pre><code class="language-yaml">models:
+  - name: f3router Autocomplete
+    provider: openai
+    model: auto
+    apiBase: http://localhost:3001/v1
+    apiKey: f3router-your-unified-key
+    useLegacyCompletionsEndpoint: true
+    roles:
+      - autocomplete
+</code></pre>
+<h2>Context Handoff</h2>
+<p>When f3router falls over to a different model mid-conversation (quota, rate limit, cooldown), the new model has no idea it is picking up someone else&#39;s task. <strong>Context handoff</strong> adds a single compact <code>system</code> message to the outbound request that tells the new model exactly that:</p>
+<pre><code>f3router context handoff:
+You are taking over an ongoing conversation from another model (groq:llama-3 → google:gemini-flash).
+Continue the user&#39;s task using the conversation context already provided in this request.
+Do not restart the task, re-ask already answered setup questions, or discard prior tool results.
+Respect the user&#39;s latest message as the highest-priority instruction.
+
+Recent session summary:
+User: …
+Assistant: …
+</code></pre>
+<p><strong>Enable it in <code>.env</code>:</strong></p>
+<pre><code class="language-env">F3ROUTER_CONTEXT_HANDOFF=on_model_switch
+</code></pre>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Messages per session are stored in memory (TTL: 3 hours).</li>
+<li>Only injected when the selected model changes for a given session key.</li>
+<li>Not injected on the first request, on same-model continuations, or if a handoff message is already present.</li>
+<li>Session key: <code>X-Session-Id</code> header if present, otherwise SHA-1 of the first user message (same as sticky sessions).</li>
+<li>Storage is in-memory only. Nothing is written to disk or logged.</li>
+</ul>
+<blockquote>
+<p><strong>Important:</strong> Context Handoff improves continuity for conversations routed through f3router. It cannot recover provider-internal hidden state or messages that were never sent to the proxy.</p>
+</blockquote>
+</article></main>
+</div>
+</body>
+</html>

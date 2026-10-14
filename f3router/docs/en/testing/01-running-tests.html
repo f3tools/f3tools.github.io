@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Running tests — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html" class="on">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/testing/01-running-tests.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Running tests</h1>
+<h2>Root chain</h2>
+<p><code>npm test</code> at the repo root runs, in order (<a href="https://github.com/f3tools/f3router/blob/main/package.json" target="_blank" rel="noreferrer">package.json</a>):</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Command</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>test:bootstrap</code></td>
+<td><code>node --test scripts/dev-bootstrap.test.mjs</code></td>
+<td>The dev bootstrap script.</td>
+</tr>
+<tr>
+<td><code>test:hooks</code></td>
+<td><code>node --test .claude/hooks/contributing-check.test.mjs</code></td>
+<td>Contributor-check hook logic.</td>
+</tr>
+<tr>
+<td>server</td>
+<td><code>npm run test -w server</code></td>
+<td>Vitest suite (see <a href="/f3router/docs/en/testing/02-server-suite.html">02-server-suite.md</a>).</td>
+</tr>
+<tr>
+<td>cli</td>
+<td><code>npm run test -w cli</code></td>
+<td>Setup-CLI tests (tools, config-file merging, index).</td>
+</tr>
+<tr>
+<td>client</td>
+<td><code>npm run test -w client --if-present</code></td>
+<td>Client vitest suite plus i18n parity check.</td>
+</tr>
+</tbody></table>
+<p>The desktop workspace has its own small suite (<code>desktop/src/__tests__/window-chrome.test.ts</code>) but is not part of the root chain; it runs with its own tooling via <code>npm --prefix desktop</code>.</p>
+<h2>Per-workspace commands</h2>
+<h3>Server (<code>server/package.json</code>)</h3>
+<pre><code>npm run test -w server            # vitest run --pool=forks --fileParallelism=false
+npm run test:watch -w server      # watch mode
+npm run test:migrations -w server # migration roundtrip only
+</code></pre>
+<p><code>test:migrations</code> targets exactly one file — <a href="https://github.com/f3tools/f3router/blob/main/server/src/__tests__/db/migrate/roundtrip.test.ts" target="_blank" rel="noreferrer"><code>src/__tests__/db/migrate/roundtrip.test.ts</code></a> — and replays every recorded migration up and down to prove the roundtrip. Run it after touching anything under <code>src/db/migrate/</code>.</p>
+<p>New test files added in the August 2026 batch that expand coverage:</p>
+<ul>
+<li><code>src/__tests__/routes/logs.test.ts</code> — server log viewer persistence and API</li>
+<li><code>src/__tests__/routes/custom-transcription.test.ts</code> — custom STT model registration and transcription usage</li>
+<li><code>src/__tests__/lib/provider-identity.test.ts</code> — custom endpoint identity classification (#889)</li>
+</ul>
+<h3>Client (<code>client/package.json</code>)</h3>
+<pre><code>npm run test -w client            # vitest run &amp;&amp; npm run check:i18n
+npm run check:i18n -w client      # scripts/check-i18n.mjs
+</code></pre>
+<p><code>check:i18n</code> verifies every locale file for key/placeholder parity; a missing or placeholder-broken translation fails the suite, not just the build.</p>
+<h3>Everything else</h3>
+<p><code>npm run build</code> must also pass — CI builds all workspaces after tests, so type errors surface there even when unit tests stay green.</p>
+<h2>CI summary</h2>
+<p><a href="https://github.com/f3tools/f3router/blob/main/.github/workflows/ci.yml" target="_blank" rel="noreferrer"><code>.github/workflows/ci.yml</code></a> runs on <code>ubuntu-24.04</code>, on pushes and PRs targeting <code>main</code>, as a single <code>test</code> job across a Node matrix of <strong>20 and 22</strong> — both ends of the supported engines range (<code>&gt;=20.18 &lt;25</code>). Node 20 is the baseline that historically caught crashes newer local Node hid; 22 is the LTS most contributors run. Steps, in order:</p>
+<ol>
+<li>checkout + setup-node (with npm cache)</li>
+<li><code>npm install</code></li>
+<li><strong>Check migration round trip</strong>: <code>npm run test:migrations</code> (before the main suite, so schema drift fails fast)</li>
+<li><code>npm test</code> (the root chain above)</li>
+<li><code>npm run build</code></li>
+</ol>
+<p><code>fail-fast: false</code> keeps one Node version&#39;s failure from hiding the other&#39;s results.</p>
+</article></main>
+</div>
+</body>
+</html>

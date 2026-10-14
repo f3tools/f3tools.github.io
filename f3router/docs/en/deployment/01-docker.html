@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docker — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html" class="on">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/deployment/01-docker.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Docker</h1>
+<p>The production image, the Compose quickstart, and everything about running f3router in a container: persistence, ports, health, and the networking gotchas.</p>
+<ul>
+<li><a href="#the-image">The image</a></li>
+<li><a href="#compose-quickstart">Compose quickstart</a></li>
+<li><a href="#ports--lan-access">Ports &amp; LAN access</a></li>
+<li><a href="#volumes--persistence">Volumes &amp; persistence</a></li>
+<li><a href="#healthcheck">Healthcheck</a></li>
+<li><a href="#non-root-runtime">Non-root runtime</a></li>
+<li><a href="#why-better-sqlite3-is-compiled-from-source">Why better-sqlite3 is compiled from source</a></li>
+<li><a href="#troubleshooting-container-cannot-reach-providers-733">Troubleshooting: container cannot reach providers (#733)</a></li>
+</ul>
+<h2>The image</h2>
+<p>f3router publishes a single production image containing the Express server and the built React dashboard:</p>
+<pre><code class="language-bash">docker pull ghcr.io/f3tools/f3router:latest   # or pin a release, e.g. :v1.2.3
+</code></pre>
+<p>Published tags: <code>latest</code> (default branch), <code>v*.*.*</code> (git release tags), and <code>sha-&lt;commit&gt;</code>. The image is multi-arch (<code>linux/amd64</code> + <code>linux/arm64</code>, so it runs on a Raspberry Pi).</p>
+<p>Build shape (<a href="https://github.com/f3tools/f3router/blob/main/Dockerfile" target="_blank" rel="noreferrer">Dockerfile</a>):</p>
+<ul>
+<li>Three stages on the <code>node:20-bookworm-slim</code> base (<code>deps</code> → <code>build</code> → <code>runtime</code>); only already-built artifacts are copied into the runtime stage.</li>
+<li>The runtime sets <code>NODE_ENV=production</code>, <code>PORT=3001</code>, and <code>F3ROUTER_INSTALL_METHOD=docker</code>; the process is <code>node server/dist/index.js</code>.</li>
+<li>A <code>F3ROUTER_COMMIT_SHA</code> ARG/ENV pair sits deliberately after all <code>COPY</code> layers: the SHA changes every commit, and placing it higher would invalidate the layer cache for the whole image on each build.</li>
+<li>The runtime also copies <code>desktop/package.json</code> (a 400-byte manifest) so a container install can name its own release version (#703).</li>
+<li><code>.dockerignore</code> keeps secrets and local state out of the build context: <code>.env</code>, <code>.env.*</code>, <code>*.db</code> (+ <code>-wal</code>/<code>-shm</code> sidecars), <code>.encryption-key</code>, and <code>server/data</code> never enter an image.</li>
+</ul>
+<h2>Compose quickstart</h2>
+<p>Prerequisites: Docker, Docker Compose, OpenSSL. macOS/Linux:</p>
+<pre><code class="language-bash">git clone https://github.com/f3tools/f3router.git
+cd f3router
+
+# Generate an encryption key for at-rest key storage
+ENCRYPTION_KEY=&quot;$(openssl rand -hex 32)&quot;
+printf &quot;ENCRYPTION_KEY=%s\nPORT=3001\n&quot; &quot;$ENCRYPTION_KEY&quot; &gt; .env
+
+docker compose up -d
+</code></pre>
+<p>Windows PowerShell variant and a curl one-liner bootstrap live in <a href="/f3router/docs/en/install/01-install.html#docker-compose">docs/en/install/01-install.md#docker-compose</a>. Then follow the logs:</p>
+<pre><code class="language-bash">docker compose logs -f f3router
+</code></pre>
+<p>Open <a href="http://localhost:3001" target="_blank" rel="noreferrer">http://localhost:3001</a>, add provider keys on the <strong>Keys</strong> page, and grab your unified API key from that page&#39;s header — that key is what your OpenAI SDK points at.</p>
+<h2>Ports &amp; LAN access</h2>
+<p>The compose file publishes <code>&quot;${HOST_BIND:-127.0.0.1}:${PORT:-3001}:3001&quot;</code>. By default the dashboard/API is reachable only from the machine running Docker; to reach it from other devices (e.g. a Raspberry Pi at <code>http://192.168.1.x:3001</code>):</p>
+<pre><code class="language-bash">HOST_BIND=0.0.0.0 docker compose up -d
+</code></pre>
+<p>Only do this on a trusted network — the proxy is single-user and guarded only by the unified API key.</p>
+<h2>Volumes &amp; persistence</h2>
+<p>SQLite data lives in the named volume <code>f3router-data</code>, mounted at <code>/app/server/data</code>. Keep the same <code>.env</code> <code>ENCRYPTION_KEY</code> and the same volume when upgrading, because provider keys are encrypted at rest. If your host only persists one specific directory, point the database there with <code>FREEAPI_DB_PATH=/that/path/f3router.db</code>.</p>
+<p>The Dockerfile declares <strong>no</strong> <code>VOLUME</code> for <code>/app/server/data</code> on purpose. Persistence is the deployment&#39;s job — the compose file maps the named volume there, and plain <code>docker run</code> takes <code>-v</code>. Declaring it in the image instead would create an ANONYMOUS volume on every container that doesn&#39;t override it: PaaS runtimes that build from the Dockerfile (Railway, Render, Coolify, Dokploy, CapRover) would then either refuse the image or silently hand each redeploy a fresh empty volume, and the declaration would also shadow a bind mount made at the same path.</p>
+<p>See <a href="/f3router/docs/en/deployment/02-updates-and-backup.html">02-updates-and-backup.md</a> for backups of this volume.</p>
+<h2>Healthcheck</h2>
+<p>Both the Dockerfile and the compose file define the same probe: a Node one-liner fetching <code>http://127.0.0.1:&lt;port&gt;/api/ping</code> inside the container, exiting non-zero unless the response is OK.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Interval</td>
+<td>30s</td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td>5s</td>
+</tr>
+<tr>
+<td>Start period</td>
+<td>15s</td>
+</tr>
+<tr>
+<td>Retries</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<h2>Non-root runtime</h2>
+<p>The runtime stage switches to <code>USER node</code> before <code>EXPOSE 3001</code>. The server data directory <code>/app/server/data</code> is created and chowned to <code>node:node</code> during the build so the running user owns it; all copied artifacts carry <code>--chown=node:node</code>.</p>
+<h2>Why better-sqlite3 is compiled from source</h2>
+<p><code>better-sqlite3</code> is a native module. On slim images without a usable prebuilt binary — notably the <code>linux/arm64</code> leg under QEMU — node-gyp compiles it from source, which needs Python and a C++ toolchain. The build stages therefore install <code>python3 make g++</code> via apt, and the runtime image copies the already-compiled <code>node_modules</code> instead, keeping the shipped image free of build tooling. (This toolchain was added by #143 after builds broke without it.)</p>
+<p>A related packaging subtlety: npm nests some production packages under the workspace instead of hoisting them (<code>undici</code> lives at <code>server/node_modules/undici</code>). Skipping the <code>server/node_modules</code> copy shipped images where the HTTP(S) proxy dispatcher failed to load and every request silently went direct (#550, fixed in c6589ff).</p>
+<h2>Troubleshooting: container cannot reach providers (#733)</h2>
+<p>Providers unreachable from the container, but fine from the host? A container has its own network stack, so two things that work on your machine do not carry over:</p>
+<ul>
+<li><strong>A proxy on <code>127.0.0.1</code> is not your machine.</strong> Inside the container, loopback is the container itself. If you reach providers through a proxy client on the host (Clash, v2rayN, sing-box, a corporate proxy), point f3router at the host instead: <code>PROXY_URL=socks5h://host.docker.internal:7890</code>. The bundled <code>docker-compose.yml</code> maps <code>host.docker.internal</code> to the host gateway via <code>extra_hosts</code>, so this works on plain Linux Docker as well as Docker Desktop. The proxy also has to accept connections from outside loopback (in Clash, <code>allow-lan: true</code>). More detail in <a href="/f3router/docs/en/env/03-outbound-proxies.html#docker-127001-is-the-container">03-outbound-proxies.md</a>.</li>
+<li><strong>An IPv6-only host needs IPv6 enabled in Docker.</strong> The default bridge network is IPv4-only, so on a host with no IPv4 route the container cannot reach anything, DNS included. Enable it in <code>/etc/docker/daemon.json</code> with <code>&quot;ipv6&quot;: true</code>, <code>&quot;ip6tables&quot;: true</code> and a <code>&quot;fixed-cidr-v6&quot;</code> range, then restart Docker.</li>
+</ul>
+<p>To see which case you are hitting, ask the container directly:</p>
+<pre><code class="language-bash">docker compose exec f3router node -e &quot;fetch(&#39;https://generativelanguage.googleapis.com/&#39;).then(r=&gt;console.log(&#39;ok&#39;,r.status)).catch(e=&gt;console.log(&#39;fail&#39;,e.cause?.code||e.message))&quot;
+</code></pre>
+</article></main>
+</div>
+</body>
+</html>

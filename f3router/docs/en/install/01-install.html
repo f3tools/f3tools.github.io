@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install & deploy — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html" class="on">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/install/01-install.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Install &amp; deploy</h1>
+<p><a href="/f3router/docs/en/index.html">← Back to README</a> · <a href="/f3router/docs/en/index.html">Documentation index</a></p>
+<p>Everything about getting f3router running: the one-liner, Docker Compose, local development, declarative config, production builds, the desktop app, where your data lives, and how to reset a password, read the logs, or uninstall.</p>
+<ul>
+<li><a href="#quick-start-one-liner">Quick start (one-liner)</a></li>
+<li><a href="#docker-compose">Docker Compose</a></li>
+<li><a href="#local-development">Local development</a></li>
+<li><a href="#declarative-startup-config">Declarative startup config</a></li>
+<li><a href="#docker-image--operations">Docker image &amp; operations</a></li>
+<li><a href="#desktop-app">Desktop app</a></li>
+<li><a href="#credentials-and-where-your-data-lives">Credentials and where your data lives</a></li>
+<li><a href="#faq-passwords-logs-uninstall">FAQ: passwords, logs, uninstall</a></li>
+</ul>
+<h2>Quick start (one-liner)</h2>
+<p>Docker required — sets up <code>~/f3router</code>, generates an encryption key, pulls the image, and starts the container:</p>
+<pre><code class="language-bash">curl -fsSL https://raw.githubusercontent.com/f3tools/f3router/main/docs/install.sh | bash
+</code></pre>
+<p>Prefer to read before you pipe to bash? <a href="https://raw.githubusercontent.com/f3tools/f3router/main/docs/install.sh" target="_blank" rel="noreferrer">The script is here</a>. Re-running it is safe: your <code>.env</code> (and encryption key) is preserved and the container updates to <code>:latest</code>. Override the defaults with <code>F3ROUTER_DIR</code>, <code>PORT</code>, or <code>HOST_BIND</code> env vars.</p>
+<p>On Windows, the easiest path is the desktop <strong><a href="https://github.com/f3tools/f3router/releases/latest" target="_blank" rel="noreferrer"><code>.exe</code> installer from Releases</a></strong> (<a href="#desktop-app">below</a>); the Docker steps work in WSL or any bash shell.</p>
+<p>On Android, see the experimental <a href="/f3router/docs/en/install/02-android-termux.html">Termux installation guide</a>. It uses Node&#39;s built-in SQLite driver and does not require the Android NDK.</p>
+<p>Open <a href="http://localhost:3001" target="_blank" rel="noreferrer">http://localhost:3001</a>, add your provider keys on the <strong>Keys</strong> page, reorder the <strong>Fallback Chain</strong> to taste, and grab your unified API key from the <strong>Keys</strong> page header. That unified key is what you point your OpenAI SDK at.</p>
+<p>Your install keeps itself updated from the signed catalog feed. The current full catalog is listed at <a href="https://f3tools.vercel.app/" target="_blank" rel="noreferrer">f3router.co/models</a>.</p>
+<h2>Docker Compose</h2>
+<p>Runs the API and dashboard together on port 3001 and persists SQLite in a named volume.</p>
+<p><strong>Prerequisites:</strong> Docker, Docker Compose, OpenSSL.</p>
+<p><em>On macOS / Linux (Bash):</em></p>
+<pre><code class="language-bash">git clone https://github.com/f3tools/f3router.git
+cd f3router
+
+# Generate an encryption key for at-rest key storage
+ENCRYPTION_KEY=&quot;$(openssl rand -hex 32)&quot;
+printf &quot;ENCRYPTION_KEY=%s\nPORT=3001\n&quot; &quot;$ENCRYPTION_KEY&quot; &gt; .env
+
+docker compose up -d
+</code></pre>
+<p><em>On Windows (PowerShell):</em></p>
+<pre><code class="language-powershell">git clone https://github.com/f3tools/f3router.git
+cd f3router
+
+$Bytes = New-Object Byte[] 32
+[Security.Cryptography.RandomNumberGenerator]::Create().GetBytes($Bytes)
+$ENCRYPTION_KEY = -join ($Bytes | ForEach-Object { &quot;{0:x2}&quot; -f $_ })
+&quot;ENCRYPTION_KEY=$ENCRYPTION_KEY`nPORT=3001&quot; | Out-File -Encoding utf8 .env
+docker compose up -d
+</code></pre>
+<blockquote>
+<p><strong>Reaching it from another machine?</strong> By default the container is published only on <code>127.0.0.1</code>, so <code>http://&lt;server-ip&gt;:3001</code> won&#39;t load from another device (the page just hangs). To expose it on your LAN — e.g. a Raspberry Pi at <code>http://192.168.1.x:3001</code> — start it with <code>HOST_BIND=0.0.0.0</code>:</p>
+<pre><code class="language-bash">HOST_BIND=0.0.0.0 docker compose up -d
+</code></pre>
+<p>Only do this on a trusted network: the proxy is single-user and guarded only by the unified API key.</p>
+</blockquote>
+<blockquote>
+<p><strong>Providers unreachable from the container, but fine from the host?</strong> A container has its own network stack, so two things that work on your machine do not carry over:</p>
+<ul>
+<li><strong>A proxy on <code>127.0.0.1</code> is not your machine.</strong> Inside the container, loopback is the container itself. If you reach providers through a proxy client on the host (Clash, v2rayN, sing-box, a corporate proxy), point f3router at the host instead: <code>PROXY_URL=socks5h://host.docker.internal:7890</code>. The bundled <code>docker-compose.yml</code> maps <code>host.docker.internal</code> to the host gateway, so this works on plain Linux Docker as well as Docker Desktop. The proxy also has to accept connections from outside loopback (in Clash, <code>allow-lan: true</code>).</li>
+<li><strong>An IPv6-only host needs IPv6 enabled in Docker.</strong> The default bridge network is IPv4-only, so on a host with no IPv4 route the container cannot reach anything, DNS included. Enable it in <code>/etc/docker/daemon.json</code> with <code>&quot;ipv6&quot;: true</code>, <code>&quot;ip6tables&quot;: true</code> and a <code>&quot;fixed-cidr-v6&quot;</code> range, then restart Docker.</li>
+</ul>
+<p>To see which of these you are hitting, ask the container directly:</p>
+<pre><code class="language-bash">docker compose exec f3router node -e &quot;fetch(&#39;https://generativelanguage.googleapis.com/&#39;).then(r=&gt;console.log(&#39;ok&#39;,r.status)).catch(e=&gt;console.log(&#39;fail&#39;,e.cause?.code||e.message))&quot;
+</code></pre>
+</blockquote>
+<h2>Local development</h2>
+<p><strong>Prerequisites:</strong> Node.js 20+, npm.</p>
+<p><em>On macOS / Linux (Bash):</em></p>
+<pre><code class="language-bash">git clone https://github.com/f3tools/f3router.git
+cd f3router
+npm install
+ENCRYPTION_KEY=&quot;$(node -e &#39;console.log(require(&quot;crypto&quot;).randomBytes(32).toString(&quot;hex&quot;))&#39;)&quot;
+printf &quot;ENCRYPTION_KEY=%s\nPORT=3001\n&quot; &quot;$ENCRYPTION_KEY&quot; &gt; .env
+npm run dev
+</code></pre>
+<p><em>On Windows (PowerShell):</em></p>
+<pre><code class="language-powershell">git clone https://github.com/f3tools/f3router.git
+cd f3router
+npm install
+$ENCRYPTION_KEY = node -e &quot;console.log(require(&#39;crypto&#39;).randomBytes(32).toString(&#39;hex&#39;))&quot;
+&quot;ENCRYPTION_KEY=$ENCRYPTION_KEY`nPORT=3001&quot; | Out-File -Encoding utf8 .env
+npm run dev
+</code></pre>
+<p><code>ENCRYPTION_KEY</code> is required for startup. When <code>NODE_ENV</code> is not <code>production</code>
+and it is unset, the server auto-generates a development key and saves it to a
+<code>.encryption-key</code> file (0600) next to the SQLite database, not inside it. Older
+installs that kept the key in the database are migrated to this file on first
+boot. Do not rely on that fallback with real provider keys; set <code>ENCRYPTION_KEY</code>.</p>
+<h3>Rotating the encryption key</h3>
+<p>Stored secrets are AES-256-GCM, so simply changing <code>ENCRYPTION_KEY</code> does not
+re-encrypt anything — it makes every provider key, per-key proxy override,
+client-profile credential and saved Fetch Relay token fail to decrypt at once.
+Re-encrypt them first, with the server stopped:</p>
+<pre><code class="language-bash"># 1. Generate the new key
+NEW_KEY=&quot;$(node -e &#39;console.log(require(&quot;crypto&quot;).randomBytes(32).toString(&quot;hex&quot;))&#39;)&quot;
+
+# 2. Preview (reads only, writes nothing)
+cd server
+ENCRYPTION_KEY=&lt;old key&gt; npm run rotate-encryption-key -- \
+  --new-key &quot;$NEW_KEY&quot; --dry-run
+
+# 3. Rotate for real
+ENCRYPTION_KEY=&lt;old key&gt; npm run rotate-encryption-key -- --new-key &quot;$NEW_KEY&quot;
+</code></pre>
+<p><code>--old-key &lt;hex&gt;</code> overrides the key read from <code>ENCRYPTION_KEY</code>, and
+<code>--db &lt;path&gt;</code> points at a database somewhere other than <code>server/data</code>. Nothing
+is written unless every value decrypts, so a wrong old key aborts with a
+non-zero exit and an untouched database.</p>
+<p>Then put the new key in <code>.env</code> (<code>ENCRYPTION_KEY=$NEW_KEY</code>) and restart. Under
+Docker, run the command inside the container against the mounted database and
+restart the container with the updated <code>.env</code>. Take a copy of the database file
+before rotating.</p>
+<p>Request analytics are retained for 90 days or 100000 request rows by default,
+whichever limit prunes first. Set <code>REQUEST_ANALYTICS_RETENTION_DAYS=0</code> or
+<code>REQUEST_ANALYTICS_MAX_ROWS=0</code> in <code>.env</code> to disable either retention limit.</p>
+<p>Open <a href="http://localhost:5173" target="_blank" rel="noreferrer">http://localhost:5173</a> (the Vite dev UI), add your provider keys on the <strong>Keys</strong> page, reorder the <strong>Fallback Chain</strong> to taste, and grab your unified API key from the <strong>Keys</strong> page header. That unified key is what you point your OpenAI SDK at.</p>
+<blockquote>
+<p><strong>Reaching the dev UI from another device on your LAN?</strong> Use <code>npm run dev:lan</code> — it passes <code>--host</code> through to Vite, which then prints a <code>Network: http://&lt;your-ip&gt;:5173</code> URL you can open from a phone or another machine. (Plain <code>npm run dev -- --host</code> does <em>not</em> work here: the root <code>dev</code> script is a <code>concurrently</code> wrapper, so the flag never reaches Vite.) API calls go through Vite&#39;s dev proxy, so no extra server config is needed.</p>
+</blockquote>
+<p>For a production build without Docker:</p>
+<pre><code class="language-bash">npm run build
+node server/dist/index.js     # server + dashboard both served on :3001
+</code></pre>
+<h2>Declarative startup config</h2>
+<p>For repeatable Docker/server installs, f3router can apply a JSON config on
+every boot. Set <code>FREEAPI_CONFIG_PATH=/path/to/f3router.config.json</code> or put the
+same JSON in <code>FREEAPI_CONFIG_JSON</code>. The config is idempotent: existing keys,
+custom providers, model edits, fallback rows, and routing settings are updated
+instead of duplicated.</p>
+<pre><code class="language-json">{
+  &quot;admin&quot;: { &quot;email&quot;: &quot;ops@example.com&quot;, &quot;password&quot;: &quot;change-me-min-8-chars&quot; },
+  &quot;license&quot;: &quot;premium license key from f3router.co&quot;,
+  &quot;keys&quot;: [
+    { &quot;platform&quot;: &quot;groq&quot;, &quot;key&quot;: &quot;gsk_...&quot;, &quot;label&quot;: &quot;main&quot; },
+    { &quot;platform&quot;: &quot;google&quot;, &quot;key&quot;: &quot;AIza...&quot;, &quot;enabled&quot;: true }
+  ],
+  &quot;customProviders&quot;: [
+    {
+      &quot;baseUrl&quot;: &quot;http://host.docker.internal:11434/v1&quot;,
+      &quot;label&quot;: &quot;Ollama&quot;,
+      &quot;models&quot;: [
+        { &quot;model&quot;: &quot;llama3.1:8b&quot;, &quot;displayName&quot;: &quot;Local Llama&quot;, &quot;supportsTools&quot;: true }
+      ]
+    }
+  ],
+  &quot;models&quot;: [
+    {
+      &quot;platform&quot;: &quot;groq&quot;,
+      &quot;modelId&quot;: &quot;llama-3.3-70b-versatile&quot;,
+      &quot;displayName&quot;: &quot;Llama 3.3 70B&quot;,
+      &quot;supportsTools&quot;: true,
+      &quot;fallbackEnabled&quot;: true
+    }
+  ],
+  &quot;routing&quot;: { &quot;strategy&quot;: &quot;balanced&quot; }
+}
+</code></pre>
+<p>Two optional top-level fields cover first-run provisioning:</p>
+<ul>
+<li><strong><code>admin</code></strong> creates the first dashboard account, but only while no account
+exists — a claimed install ignores the entry with a warning, so the config
+can never take it over. Because the config is applied before the HTTP
+listener starts, an <code>admin</code> entry also closes the unauthenticated
+first-run setup window entirely: no setup code is minted and
+<code>POST /api/auth/setup</code> answers 409 from the first request on.</li>
+<li><strong><code>license</code></strong> is a Premium key from f3router.co. It is validated against
+the license service before being stored — the same contract as the
+dashboard&#39;s Premium page — then a live-tier catalog sync starts right away.
+Activation runs in the background so an unreachable license service never
+delays boot; a stored key identical to the configured one short-circuits
+before any network call, and a changed key re-activates (rotation).</li>
+</ul>
+<p>The config carries plaintext secrets (provider keys, the admin password, the
+license key), so protect the file or env value exactly like <code>ENCRYPTION_KEY</code>.</p>
+<p>If two custom endpoints serve the same model id, add <code>&quot;endpoint&quot;</code> to a <code>models</code>
+or <code>fallback</code> entry to say which one you mean — the endpoint&#39;s URL, or the short
+handle the dashboard shows next to it. Without it, an entry that matches more
+than one endpoint is rejected rather than applied to an arbitrary one:</p>
+<pre><code class="language-json">{
+  &quot;models&quot;: [
+    { &quot;platform&quot;: &quot;custom&quot;, &quot;modelId&quot;: &quot;deepseek-v3.1&quot;, &quot;endpoint&quot;: &quot;https://relay-b.example.com/v1&quot;, &quot;enabled&quot;: false }
+  ]
+}
+</code></pre>
+<h2>Docker image &amp; operations</h2>
+<p>f3router publishes a single production image that contains the Express server and the built React dashboard:</p>
+<pre><code class="language-bash">docker pull ghcr.io/f3tools/f3router:latest   # or pin a release, e.g. :v1.2.3
+</code></pre>
+<p>The image is multi-arch (<code>linux/amd64</code> + <code>linux/arm64</code>, so it runs on a Raspberry Pi). Published tags: <code>latest</code> (the newest release), <code>main</code> (the default branch), <code>v*.*.*</code> (git release tags), and <code>sha-&lt;commit&gt;</code>.</p>
+<p>The included <code>docker-compose.yml</code> is the recommended install path:</p>
+<pre><code class="language-bash">docker compose up -d
+docker compose logs -f f3router
+</code></pre>
+<p><strong>Updating:</strong> <code>docker compose pull &amp;&amp; docker compose up -d</code> (your volume and <code>.env</code> carry over). To update from the dashboard instead, set <code>WATCHTOWER_TOKEN</code> in <code>.env</code> (e.g. <code>openssl rand -hex 32</code>) and start with the opt-in profile:</p>
+<pre><code class="language-bash">docker compose --profile autoupdate up -d
+</code></pre>
+<p>Settings → <strong>Check for updates</strong> then shows <strong>Update now</strong> when a newer release exists: a <a href="https://github.com/nicholas-fedor/watchtower" target="_blank" rel="noreferrer">Watchtower</a> sidecar pulls the image and recreates the <code>f3router</code> container, and the dashboard reloads when it is back. Watchtower runs with only its token-protected update endpoint, never updates on a schedule, publishes no port and only touches the <code>f3router</code> container — but it mounts the Docker socket, which is root-equivalent on the host, so the profile stays off unless you start it.</p>
+<p>By default the container&#39;s port is bound to <code>127.0.0.1</code> (localhost only). To reach the dashboard/API from another machine on your network, publish it on all interfaces with <code>HOST_BIND=0.0.0.0 docker compose up -d</code> — only on a trusted LAN, since the proxy is single-user.</p>
+<p>Plain HTTP over a LAN address works as-is: the security headers that only apply to HTTPS (<code>upgrade-insecure-requests</code>, <code>Cross-Origin-Opener-Policy</code>, <code>Origin-Agent-Cluster</code>) are emitted only when the request actually arrived over TLS — or over loopback, which browsers already treat as a secure context. Behind an HTTPS reverse proxy they come back on automatically, as long as the proxy forwards <code>X-Forwarded-Proto</code>. <code>CSP_UPGRADE_INSECURE_REQUESTS=true|false</code> overrides the upgrade directive if your setup needs it.</p>
+<p>SQLite data is stored in the <code>f3router-data</code> volume at <code>/app/server/data</code>.
+Keep the same <code>.env</code> <code>ENCRYPTION_KEY</code> and volume when upgrading, because
+provider keys are encrypted at rest. If your host only persists a specific
+directory, set <code>FREEAPI_DB_PATH=/that/path/f3router.db</code>.</p>
+<p>On hosts with ephemeral disks, configure an encrypted backup target:</p>
+<pre><code class="language-env">FREEAPI_DB_BACKUP_PATH=/app/server/data/f3router.db.backup
+# or:
+FREEAPI_DB_BACKUP_URL=https://example.com/f3router.db.backup
+FREEAPI_DB_BACKUP_TOKEN=optional-bearer-token
+FREEAPI_DB_BACKUP_KEY=64-char-hex-backup-key
+FREEAPI_DB_BACKUP_INTERVAL_MS=300000
+</code></pre>
+<p>When the database file is missing at startup, f3router restores the backup
+before migrations run. While the server is running it uploads a fresh encrypted
+backup periodically. If <code>FREEAPI_DB_BACKUP_KEY</code> is omitted, the app uses
+<code>ENCRYPTION_KEY</code> for the backup envelope too.</p>
+<p>More Docker operations and examples live in <a href="https://github.com/f3tools/f3router/blob/main/docker/README.md" target="_blank" rel="noreferrer">docker/README.md</a>.</p>
+<h2>Desktop app</h2>
+<p>A native menu-bar app lives in <a href="https://github.com/f3tools/f3router/blob/main/docs/en/desktop" target="_blank" rel="noreferrer"><code>desktop/</code></a>: the entire router +
+dashboard running locally from your tray, with a glass popover showing live
+request stats.</p>
+<p><img src="https://github.com/f3tools/f3router/blob/main/repo-assets/desktop.png" alt="f3router desktop app" loading="lazy"></p>
+<p><strong><a href="https://github.com/f3tools/f3router/releases/latest" target="_blank" rel="noreferrer">Download from Releases</a></strong> — the macOS <code>.dmg</code> and the Windows <code>.exe</code> installer are built and attached to every release by the <a href="https://github.com/f3tools/f3router/blob/main/.github/workflows/desktop-release.yml" target="_blank" rel="noreferrer"><code>desktop-release</code></a> workflow. Or build it from this repo in a few minutes:</p>
+<p><strong>Mac downloads:</strong> choose <code>arm64</code> for Apple Silicon or <code>x64</code> for Intel. Both require macOS 12 Monterey or later and include DMG and ZIP downloads.</p>
+<p><strong>Updating:</strong> the installed app updates itself on macOS, on Windows (the <code>Setup</code> installer) and from the Linux AppImage. <strong>⋯ → Settings → Check for updates</strong> (or the tray&#39;s <strong>Check for Updates…</strong>) downloads the new release and offers <strong>Restart to update</strong>; a full database backup, listed as <em>Pre-update</em> on the Backups page, is written before it installs. With <strong>Automatic update check</strong> on, new releases download in the background and install on the next restart or quit; the app never restarts on its own. The Linux <code>.deb</code>/<code>.rpm</code>/<code>.tar.xz</code> and the portable Windows <code>.zip</code> update by downloading the new release.</p>
+<blockquote>
+<p><strong>Note for Windows users building from source:</strong> Building the desktop app requires compiling native SQLite modules for Electron. You must have <a href="https://visualstudio.microsoft.com/visual-cpp-build-tools/" target="_blank" rel="noreferrer">Visual Studio Build Tools</a> installed (specifically the &quot;Desktop development with C++&quot; workload) and Python installed before running <code>npm install</code>.</p>
+</blockquote>
+<pre><code class="language-bash">npm install
+npm install --prefix desktop  # install desktop dependencies
+npm run desktop:dist          # macOS  → desktop/dist-electron/f3router-…-arm64.dmg
+npm run desktop:dist:mac:x64  # Intel Mac → desktop/dist-electron/f3router-…-x64.dmg
+npm run desktop:dist:win      # Windows → &quot;desktop/dist-electron/f3router-Setup-….exe&quot;
+</code></pre>
+<blockquote>
+<p>Locally built apps are unsigned, so Windows SmartScreen may warn on first run
+(&quot;More info&quot; → &quot;Run anyway&quot;); the macOS build launches without Gatekeeper prompts.
+Full instructions in <a href="https://github.com/f3tools/f3router/blob/main/desktop/README.md" target="_blank" rel="noreferrer">desktop/README.md</a>.</p>
+</blockquote>
+<h2>Credentials and where your data lives</h2>
+<p>The desktop app has <strong>no username or password to set up</strong>. Unlike the server
+(which gates its dashboard behind an email + password account), the desktop
+build signs the dashboard in automatically with a hidden local account, so
+you&#39;re never prompted for credentials and never need one.</p>
+<p>The only credential you need is your <strong>unified API key</strong> — the
+<code>f3router-…</code> token your OpenAI/Anthropic client points at. Get it from:</p>
+<ul>
+<li>the tray popover — click the tray icon, then <strong>Copy Key</strong>, or</li>
+<li>the dashboard <strong>Keys</strong> page header (tray → <strong>Open Dashboard</strong>).</li>
+</ul>
+<p>You do not need to open or edit <code>freeapi.db</code> by hand.</p>
+<p>Your settings and data live in one folder per OS (copy it to migrate to
+another machine or into a container):</p>
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Location</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td><code>%APPDATA%\f3router\</code> (e.g. <code>C:\Users\&lt;you&gt;\AppData\Roaming\f3router\</code>)</td>
+</tr>
+<tr>
+<td>macOS</td>
+<td><code>~/Library/Application Support/f3router/</code></td>
+</tr>
+<tr>
+<td>Linux</td>
+<td><code>~/.config/f3router/</code></td>
+</tr>
+</tbody></table>
+<p>That folder holds <code>freeapi.db</code> (all keys, models, settings, encrypted at rest),
+<code>config.json</code> (window/theme/port/LAN preferences) and <code>logs/freeapi.log</code> (what
+the app would print to a terminal if it had one). Copy the first two to move an
+install. For the server (non-desktop) deployment, the equivalent state is the
+<code>.env</code> file and the SQLite DB at <code>server/data/freeapi.db</code> (or wherever
+<code>FREEAPI_DB_PATH</code> points).</p>
+<h2>FAQ: passwords, logs, uninstall</h2>
+<h3>I forgot my dashboard password</h3>
+<p><strong>Desktop app — there is no password.</strong> The dashboard signs itself in with a
+hidden local account, so there is nothing to remember and nothing to reset. If
+you cannot see the dashboard, open it from the tray icon → <strong>Open Dashboard</strong>.</p>
+<p><strong>Server installs</strong> (Docker, one-liner, <code>npm run dev</code>) do have an email +
+password account, and there is no email delivery to send a reset link to. The
+flow is a one-time code printed to the server log:</p>
+<ol>
+<li><p>On the login page, click <strong>Forgot password?</strong>, then <strong>Send reset code</strong>.</p>
+</li>
+<li><p>Read the code from the server log (see below). It looks like this:</p>
+<pre><code>  Password-reset code: HWNHPU5QGZ
+  Enter this code on the reset form to set a new password.
+</code></pre>
+</li>
+<li><p>Type it into the reset form together with your new password.</p>
+</li>
+</ol>
+<p>The code is valid for <strong>15 minutes</strong>, and requesting a new one invalidates the
+previous code. Requests are rate-limited, so ask for one code and wait for it
+rather than clicking repeatedly.</p>
+<h3>Where are the logs?</h3>
+<table>
+<thead>
+<tr>
+<th>Install method</th>
+<th>Where the log goes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Docker Compose</td>
+<td><code>docker compose logs -f f3router</code></td>
+</tr>
+<tr>
+<td>Plain Docker</td>
+<td><code>docker logs -f &lt;container&gt;</code> (<code>docker ps</code> lists the name)</td>
+</tr>
+<tr>
+<td>One-liner install</td>
+<td><code>cd ~/f3router &amp;&amp; docker compose logs -f f3router</code></td>
+</tr>
+<tr>
+<td><code>npm run dev</code> / <code>node server/dist/index.js</code></td>
+<td>the terminal the server is running in</td>
+</tr>
+<tr>
+<td>Desktop app</td>
+<td><code>&lt;data dir&gt;/logs/freeapi.log</code> — tray icon → right-click → <strong>Open Logs Folder</strong></td>
+</tr>
+</tbody></table>
+<p>The desktop app has no terminal attached, so it also tees everything it prints
+to a file: <code>freeapi.log</code> in the <code>logs</code> folder inside the data directory listed
+<a href="#credentials-and-where-your-data-lives">above</a> — for example
+<code>~/Library/Application Support/f3router/logs/freeapi.log</code> on macOS. It keeps
+the current file plus one rotated <code>freeapi.log.1</code>, 1 MB each. Open it in any
+text editor; the reset code above appears there too.</p>
+<h3>How do I uninstall?</h3>
+<p>Removing the app never removes your data directory — deleting that is a
+separate, deliberate step, which is also what makes it safe to reinstall over
+the top.</p>
+<p><strong>Desktop app</strong></p>
+<ol>
+<li>Quit from the tray menu (<strong>Quit f3router</strong>). If you turned on <em>Start at
+login</em> in the popover, switch it off first so no stale login item is left.</li>
+<li>Remove the application:<ul>
+<li><strong>macOS</strong> — drag <code>f3router.app</code> from <code>/Applications</code> to the Trash.</li>
+<li><strong>Windows</strong> — <em>Settings → Apps → Installed apps → f3router → Uninstall</em>.</li>
+<li><strong>Linux</strong> — delete the AppImage, <code>sudo apt remove f3router</code> for the <code>.deb</code>, or <code>sudo dnf remove f3router</code> for the <code>.rpm</code>.</li>
+</ul>
+</li>
+<li>Delete the data directory to remove your keys, settings and logs for good:<ul>
+<li><strong>Windows</strong> — <code>%APPDATA%\f3router\</code></li>
+<li><strong>macOS</strong> — <code>~/Library/Application Support/f3router/</code></li>
+<li><strong>Linux</strong> — <code>~/.config/f3router/</code></li>
+</ul>
+</li>
+</ol>
+<p><strong>Docker</strong></p>
+<pre><code class="language-bash">docker compose down -v            # -v also drops the f3router-data volume
+docker image rm ghcr.io/f3tools/f3router:latest
+rm -rf ~/f3router               # the one-liner&#39;s directory: .env + compose file
+</code></pre>
+<p>Leave off <code>-v</code> if you want to keep the database for a later reinstall.</p>
+<p><strong>From source</strong> — delete the checkout. The state that matters is <code>.env</code> and
+<code>server/data/freeapi.db</code> (or wherever <code>FREEAPI_DB_PATH</code> points), so back those
+up first if you plan to come back.</p>
+</article></main>
+</div>
+</body>
+</html>

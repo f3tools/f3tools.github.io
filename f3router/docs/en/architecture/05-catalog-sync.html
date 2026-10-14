@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalog Sync — Deep Dive — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html" class="on">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/architecture/05-catalog-sync.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Catalog Sync — Deep Dive</h1>
+<blockquote>
+<p><strong>Source:</strong> <code>server/src/services/catalog-sync.ts</code>, <code>server/src/services/model-state.ts</code>, <code>server/src/db/migrations/</code></p>
+</blockquote>
+<h2>1. Overview</h2>
+<p>The catalog sync keeps the local model catalog in step with the published catalog at <code>f3router.co</code>. It runs <strong>twice daily</strong> (and on demand), fetches a <strong>signed catalog</strong>, verifies it against a <strong>pinned Ed25519 public key</strong>, and applies it <strong>transactionally</strong> to the local SQLite database.</p>
+<h3>Two Tiers</h3>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Audience</th>
+<th>Refresh Cadence</th>
+<th>Auth</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Live</strong></td>
+<td>Premium license holders</td>
+<td>Every 2–3 days</td>
+<td>Bearer <code>premium_license_key</code></td>
+</tr>
+<tr>
+<td><strong>Monthly</strong></td>
+<td>Free installs</td>
+<td>~30 days</td>
+<td>None (public)</td>
+</tr>
+</tbody></table>
+<p>Free installs still self-heal, just on a slower cadence. The bundled migrations remain the <strong>baseline</strong> — a fetched catalog is applied only when <strong>newer than <code>MIN_CATALOG_VERSION</code></strong> (bumped on every model migration), so a stale monthly snapshot can never roll back models added by a newer app version.</p>
+<hr>
+<h2>2. Catalog Structure</h2>
+<pre><code class="language-typescript">interface Catalog {
+  version: string;           // e.g. &quot;2026.06.07&quot;
+  generatedAt: string;       // ISO timestamp
+  tier: &#39;live&#39; | &#39;monthly&#39;;
+  models: CatalogModel[];    // chat models
+  embeddings?: CatalogEmbedding[];       // optional, joined freshness feed
+  transcriptionModels?: CatalogTranscriptionModel[]; // STT, own top-level key
+  quirks: CatalogQuirk[];    // operational advisories
+}
+</code></pre>
+<h3>CatalogModel (chat)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>platform</code>, <code>modelId</code></td>
+<td>Primary key (with <code>endpoint_scope</code> for relays)</td>
+</tr>
+<tr>
+<td><code>displayName</code></td>
+<td>UI name</td>
+</tr>
+<tr>
+<td><code>intelligenceRank</code></td>
+<td>1..1000 (1 = best), within provider</td>
+</tr>
+<tr>
+<td><code>speedRank</code></td>
+<td>1..11 (catalog hand-assigned, 1 = fastest)</td>
+</tr>
+<tr>
+<td><code>sizeLabel</code></td>
+<td><code>Frontier</code> | <code>Large</code> | <code>Medium</code> | <code>Small</code> (cross-provider tier)</td>
+</tr>
+<tr>
+<td><code>limits</code></td>
+<td><code>{rpm, rpd, tpm, tpd}</code> — per-model caps</td>
+</tr>
+<tr>
+<td><code>monthlyTokenBudget</code></td>
+<td>String label (e.g. <code>&quot;1M&quot;</code>, <code>&quot;2x&quot;</code>) for headroom guardrail</td>
+</tr>
+<tr>
+<td><code>contextWindow</code></td>
+<td>Max context (tokens)</td>
+</tr>
+<tr>
+<td><code>enabled</code></td>
+<td>Catalog-level enable (force-disables if false)</td>
+</tr>
+<tr>
+<td><code>supportsVision</code> / <code>supportsTools</code></td>
+<td>Capability flags</td>
+</tr>
+<tr>
+<td><code>modality</code></td>
+<td><code>&#39;text&#39;</code> (default) → <code>models</code> table; <code>&#39;image&#39;</code>/<code>&#39;audio&#39;</code> → <code>media_models</code></td>
+</tr>
+<tr>
+<td><code>mediaNote</code></td>
+<td>Short display for media models</td>
+</tr>
+<tr>
+<td><code>requestStyle</code></td>
+<td>Adapter flavor (e.g. Cloudflare images: <code>&#39;json&#39;</code> | <code>&#39;multipart&#39;</code>)</td>
+</tr>
+</tbody></table>
+<h3>Generative Media &amp; Transcription</h3>
+<ul>
+<li><strong>Media models</strong> (<code>modality: &#39;image&#39; | &#39;audio&#39;</code>) → <code>media_models</code> table, gated by <code>MEDIA_PLATFORMS</code> set.</li>
+<li><strong>Transcription models</strong> → <code>media_models</code> with <code>modality = &#39;transcription&#39;</code>, gated by <code>TRANSCRIPTION_PLATFORMS</code>.</li>
+<li>Separate top-level keys (<code>transcriptionModels</code>, <code>embeddings</code>) so older binaries ignore unknown modalities instead of misrouting them as chat models.</li>
+</ul>
+<hr>
+<h2>3. Signature Verification</h2>
+<pre><code class="language-typescript">const PINNED_CATALOG_PUBKEY = `-----BEGIN PUBLIC KEY-----
+MCowBQYDK2VwAyEAq9yv4+3EeyMHKsfVYBhkcz1lYgIXSUeHNnN6tNgYX3k=
+-----END PUBLIC KEY-----`;
+
+// Fetch
+const res = await fetch(`${catalogBaseUrl()}/v1/latest`, { headers: { Authorization: `Bearer ${key}` } });
+const signature = res.headers.get(&#39;x-catalog-signature&#39;);
+const bytes = Buffer.from(await res.arrayBuffer());
+const verified = crypto.verify(null, bytes, catalogPublicKey(), Buffer.from(signature, &#39;base64&#39;));
+</code></pre>
+<ul>
+<li><strong>Pinned key</strong>: private half never left catalog host.</li>
+<li><strong>Self-hosted catalog override</strong>: <code>CATALOG_BASE_URL</code>, <code>CATALOG_PUBKEY</code> env vars.</li>
+<li><strong>Tamper-proof</strong>: anything unsigned or modified is discarded. Compromised CDN / MITM cannot inject models or quirks.</li>
+</ul>
+<hr>
+<h2>4. Application Rules (User Data Protection)</h2>
+<p>Applied inside <strong>one transaction</strong> (<code>applyCatalog</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Metadata (name, ranks, limits, context, capabilities)</td>
+<td>Tracks catalog <strong>unless</strong> user has explicit local override</td>
+</tr>
+<tr>
+<td><code>enabled: false</code></td>
+<td><strong>Force-disables</strong> (model dead upstream)</td>
+</tr>
+<tr>
+<td><code>enabled: true</code></td>
+<td><strong>Never re-enables</strong> a model the user turned off</td>
+</tr>
+<tr>
+<td>User-created rows (<code>source = &#39;user&#39;</code>)</td>
+<td><strong>Never updated, never deleted, never adopted</strong> — on <code>platform:model_id</code> collision, user row wins, catalog entry skipped</td>
+</tr>
+<tr>
+<td>Catalog models user deleted</td>
+<td>Stay deleted via <strong>tombstones</strong> (<code>catalog_model_tombstones</code> table)</td>
+</tr>
+<tr>
+<td>Auto-retired (410/end-of-life)</td>
+<td><strong>Disabled, not deleted</strong> — catalog listing them enabled lifts retirement (#634)</td>
+</tr>
+<tr>
+<td>Models vanished from catalog</td>
+<td><strong>Deleted</strong> (fallback_config first, FK order)</td>
+</tr>
+</tbody></table>
+<h3>Provenance Column (<code>source</code>)</h3>
+<p>Replaces the old <code>size_label NOT IN (&#39;User&#39;,&#39;Custom&#39;)</code> heuristic. Values:</p>
+<ul>
+<li><code>&#39;catalog&#39;</code> — created by catalog sync</li>
+<li><code>&#39;user&#39;</code> — declarative config, admin add, custom endpoint</li>
+<li><code>&#39;declarative&#39;</code> — from declarative config file</li>
+</ul>
+<hr>
+<h2>5. Sync Flow</h2>
+<pre><code>syncCatalog(force=false)
+  ├─ GET /v1/latest?since=&lt;appliedVersion&gt; (with Bearer license if set)
+  ├─ 304 → up_to_date
+  ├─ Verify signature (Ed25519)
+  ├─ Parse + structural validation (isCatalog)
+  ├─ version &lt; MIN_CATALOG_VERSION? → skipped_older (would roll back migrations)
+  ├─ Same version+tier as applied? → up_to_date
+  ├─ applyCatalog(db, catalog) → transactional upsert/insert/delete
+  ├─ Persist settings: appliedVersion, appliedTier, appliedJSON (verified doc)
+  └─ Log counts: updated, inserted, removed, skippedUnknownPlatform, quirks
+</code></pre>
+<h3>Boot Re-apply (<code>reapplyCachedCatalog</code>)</h3>
+<p>Migrations run on every boot and re-assert the bundled baseline (INSERT OR IGNORE baseline models the catalog may have deleted). The boot-time network sync 304s on unchanged version and would <strong>NOT</strong> re-apply. Without this step, every restart drifts the DB back toward the baseline until the next catalog version bump.</p>
+<pre><code>reapplyCachedCatalog()
+  ├─ Read SETTING_APPLIED_JSON (cached verified document)
+  ├─ Validate + version ≥ MIN_CATALOG_VERSION
+  ├─ applyCatalog(db, parsed) → synchronous, no network
+  └─ Log: &quot;re-applied cached live v2026.06.07 after boot&quot;
+</code></pre>
+<ul>
+<li>Legacy upgrade: installs with applied-version but no cached doc → clear applied version → next poll fetches full catalog.</li>
+</ul>
+<hr>
+<h2>6. Model-Age Gate (30 Days)</h2>
+<p>Models older than 30 days from <code>generatedAt</code> are <strong>excluded from the live tier</strong> (free tier trailing snapshot). The catalog service enforces this; the client just receives what the tier provides.</p>
+<hr>
+<h2>7. License Status</h2>
+<pre><code class="language-typescript">interface LicenseStatus {
+  valid: boolean;
+  plan: &#39;annual&#39; | &#39;lifetime&#39; | null;
+  status: string | null;
+  expiresAt: string | null;
+  checkedAtMs: number;
+}
+</code></pre>
+<ul>
+<li>Cached in settings (<code>premium_license_status</code>), refreshed on every sync.</li>
+<li>Entitlement enforced <strong>server-side</strong> at <code>/v1/latest</code> — local cache is informational UI state.</li>
+<li>Offline / service down → keep cached status.</li>
+</ul>
+<hr>
+<h2>8. Quirks (Operational Advisories)</h2>
+<pre><code class="language-typescript">interface CatalogQuirk {
+  slug: string;
+  title: string;
+  body: string;
+  severity: &#39;blocker&#39; | &#39;warning&#39; | &#39;info&#39;;
+  targets: { platform: string | null; modelGlob: string | null }[];
+}
+</code></pre>
+<ul>
+<li>Pure content: <strong>replaced wholesale</strong> on every sync (DELETE + INSERT).</li>
+<li>Dashboard surfaces blockers/warnings for affected models.</li>
+</ul>
+<hr>
+<h2>9. Settings Keys</h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>premium_license_key</code></td>
+<td>Bearer token for live tier</td>
+</tr>
+<tr>
+<td><code>premium_license_status</code></td>
+<td>Cached <code>LicenseStatus</code> JSON</td>
+</tr>
+<tr>
+<td><code>catalog_applied_version</code></td>
+<td>Last applied catalog version</td>
+</tr>
+<tr>
+<td><code>catalog_applied_tier</code></td>
+<td><code>&#39;live&#39;</code> | <code>&#39;monthly&#39;</code></td>
+</tr>
+<tr>
+<td><code>catalog_applied_json</code></td>
+<td>Verified catalog document (for boot re-apply)</td>
+</tr>
+<tr>
+<td><code>catalog_last_sync_ms</code></td>
+<td>Timestamp of last successful sync</td>
+</tr>
+<tr>
+<td><code>catalog_last_error</code></td>
+<td>Last sync error message</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>10. Scheduler Integration</h2>
+<pre><code class="language-typescript">startCatalogSync(scheduler: Scheduler)
+  ├─ reapplyCachedCatalog()  // synchronous, no network
+  ├─ scheduler.after(10s, run)  // boot delay
+  └─ scheduler.every(12h, run)  // twice daily
+</code></pre>
+<ul>
+<li><code>run()</code> = <code>refreshLicenseStatus()</code> + <code>syncCatalog()</code></li>
+<li>Kill switch: <code>CATALOG_SYNC_DISABLED=1</code></li>
+</ul>
+<hr>
+<h2>11. Migration Seeding vs Hosted Catalog</h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Bundled Migrations</th>
+<th>Hosted Catalog Sync</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Authority</strong></td>
+<td>Baseline floor</td>
+<td>Live source of truth</td>
+</tr>
+<tr>
+<td><strong>Version</strong></td>
+<td><code>MIN_CATALOG_VERSION</code> (date)</td>
+<td><code>catalog.version</code> (date)</td>
+</tr>
+<tr>
+<td><strong>New models</strong></td>
+<td>Added via migration PR</td>
+<td>Appear in next catalog publish</td>
+</tr>
+<tr>
+<td><strong>Limit corrections</strong></td>
+<td>Migration PR</td>
+<td>Learned from provider errors + catalog update</td>
+</tr>
+<tr>
+<td><strong>Retirements</strong></td>
+<td>Migration (disabled + tombstone)</td>
+<td>Catalog <code>enabled: false</code> → force-disable</td>
+</tr>
+<tr>
+<td><strong>Relay models</strong></td>
+<td>Not in catalog</td>
+<td>Custom endpoints only (user rows)</td>
+</tr>
+<tr>
+<td><strong>Rollback protection</strong></td>
+<td>N/A</td>
+<td><code>version &lt; MIN_CATALOG_VERSION</code> → skipped</td>
+</tr>
+</tbody></table>
+<h3>Custom Models / Relay Models</h3>
+<ul>
+<li><strong>Never</strong> come from catalog. Created via:<ul>
+<li><code>POST /api/media/custom</code> (generative media / STT)</li>
+<li><code>POST /api/custom-endpoint</code> (chat relays)</li>
+<li>Declarative config file</li>
+</ul>
+</li>
+<li>Bound to <code>api_keys</code> row carrying their endpoint (<code>key_id</code> on <code>models</code> row).</li>
+<li><code>endpoint_scope = &#39;custom:&lt;base_url_hash&gt;&#39;</code> distinguishes relays serving same <code>model_id</code>.</li>
+<li>Catalog sync <strong>skips</strong> <code>platform = &#39;custom&#39;</code> and unknown platforms (older binary).</li>
+</ul>
+<hr>
+<h2>12. Key Functions</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>syncCatalog(force?)</code></td>
+<td>Fetch → verify → apply (or 304/skip)</td>
+</tr>
+<tr>
+<td><code>applyCatalog(db, catalog)</code></td>
+<td>Transactional upsert/insert/delete + quirks</td>
+</tr>
+<tr>
+<td><code>reapplyCachedCatalog()</code></td>
+<td>Boot-time re-apply from verified cache</td>
+</tr>
+<tr>
+<td><code>refreshLicenseStatus()</code></td>
+<td>Validate license against catalog service</td>
+</tr>
+<tr>
+<td><code>getSyncState()</code></td>
+<td>Dashboard status panel</td>
+</tr>
+<tr>
+<td><code>startCatalogSync(scheduler)</code></td>
+<td>Register 12h interval + boot delay</td>
+</tr>
+<tr>
+<td><code>isCatalog(value)</code></td>
+<td>Structural validation (fail loud on garbled body)</td>
+</tr>
+<tr>
+<td><code>routableContextWindow(platform, modelId, cw)</code></td>
+<td>GitHub gpt-4.1 override (8000)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>13. Tables Touched</h2>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Operation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>models</code></td>
+<td>UPSERT chat models (catalog source)</td>
+</tr>
+<tr>
+<td><code>media_models</code></td>
+<td>UPSERT image/audio/transcription</td>
+</tr>
+<tr>
+<td><code>embedding_models</code></td>
+<td>UPSERT embeddings (full snapshot)</td>
+</tr>
+<tr>
+<td><code>fallback_config</code></td>
+<td>Ensure every model has a row</td>
+</tr>
+<tr>
+<td><code>catalog_model_tombstones</code></td>
+<td>Respect user deletions</td>
+</tr>
+<tr>
+<td><code>quirks</code> + <code>quirk_targets</code></td>
+<td>Replace wholesale</td>
+</tr>
+<tr>
+<td><code>settings</code></td>
+<td>Persist applied version/tier/json, license status, sync time</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>14. Environment Variables</h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>CATALOG_BASE_URL</code></td>
+<td><code>https://api.f3tools.vercel.app</code></td>
+<td>Catalog service endpoint</td>
+</tr>
+<tr>
+<td><code>CATALOG_PUBKEY</code></td>
+<td>Pinned Ed25519 key</td>
+<td>Override for self-hosted catalog</td>
+</tr>
+<tr>
+<td><code>CATALOG_SYNC_DISABLED</code></td>
+<td><code>0</code></td>
+<td>Kill switch (<code>1</code> = disabled)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>15. Error Handling</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Network timeout (20s)</td>
+<td>Log warning, keep previous catalog</td>
+</tr>
+<tr>
+<td>HTTP 304</td>
+<td><code>up_to_date</code>, update <code>last_sync_ms</code></td>
+</tr>
+<tr>
+<td>HTTP non-2xx</td>
+<td>Error, keep previous catalog</td>
+</tr>
+<tr>
+<td>Missing signature</td>
+<td>Discard, error</td>
+</tr>
+<tr>
+<td>Signature verification FAILED</td>
+<td>Discard, <strong>loud error</strong> — &quot;catalog signature verification FAILED — discarding response&quot;</td>
+</tr>
+<tr>
+<td>Invalid JSON / shape</td>
+<td>Discard, error</td>
+</tr>
+<tr>
+<td>Version older than baseline</td>
+<td><code>skipped_older</code>, wait for newer catalog</td>
+</tr>
+<tr>
+<td>DB unavailable during apply</td>
+<td>Transaction rolls back, error, keep previous state</td>
+</tr>
+<tr>
+<td>License check unreachable</td>
+<td>Keep cached status, sync still runs (tier determined server-side)</td>
+</tr>
+</tbody></table>
+</article></main>
+</div>
+</body>
+</html>

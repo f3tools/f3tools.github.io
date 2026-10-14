@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Degraded Mode & Failover — Deep Dive — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html" class="on">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/architecture/04-degraded-mode-and-failover.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Degraded Mode &amp; Failover — Deep Dive</h1>
+<blockquote>
+<p><strong>Source:</strong> <code>server/src/services/degradation.ts</code>, <code>server/src/lib/fallback-loop.ts</code>, <code>server/src/routes/proxy.ts</code>, <code>server/src/services/ratelimit.ts</code>, <code>server/src/services/idempotency.ts</code></p>
+</blockquote>
+<blockquote>
+<p><strong>Cross-ref:</strong> Client-facing contract for <code>Idempotency-Key</code> (header, replay/409/miss, fingerprint, TTL, curl example) lives in <a href="/f3router/docs/en/api/02-idempotency.html"><code>../api/02-idempotency.md</code></a>. This file notes how that replay interacts with failover.</p>
+</blockquote>
+<h2>1. Degraded-Mode State Machine (f412e97)</h2>
+<h3>Purpose</h3>
+<p>When a large share of enabled providers fails simultaneously, per-request probing and bandit exploration just burn retry budget on dead routes. The degraded-mode state machine tracks the <strong>healthy-provider ratio</strong> (driven by the scheduled health pass) and flips the gateway into a degraded state once the ratio stays below a threshold for a sustained period.</p>
+<h3>State Machine</h3>
+<pre><code>┌─────────────┐     ratio &lt; threshold for DEGRADED_ENTRY_GRACE_MS     ┌─────────────┐
+│   normal    │ ─────────────────────────────────────────────────────▶ │  degraded   │
+└─────────────┘                                                       └─────────────┘
+      ▲                                                                     │
+      │     ratio ≥ threshold for DEGRADED_EXIT_GRACE_MS                  │
+      └────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h3>Parameters (env-tunable)</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>DEGRADED_HEALTHY_RATIO</code></td>
+<td>0.5</td>
+<td>Fraction of providers that must have ≥1 usable key</td>
+</tr>
+<tr>
+<td><code>DEGRADED_MIN_PROVIDERS</code></td>
+<td>3</td>
+<td>Min enabled providers for evaluation (single-provider deployments don&#39;t flap)</td>
+</tr>
+<tr>
+<td><code>DEGRADED_ENTRY_GRACE_MS</code></td>
+<td>60,000</td>
+<td>Time below threshold before entering degraded</td>
+</tr>
+<tr>
+<td><code>DEGRADED_EXIT_GRACE_MS</code></td>
+<td>120,000</td>
+<td>Time above threshold before exiting (longer = hysteresis)</td>
+</tr>
+</tbody></table>
+<h3>Health Snapshot</h3>
+<pre><code class="language-typescript">interface HealthSnapshot {
+  healthyProviders: number  // enabled providers with ≥1 key in {healthy, unknown}
+  totalProviders: number    // enabled providers with ≥1 key (any status)
+  ratio: number             // healthy / total (1 if total=0)
+}
+</code></pre>
+<ul>
+<li><code>unknown</code> counts as healthy (unprobed key = usable until probe says otherwise).</li>
+<li>Computed from <code>api_keys</code> table on every health pass + on demand (dashboard, router entry).</li>
+</ul>
+<h3>Behavioral Changes in Degraded Mode</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Normal</th>
+<th>Degraded</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bandit exploration</td>
+<td>10% floor (if enabled)</td>
+<td><strong>Disabled</strong> — sticks to scored order of remaining healthy providers</td>
+</tr>
+<tr>
+<td>Router</td>
+<td><code>isDegraded()</code> checked at route time</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Health endpoint</td>
+<td>Reports <code>state: &#39;normal&#39;</code></td>
+<td>Reports <code>state: &#39;degraded&#39;, degradedAt: timestamp</code></td>
+</tr>
+<tr>
+<td>Logging</td>
+<td>—</td>
+<td><code>console.warn</code> on entry, <code>console.log</code> on exit</td>
+</tr>
+</tbody></table>
+<h3>API</h3>
+<pre><code class="language-typescript">isDegraded(): boolean                    // read-only, used by router
+getDegradationStatus(): DegradationStatus // {healthyProviders, totalProviders, ratio, state, degradedAt}
+updateDegradationState(now?): DegradationStatus // call after every health pass
+resetDegradationState()                  // tests, post-start re-probe
+</code></pre>
+<hr>
+<h2>2. Retry Budget &amp; Hedging (1d2226a)</h2>
+<h3>Wall-Clock Retry Budget</h3>
+<ul>
+<li><strong>Default</strong>: 45 s (<code>FALLBACK_TIME_BUDGET_MS</code>, setting <code>fallback_time_budget_ms</code>, 0 = disabled).</li>
+<li><strong>Checked BEFORE starting each retry</strong> (attempt ≥ 1). Attempt 0 always runs; attempt 1 always runs (so failover is structurally possible even when attempt 0 consumes the whole budget).</li>
+<li><strong>Exhaustion rendering</strong>: <code>timedOut: true</code> + <code>budgetMs</code> in <code>ExhaustionContext</code> → message includes &quot;stopped early: retry time budget 45s exceeded — one failover hop is always allowed, and past that the budget stops starting further retries and cancels an attempt still waiting on its first byte&quot;.</li>
+</ul>
+<h3>Hedging (Abort In-Flight)</h3>
+<blockquote>
+<p>Pre-v2: budget only refused to <em>start</em> the next retry. A stalled attempt could run for minutes, blocking the chain.</p>
+<p><strong>v2 (1d2226a)</strong>: When budget expires mid-attempt, <code>abortInFlight()</code> cancels the upstream fetch via <code>AbortController</code> (threaded as <code>CompletionOptions.signal</code>).</p>
+</blockquote>
+<pre><code class="language-typescript">// In fallback-loop.ts
+abortInFlight: () =&gt; hedgeAbort.abort(newHedgeAbortError())
+</code></pre>
+<ul>
+<li><code>HedgeAbortError</code> is <strong>non-provider-health</strong> → no cooldown, no penalty, no limit learning.</li>
+<li>Renders <code>timedOut</code> exhaustion (not a provider failure).</li>
+<li>Streaming surfaces call <code>ctx.disarmHedge()</code> on first byte / header flush — past that point the answer is on its way, killing it would truncate a healthy response for no failover benefit.</li>
+</ul>
+<h3>Circuit Breaker Guardrail</h3>
+<ul>
+<li><code>max_consecutive_upstream_fails</code> (setting <code>max_consecutive_upstream_fails</code>, default 0 = disabled).</li>
+<li>Counts consecutive retryable upstream failures across the attempt loop.</li>
+<li>Trips → <code>breakerFails</code> in <code>ExhaustionContext</code> → <strong>503 service_unavailable</strong> with &quot;upstream_unhealthy&quot; code.</li>
+<li>&quot;The enabled pool looks unhealthy right now, so the remaining candidates were skipped instead of burning quota on them.&quot;</li>
+</ul>
+<hr>
+<h2>3. X-Fallback-Detail Header (8cb75ac)</h2>
+<h3>Purpose</h3>
+<p><code>X-Fallback-Trail</code> tells <strong>which hops burned and why</strong>. <code>X-Fallback-Detail</code> adds <strong>how long they cost</strong> — the part an agent cannot reconstruct (a 40s response: one provider stalled 39s vs four failed fast).</p>
+<h3>Format</h3>
+<pre><code>X-Fallback-Detail: platform/model keyN=outcome t=startOffset+durationMs msg=summary; +N more
+</code></pre>
+<ul>
+<li><strong>Per-hop timings</strong> + redacted provider message.</li>
+<li><strong>Opt-in</strong>: <code>EXPOSE_FALLBACK_DETAIL_HEADER=1</code> or setting <code>expose_fallback_detail_header</code>.</li>
+<li><strong>Budget</strong>: 2048 chars total, 120 chars per message summary, max 10 hops shown.</li>
+<li><strong>Only failed hops</strong>: the currently-serving hop isn&#39;t knowable while headers are open (recorded after dispatch returns).</li>
+</ul>
+<h3>Example</h3>
+<pre><code>X-Fallback-Detail: google/gemini-2.5-pro key1=rate_limited t=0+1205ms msg=429 Quota exceeded; groq/llama-3.3-70b key2=upstream_error t=1205+3450ms msg=503 Service unavailable; +1 more
+</code></pre>
+<h3>Implementation</h3>
+<pre><code class="language-typescript">// fallback-loop.ts
+formatAttemptDetail(records: AttemptTraceRecord[]): string
+// AttemptTraceRecord: {platform, modelId, keyOrdinal, outcome, startOffsetMs, durationMs, errorSummary}
+
+// Set on response (before flush):
+if (isFallbackDetailHeaderEnabled() &amp;&amp; records?.length) {
+  res.setHeader(&#39;X-Fallback-Detail&#39;, safeHeaderValue(formatAttemptDetail(records), 2048));
+}
+</code></pre>
+<hr>
+<h2>4. Bare Safe/Unsafe Classification Failover (a961d93)</h2>
+<h3>Problem</h3>
+<p>Some relay models (e.g. OpenCode Zen) emit a bare <code>&quot;safe&quot;</code> or <code>&quot;unsafe&quot;</code> classification word as the <strong>entire completion</strong> instead of the requested answer. This is an upstream content filter, not the model&#39;s output.</p>
+<h3>Fix</h3>
+<pre><code class="language-typescript">// proxy.ts, after non-stream completion:
+const text = completionTextFromChat(result);
+if (!text) { throw empty completion... }
+
+// #809: fail over on relay&#39;s bare classification output
+if (isUpstreamClassificationOutput(text, route.platform)) {
+  throw Object.assign(
+    new Error(`empty completion from ${route.displayName} (upstream classification output)`),
+    result.choices?.[0]?.finish_reason === &#39;length&#39; ? { skipBench: true } : {},
+  );
+}
+</code></pre>
+<ul>
+<li><code>isUpstreamClassificationOutput(text, platform)</code> checks for exact <code>&quot;safe&quot;</code> / <code>&quot;unsafe&quot;</code> (case-insensitive, trimmed) on known relay platforms.</li>
+<li>Treated like an empty completion: <strong>fail over</strong>, <code>skipBench: true</code> when <code>finish_reason === &#39;length&#39;</code> (reasoning consumed budget).</li>
+<li>Streaming path: same check on accumulated text at stream end.</li>
+</ul>
+<hr>
+<h2>5. Unified Fallback Loop (<code>lib/fallback-loop.ts</code>)</h2>
+<h3>Shared by All Surfaces</h3>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Route</th>
+<th>Dispatch</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/v1/chat/completions</code></td>
+<td><code>proxy.ts</code></td>
+<td>SSE streaming + non-stream</td>
+</tr>
+<tr>
+<td><code>/v1/responses</code></td>
+<td><code>responses.ts</code></td>
+<td>Responses API framing</td>
+</tr>
+<tr>
+<td><code>/v1/messages</code></td>
+<td><code>anthropic.ts</code></td>
+<td>Anthropic SSE events</td>
+</tr>
+<tr>
+<td><code>/v1/completions</code></td>
+<td><code>proxy.ts</code></td>
+<td>Legacy text_completion SSE</td>
+</tr>
+</tbody></table>
+<h3>Loop Contract</h3>
+<pre><code class="language-typescript">interface FallbackHooks {
+  maxRetries?: number;              // default 20
+  timeBudgetMs?: number;            // default getFallbackTimeBudgetMs()
+  breakerLimit?: number;            // default getMaxConsecutiveUpstreamFails()
+  attemptLog?: AttemptRecord[];     // mutated, used for X-Fallback-Trail
+  state: FallbackState;             // skipKeys, skipModels, skipPlatforms
+  clientGone?: () =&gt; boolean;       // checked before each retry
+  abortInFlight?: () =&gt; void;       // hedging (v2)
+  route(attempt): RouteResult;      // throws RouteError on synchronous exhaustion
+  dispatch(route, attempt, ctx): Promise&lt;&#39;done&#39; | &#39;committed&#39;&gt;;
+  logFailure(route, err, attempt): void;
+  onFatal(route, err, attempt): void;           // non-retryable → 502
+  onRoutingExhausted(lastError, routeErr, exhaustion, info): void; // zero attempts
+  onExhausted(exhaustion, info): void;          // retries exhausted
+}
+</code></pre>
+<h3>Attempt Classification (recordRetryableFailure)</h3>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Skip Scope</th>
+<th>Cooldown</th>
+<th>Model Penalty</th>
+<th>Limit Learn</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>401 invalid key</td>
+<td>key</td>
+<td>5 min</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>402 payment required</td>
+<td><strong>key, every model of the platform</strong> (#1239)</td>
+<td>24h</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>403 model forbidden</td>
+<td><strong>model</strong></td>
+<td>24h</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>429 daily exhausted</td>
+<td>model+key</td>
+<td>until midnight / Retry-After</td>
+<td><strong>heavy (3)</strong></td>
+<td>yes</td>
+</tr>
+<tr>
+<td>429 transient (rpm/tpm)</td>
+<td>key</td>
+<td>90s / ladder</td>
+<td>light (1)</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>5xx / timeout / transport</td>
+<td><strong>platform</strong> (#788)</td>
+<td>90s / ladder</td>
+<td>light (1)</td>
+<td>no</td>
+</tr>
+<tr>
+<td>empty completion (reasoning)</td>
+<td>key</td>
+<td>exempt (streak ≤3)</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>context too large</td>
+<td>model</td>
+<td>—</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>response_format ignored</td>
+<td>model</td>
+<td>—</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>invalid tool arguments</td>
+<td>key</td>
+<td>—</td>
+<td>no</td>
+<td>no</td>
+</tr>
+</tbody></table>
+<h3>Model-Level Failure Benching (#806)</h3>
+<ul>
+<li>3 retryable failures across keys within 15 min → bench model on <strong>all its keys</strong> for 10 min (heuristic, probe-eligible).</li>
+<li>A served request clears the failure window.</li>
+</ul>
+<h3>Empty-Completion Streak Limit (#751)</h3>
+<ul>
+<li>3 consecutive reasoning-truncated completions on same model+key → exemption lifts → normal cooldown/penalty/limit-learning applies.</li>
+<li>Reset on success or normally-penalized failure.</li>
+</ul>
+<h3>Provider-Level Skip (#788)</h3>
+<ul>
+<li>5xx / timeout / transport / degraded → <code>skipPlatforms.add(platform)</code>.</li>
+<li>Whole provider ruled out for this request — loop moves to next provider instead of burning one hop per key.</li>
+</ul>
+<h3>Exhaustion Rendering (exhaustedRetryError)</h3>
+<p><strong>Most-specific-first aggregation over attempt classes:</strong></p>
+<ol>
+<li><strong>All auth</strong> → 502 <code>provider_error</code> (<code>provider_authentication_failed</code>) — distinct from rate-limit, never blames client key.</li>
+<li><strong>All context_too_large</strong> → 413 <code>invalid_request_error</code> (<code>context_length_exceeded</code>).</li>
+<li><strong>All model_not_found</strong> → 404 <code>invalid_request_error</code> (<code>model_not_found</code>).</li>
+<li><strong>Last error = degraded 400</strong> (NVIDIA NIM) → 503 <code>service_unavailable</code> (<code>provider_degraded</code>).</li>
+<li><strong>All provider_bad_request</strong> (or legacy no-trail, last error = provider bad request) → 400 <code>invalid_request_error</code> (<code>provider_rejected_request</code>). A mixed trail with only some bad-request hops falls through to 8 — the last hop&#39;s shape alone never blames the caller&#39;s request (#1239).</li>
+<li><strong>Circuit breaker</strong> → 503 <code>service_unavailable</code> (<code>upstream_unhealthy</code>).</li>
+<li><strong>All UNAVAILABLE_UNTIL_KNOWN_TIME</strong> (rate_limited, daily_quota_exhausted, out_of_credits, forbidden) → 429 <code>rate_limit_error</code> with <code>retryAtMs</code> + <code>Retry-After</code>.</li>
+<li><strong>Mixed/other</strong> → 502 <code>provider_error</code> (<code>upstream_failed</code>) — never 500 (our bugs). The message carries a per-class tally (<code>provider_bad_request ×5, out_of_credits ×3</code>) and only says &quot;not a problem with your request&quot; when no hop was a provider-side request rejection.</li>
+</ol>
+<p><strong>Synchronous exhaustion (zero attempts):</strong> <code>routingExhaustionBody(routeErr)</code> maps diagnostics to same taxonomy:</p>
+<ul>
+<li>All config (no key, no provider) → 503 <code>no_providers_configured</code></li>
+<li>All too_large (+ config) → 413 <code>context_length_exceeded</code></li>
+<li>Some time_bound, rest config/too_large → 429 with <code>retryAtMs</code></li>
+<li>Else → 429 <code>routing_exhausted</code></li>
+</ul>
+<hr>
+<h2>6. Attempt Trail &amp; Headers</h2>
+<h3>X-Fallback-Attempts</h3>
+<p>Count of failed hops before this response (on success AND exhaustion).</p>
+<h3>X-Fallback-Trail</h3>
+<pre><code>platform/model key1=class; platform/model key2=class; +N more
+</code></pre>
+<ul>
+<li><code>class</code> ∈ <code>AttemptErrorClass</code> (auth, out_of_credits, daily_quota_exhausted, model_not_found, forbidden, context_too_large, provider_bad_request, empty_completion, format_ignored, invalid_tool_arguments, timeout, rate_limited, upstream_error, error).</li>
+<li>Max 10 shown, 1024 char cap.</li>
+</ul>
+<h3>X-Fallback-Detail (opt-in)</h3>
+<p>See §3 above.</p>
+<hr>
+<h2>7. Key Functions (degradation.ts)</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>computeHealthSnapshot()</code></td>
+<td>Reads <code>api_keys</code> → <code>{healthyProviders, totalProviders, ratio}</code></td>
+</tr>
+<tr>
+<td><code>updateDegradationState(now)</code></td>
+<td>State machine step, called after health pass</td>
+</tr>
+<tr>
+<td><code>isDegraded()</code></td>
+<td>Router gate</td>
+</tr>
+<tr>
+<td><code>getDegradationStatus()</code></td>
+<td>Dashboard + health endpoint</td>
+</tr>
+<tr>
+<td><code>resetDegradationState()</code></td>
+<td>Tests / boot re-probe</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>8. Key Functions (fallback-loop.ts)</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>runFallbackLoop(hooks)</code></td>
+<td>Main loop</td>
+</tr>
+<tr>
+<td><code>newFallbackState()</code></td>
+<td>Fresh <code>{skipKeys, skipModels, skipPlatforms}</code></td>
+</tr>
+<tr>
+<td><code>cooldownDecisionForError(route, err)</code></td>
+<td>Ladder + Retry-After + provenance</td>
+</tr>
+<tr>
+<td><code>recordRetryableFailure(route, err, state, now)</code></td>
+<td>Full bookkeeping</td>
+</tr>
+<tr>
+<td><code>recordAuthFailure(route, state)</code></td>
+<td>401: skip key, 5min bench, trigger revalidation</td>
+</tr>
+<tr>
+<td><code>recordUpstreamSuccess(route, tokens)</code></td>
+<td>Account + clear streaks + mark key healthy</td>
+</tr>
+<tr>
+<td><code>exhaustedRetryError(lastError, maxRetries, ctx)</code></td>
+<td>Honest terminal status + body</td>
+</tr>
+<tr>
+<td><code>routingExhaustionBody(routeErr)</code></td>
+<td>Zero-attempt exhaustion from diagnostics</td>
+</tr>
+<tr>
+<td><code>setFallbackHeaders(res, failedAttempts, trail)</code></td>
+<td>X-Fallback-Attempts + X-Fallback-Trail</td>
+</tr>
+<tr>
+<td><code>setExhaustionHeaders(res, body)</code></td>
+<td>Retry-After from <code>retryAtMs</code></td>
+</tr>
+<tr>
+<td><code>formatAttemptTrail(attempts)</code></td>
+<td>X-Fallback-Trail value</td>
+</tr>
+<tr>
+<td><code>formatAttemptDetail(records)</code></td>
+<td>X-Fallback-Detail value</td>
+</tr>
+<tr>
+<td><code>isFallbackDetailHeaderEnabled()</code></td>
+<td>Settings → env → false</td>
+</tr>
+<tr>
+<td><code>getFallbackTimeBudgetMs()</code></td>
+<td>Settings → env → 45s</td>
+</tr>
+<tr>
+<td><code>msUntilNextUtcMidnight()</code></td>
+<td>Daily quota reset boundary</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>9. Flow: Request Enters Degraded Gateway</h2>
+<pre><code>request → /v1/chat/completions
+  ├─ isDegraded() = true
+  │   └─ router: exploration DISABLED, scored order only
+  ├─ runFallbackLoop()
+  │   ├─ attempt 0: route() → best healthy model
+  │   ├─ dispatch() → 429 daily exhausted
+  │   │   └─ recordRetryableFailure() → cooldown (authoritative, until midnight)
+  │   │   └─ skipKeys.add(), skipModels.add() (daily exhausted = model-level)
+  │   ├─ attempt 1: route() → next healthy (skipKeys honored)
+  │   ├─ ... budget check before each retry ...
+  │   ├─ budget exceeded mid-attempt 3
+  │   │   └─ abortInFlight() → HedgeAbortError
+  │   │   └─ loop stops, timedOut exhaustion
+  │   └─ onExhausted() → 429 with X-Fallback-Detail + Retry-After
+  └─ response headers: X-Fallback-Attempts, X-Fallback-Trail, X-Fallback-Detail
+</code></pre>
+<hr>
+<h2>10. Idempotency-Key Replay — Failover Interaction</h2>
+<blockquote>
+<p>Full client contract: <a href="/f3router/docs/en/api/02-idempotency.html"><code>../api/02-idempotency.md</code></a>. This section is the architecture cross-ref.</p>
+</blockquote>
+<h3>Where it sits in the request path</h3>
+<pre><code>request → /v1/chat/completions
+  ├─ [BEFORE routing] Idempotency lookup  (proxy.ts:1796-1838)
+  │   ├─ hit + fingerprint matches  → replay 200 with X-Routed-Via: idempotency (zero cost, no routing)
+  │   ├─ hit + fingerprint differs → 409 idempotency_key_conflict (fail fast, no provider hit)
+  │   └─ miss / streaming / no key → continue to cache → runFallbackLoop() → provider
+  └─ [AFTER success, non-stream only] Persist response if finish_reason !== &#39;length&#39;
+      └─ storeIdempotencyResult(keyHash, fingerprint, 200, body)  (proxy.ts:2644-2656)
+</code></pre>
+<p>The lookup happens <strong>before</strong> response-cache lookup (the cache is keyed by request content; idempotency is caller-scoped per key hash) and <strong>before</strong> <code>newFallbackState()</code> — a replay never enters the fallback loop, never touches <code>routeRequest</code>, and never consumes a quota lease.</p>
+<h3>What is stored / replayed</h3>
+<ul>
+<li>Only a <code>SHA-256(key)</code> + <code>SHA-256(canonical model+messages+temperature/top_p/max_tokens/tools/tool_choice)</code> fingerprint are persisted; the raw key is never stored (<code>hashIdempotencyKey</code>, <code>computeIdempotencyFingerprint</code> in <code>server/src/services/idempotency.ts:46-70</code>).</li>
+<li><code>response_status</code> + <code>response_body</code> (the sanitized <code>outboundBody</code> that the client received) are replayed verbatim. Replays carry no <code>X-Fallback-*</code> headers and do not write analytics rows — same zero-cost semantics as a cache <code>HIT</code>.</li>
+<li>Streaming (<code>stream: true</code>) and truncated turns (<code>finish_reason === &#39;length&#39;</code>) are never stored — consistent with the response cache.</li>
+</ul>
+<h3>In-flight NOT deduplicated (95bc46f)</h3>
+<p>A second request with the same <code>Idempotency-Key</code> arriving <strong>while the first is still in flight</strong> does <strong>not</strong> coalesce: only <strong>completed</strong> claims are claimable, so both execute. The second <code>storeIdempotencyResult</code> replaces the first. Guarding the window would require a <code>pending</code> claim with a short TTL so a crash cannot wedge a key for 24 h — deliberately out of scope (<code>idempotency.ts:17-20</code>).</p>
+<h3>TTL &amp; expiry</h3>
+<ul>
+<li><code>IDEMPOTENCY_TTL_MS</code> (default <code>24 h</code>, <code>idempotencyTtlMs()</code> in <code>idempotency.ts:40-42</code>, <code>envNum</code> guard) sets <code>expires_at_ms = now + ttl</code>.</li>
+<li>Expired rows are lazily swept per <code>key_hash</code> at the next <code>storeIdempotencyResult</code> (<code>DELETE WHERE key_hash = ? AND expires_at_ms &lt;= ?</code>) plus the <code>idx_idempotency_claims_expires</code> index; a lookup where <code>expires_at_ms &lt;= now</code> is a <code>miss</code>.</li>
+</ul>
+<h3>Interaction with degraded mode &amp; hedging</h3>
+<ul>
+<li>An <code>idempotency</code> replay bypasses <code>isDegraded()</code> entirely — it is already a success and does not consult the router&#39;s exploration gate.</li>
+<li>A <code>miss</code> that then enters the fallback loop is subject to the normal degraded-mode rules (exploration disabled, retry budget, hedging via <code>abortInFlight</code>). The <code>409</code> path never enters the loop.</li>
+<li><code>HedgeAbortError</code> and other non-provider-health failures that cause <code>timedOut</code> exhaustion do not persist a claim for that <code>Idempotency-Key</code> — the attempt did not succeed.</li>
+</ul>
+<p>See <a href="/f3router/docs/en/api/02-idempotency.html"><code>../api/02-idempotency.md</code></a> for the header contract, fingerprint details, <code>409</code> body, per-field TDD, and a full <code>curl</code> retry example.</p>
+</article></main>
+</div>
+</body>
+</html>

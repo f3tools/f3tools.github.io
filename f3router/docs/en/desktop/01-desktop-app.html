@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desktop app — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html" class="on">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/desktop/01-desktop-app.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Desktop app</h1>
+<h2>Package manifest</h2>
+<p><code>desktop/package.json</code> <code>f3router-desktop@0.9.2</code> — Electron <code>38.8.6</code>, <code>better-sqlite3@12.10.0</code>, <code>electron-builder@25.1.8</code>, <code>esbuild@0.24.0</code>. Entry <code>build/main.mjs</code> (<code>type: module</code>). AppId <code>com.f3tools.f3router</code>, publish <code>github:f3tools/f3router</code> (<code>desktop/electron-builder.yml</code>). <code>asar</code> + <code>client-dist</code> in <code>extraResources</code>; per-OS signing targets (mac <code>dmg</code>+<code>zip</code> <code>arm64</code>+<code>x64</code> signed/notarized/stapled via <code>refresh-mac-update-metadata.mjs</code>, win <code>nsis</code>+<code>zip</code> <code>x64</code>, linux <code>AppImage</code>+<code>deb</code>+<code>tar.xz</code>+<code>rpm</code> <code>x64</code> since #981 <code>d8fae97</code>).</p>
+<h2>Build pipeline</h2>
+<pre><code>bundle:server → build:main / build:preload → stage:client → electron-builder
+</code></pre>
+<ul>
+<li><code>scripts/bundle-server.mjs</code> esbuild <code>define: { &#39;process.env.F3ROUTER_COMMIT_SHA&#39;, &#39;process.env.F3ROUTER_INSTALL_METHOD&#39; }</code> from <code>GITHUB_SHA</code> (40-hex); mirrored into live <code>process.env</code> in <code>server-host.ts</code> so <code>routes/update.ts</code> resolves.</li>
+<li><code>build/main.mjs</code> bundles <code>src/main.ts</code> (<code>--platform=node --format=esm --external:electron --external:./server.mjs</code>), <code>build/preload</code> for <code>preload.ts</code>/<code>preload-popover.ts</code>.</li>
+<li><code>scripts/stage-client.mjs</code> copies <code>client/dist</code> → <code>build/client-dist</code> or <code>Resources/client-dist</code> in packaged app; dev override via <code>FREEAPI_REPO</code>.</li>
+</ul>
+<h2>Runtime layout</h2>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;userData&gt;/freeapi.db</code></td>
+<td>SQLite DB (<code>freeapi.db</code> + WAL/<code>-shm</code>), same schema as Docker/Node</td>
+</tr>
+<tr>
+<td><code>&lt;userData&gt;/config.json</code></td>
+<td>Port (<code>31415</code> default), <code>lanAccess</code>, theme/locale</td>
+</tr>
+<tr>
+<td><code>&lt;userData&gt;/logs/freeapi.log</code></td>
+<td>1 MB + <code>freeapi.log.1</code> rotation (<code>desktop/src/logger.ts</code>)</td>
+</tr>
+<tr>
+<td><code>&lt;userData&gt;/backups</code></td>
+<td>Server dumps (<code>services/backups.ts</code> <code>dataDir()</code>)</td>
+</tr>
+<tr>
+<td><code>Resources/client-dist</code></td>
+<td>Packaged client; dev: <code>client/dist</code> via <code>FREEAPI_REPO</code></td>
+</tr>
+</tbody></table>
+<p><code>~/Library/Application Support/f3router</code> (macOS), <code>%APPDATA%/f3router</code> (Windows), <code>~/.config/f3router</code> (Linux).</p>
+<h2>Embedded server-host</h2>
+<p><code>desktop/src/server-host.ts</code> is the <strong>only</strong> module allowed to import <code>server/src/*</code> (<code>desktop/README.md</code>). It bundles the server via <code>bundle-server.mjs</code> and re-exports the DB singleton (<code>getDb</code>, <code>getUnifiedApiKey</code>) to avoid a second copy in the main bundle.</p>
+<p>Boot sequence mirrors <code>server/src/index.ts</code> step-for-step (<code>#949</code>); <code>__tests__/server-host-boot.test.ts</code> cross-checks the list so a new step added to <code>index.ts</code> fails a desktop test instead of silently never running (how <code>startBackupScheduler</code> was missed):</p>
+<p><code>installLogRedaction</code> → <code>installProcessSafetyNet</code> → <code>initDb</code> → <code>ensureSessionToken</code> → <code>restoreProxySettings</code>/<code>flushProxyCache</code> → <code>startHealthChecker</code>/<code>checkAllKeys</code> → <code>startCatalogSync</code> → <code>startCooldownProbe</code> → <code>startCustomModelSync</code> → <code>startBackupScheduler</code> → <code>cleanupExpiredCooldowns</code> → <code>startWakeDetect</code> → <code>createApp</code> → <code>listenWithScan</code> (port <code>31415</code>, scan <code>+50</code> on conflict, persist to <code>config.json</code>).</p>
+<p>Deliberately NOT mirrored: <code>restoreDbBackupIfNeeded</code>/<code>startDbBackupPump</code> (<code>FREEAPI_DB_BACKUP_*</code> env-only, packaged app inherits no shell env).</p>
+<p><code>listenWithScan</code> binds <code>127.0.0.1</code> by default; <code>lanAccess</code> → <code>0.0.0.0</code> (relaunch required).</p>
+<h2>Main-process wiring (<code>desktop/src/main.ts</code>)</h2>
+<ul>
+<li>Single-instance lock (<code>app.requestSingleInstanceLock</code>); second launch focuses existing window.</li>
+<li><code>userData</code> override from <code>FREEAPI_REPO</code> dev path.</li>
+<li><code>installFileLogger</code> ordering — must run before any <code>console.log</code> the server will emit.</li>
+<li>Theme/locale mirroring from system.</li>
+<li><code>FREEAPI_SHOT</code> capture mode for screenshots.</li>
+</ul>
+<h2>Tray / popover / window</h2>
+<ul>
+<li><code>desktop/src/tray.ts</code> — menu-bar icon, <code>Open Logs Folder</code> / <code>Open Backups Folder</code> (<code>logger.ts:openLogsFolder</code>/<code>openBackupsFolder</code> via <code>shell.openPath</code>), <code>Open f3router</code>, quit.</li>
+<li><code>desktop/src/popover.ts</code> — popover window for quick access.</li>
+<li><code>desktop/src/window.ts</code> — main BrowserWindow chrome.</li>
+</ul>
+<h2>Related</h2>
+<ul>
+<li><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates</a> — <code>freeapi.log</code> rotation, update delivery, signing.</li>
+<li><a href="/f3router/docs/en/install/01-install.html">Install &amp; deploy</a> — desktop vs Docker vs local dev.</li>
+<li><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Logs viewer</a> — the polling API the desktop log tap feeds.</li>
+</ul>
+</article></main>
+</div>
+</body>
+</html>

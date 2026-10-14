@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quotas, cooldowns, and key health — f3router docs</title>
+<link rel="icon" href="/assets/f3tools-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/f3router/docs.css">
+</head>
+<body class="docs-page">
+<header class="top docs-top">
+  <button class="menu-btn" onclick="document.body.classList.toggle('nav-open')" aria-label="Menu">☰</button>
+  <a class="brand" href="/f3router/"><img src="/assets/f3tools-logo.png" alt="" width="28" height="28"><span>f3router docs</span></a>
+  <nav><a href="/f3router/">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs/en" target="_blank" rel="noreferrer">Source ↗</a></nav>
+</header>
+<div class="docs-layout">
+  <aside class="docs-nav"><div class="nav-sec"><div class="nav-h">Overview</div><a href="/f3router/docs/en/index.html">f3router documentation</a><a href="/f3router/docs/en/overview.html">Docs — English</a></div><div class="nav-sec"><div class="nav-h">Api</div><a href="/f3router/docs/en/api/01-rest-api.html">API reference</a><a href="/f3router/docs/en/api/02-idempotency.html">Idempotency-Key — Safe Retries for Non-Streaming Chat Completions</a><a href="/f3router/docs/en/api/index.html">API Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Architecture</div><a href="/f3router/docs/en/architecture/00-high-level-index.html">Architecture & internals</a><a href="/f3router/docs/en/architecture/01-routing-and-bandit-scoring.html">Routing & Bandit Scoring — Deep Dive</a><a href="/f3router/docs/en/architecture/02-quota-and-cooldown-engine.html">Quota & Cooldown Engine — Deep Dive</a><a href="/f3router/docs/en/architecture/03-streaming-pipeline.html">Streaming Pipeline — Deep Dive</a><a href="/f3router/docs/en/architecture/04-degraded-mode-and-failover.html">Degraded Mode & Failover — Deep Dive</a><a href="/f3router/docs/en/architecture/05-catalog-sync.html">Catalog Sync — Deep Dive</a><a href="/f3router/docs/en/architecture/06-observability.html">Observability — Deep Dive</a><a href="/f3router/docs/en/architecture/index.html">Architecture Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Cli</div><a href="/f3router/docs/en/cli/01-generators.html">Setup generators</a><a href="/f3router/docs/en/cli/02-config-files.html">Config files</a><a href="/f3router/docs/en/cli/index.html">CLI Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Clients</div><a href="/f3router/docs/en/clients/01-agent-clients.html">Clients & coding agents</a><a href="/f3router/docs/en/clients/02-supported-agents.html">Supported agents</a><a href="/f3router/docs/en/clients/index.html">Clients Domain</a></div><div class="nav-sec"><div class="nav-h">Compression</div><a href="/f3router/docs/en/compression/01-compression-pipeline.html">Prompt compression</a><a href="/f3router/docs/en/compression/index.html">Compression Domain</a></div><div class="nav-sec"><div class="nav-h">Deployment</div><a href="/f3router/docs/en/deployment/01-docker.html">Docker</a><a href="/f3router/docs/en/deployment/02-updates-and-backup.html">Updates and backup</a><a href="/f3router/docs/en/deployment/index.html">Deployment overview</a></div><div class="nav-sec"><div class="nav-h">Desktop</div><a href="/f3router/docs/en/desktop/01-desktop-app.html">Desktop app</a><a href="/f3router/docs/en/desktop/02-logging-and-updates.html">Logging and updates — desktop</a><a href="/f3router/docs/en/desktop/index.html">Desktop Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Env</div><a href="/f3router/docs/en/env/01-variables.html">Environment variable reference</a><a href="/f3router/docs/en/env/02-security-and-keys.html">Security and key handling</a><a href="/f3router/docs/en/env/03-outbound-proxies.html">Outbound proxies</a><a href="/f3router/docs/en/env/index.html">Environment configuration overview</a></div><div class="nav-sec"><div class="nav-h">Fallback</div><a href="/f3router/docs/en/fallback/01-named-chains.html">Named Fallback Chains</a><a href="/f3router/docs/en/fallback/index.html">Fallback Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Glossary</div><a href="/f3router/docs/en/glossary/01-glossary.html">Glossary</a><a href="/f3router/docs/en/glossary/index.html">Glossary Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Install</div><a href="/f3router/docs/en/install/01-install.html">Install & deploy</a><a href="/f3router/docs/en/install/02-android-termux.html">Android (Termux) installation</a><a href="/f3router/docs/en/install/index.html">Install guides overview</a></div><div class="nav-sec"><div class="nav-h">Logs</div><a href="/f3router/docs/en/logs/01-server-logs-viewer.html">Server Logs Viewer</a><a href="/f3router/docs/en/logs/index.html">Logs Domain</a></div><div class="nav-sec"><div class="nav-h">Providers</div><a href="/f3router/docs/en/providers/01-supported-platforms.html">Supported platforms</a><a href="/f3router/docs/en/providers/02-quotas-and-cooldowns.html" class="on">Quotas, cooldowns, and key health</a><a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">Adding a new provider</a><a href="/f3router/docs/en/providers/04-recurring-credit-gateways.html">ElectronHub and Experiential Labs</a><a href="/f3router/docs/en/providers/index.html">Provider integrations overview</a></div><div class="nav-sec"><div class="nav-h">Proxy</div><a href="/f3router/docs/en/proxy/01-fetch-relay.html">Fetch Relay transport</a><a href="/f3router/docs/en/proxy/index.html">Proxy Domain — Overview & File Index</a></div><div class="nav-sec"><div class="nav-h">Testing</div><a href="/f3router/docs/en/testing/01-running-tests.html">Running tests</a><a href="/f3router/docs/en/testing/02-server-suite.html">Server suite</a><a href="/f3router/docs/en/testing/03-compatibility-suite.html">Compatibility suite</a><a href="/f3router/docs/en/testing/index.html">Testing overview</a></div><div class="nav-sec"><div class="nav-h">Troubleshooting</div><a href="/f3router/docs/en/troubleshooting/01-common-issues.html">Common issues</a><a href="/f3router/docs/en/troubleshooting/index.html">Troubleshooting Domain — Overview & File Index</a></div></aside>
+  <main class="docs-main"><article class="prose"><p><strong>English</strong> · <a href="https://github.com/f3tools/f3router/blob/main/docs/zh-cn/providers/02-quotas-and-cooldowns.md" target="_blank" rel="noreferrer">简体中文</a></p>
+<h1>Quotas, cooldowns, and key health</h1>
+<p>Free tiers fail in specific, metered ways: per-minute and per-day request caps, token budgets, concurrency limits, and outright quota exhaustion. The gateway models all of them so the router stops spending fallback attempts on keys it already knows are spent. The machinery lives in <a href="https://github.com/f3tools/f3router/blob/main/server/src/services/ratelimit.ts" target="_blank" rel="noreferrer"><code>server/src/services/ratelimit.ts</code></a>, <a href="https://github.com/f3tools/f3router/blob/main/server/src/services/provider-quota.ts" target="_blank" rel="noreferrer"><code>server/src/services/provider-quota.ts</code></a>, <a href="https://github.com/f3tools/f3router/blob/main/server/src/services/cooldown-probe.ts" target="_blank" rel="noreferrer"><code>server/src/services/cooldown-probe.ts</code></a>, <a href="https://github.com/f3tools/f3router/blob/main/server/src/services/health.ts" target="_blank" rel="noreferrer"><code>server/src/services/health.ts</code></a>, and the shared back-off parsers in <a href="https://github.com/f3tools/f3router/blob/main/server/src/providers/base.ts" target="_blank" rel="noreferrer"><code>server/src/providers/base.ts</code></a>.</p>
+<h2>Rate-limit windows (RPM/RPD)</h2>
+<p>Every catalog model row carries <code>rpm_limit</code> / <code>rpd_limit</code> columns. Before dispatching an attempt, the router checks sliding windows keyed <code>platform:modelId:keyId:rpm</code> (minute) or <code>...:rpd</code> (day):</p>
+<ul>
+<li>A request is admitted only when <code>recorded + in-flight &lt; limit</code> — counting in-flight leases (below) closes the race where N concurrent requests all read the same counter as unspent.</li>
+<li>Windows exist both in memory and persisted; on DB unavailability the router falls back to summing the in-memory window keys.</li>
+</ul>
+<h2>Token budgets (TPM/TPD)</h2>
+<p><code>tpm_limit</code> / <code>tpd_limit</code> work the same way with estimated tokens: a request counts against its minute/day token window only if <code>used + in-flight tokens + estimate</code> fits under the limit. Because some providers publish a generous RPD but a tiny TPM (the code cites groq <code>gpt-oss-120b</code>: rpd 1000 yet tpm 8000), the daily token check also feeds a derived cap so one large burst cannot exhaust a day&#39;s budget in seconds.</p>
+<h2>Platform-wide pools</h2>
+<p>Per-model windows cannot see account-level ceilings: OpenRouter meters <code>:free</code> routes as one pool, Google meters per project, NVIDIA NIM meters a credit pool (~40 req/min across all models regardless of per-model rows). UnoRouter&#39;s <code>:free</code> models share a per-minute account-wide cap (a burst of parallel requests trips a 429 on every <code>:free</code> model for several minutes). xKiro&#39;s free plan enforces a 5M token/day account-wide budget across all free models (Mistral, MiniMax, DeepSeek families). <code>inferPoolForPlatform</code> maps platforms to shared pools (<code>openrouter::free</code>, <code>google::project</code>, <code>groq::account</code>, <code>nvidia::credit-pool</code>, <code>unorouter::free</code>, <code>xkiro::free</code>, ...) and each pool gets its own aggregate gate, so <code>(models × rpd)</code> fan-out earns surprise 429s no more.</p>
+<h2>Concurrency leases</h2>
+<ul>
+<li><strong>Leases</strong> make in-flight requests visible: every dispatched attempt acquires a lease and releases it after the attempt settles (idempotent release; leaked leases are pruned by age). Without leases, counters are only written <em>after</em> the awaited provider call, so parallel streams would sail through the limit and collect real 429s.</li>
+<li><strong>Opt-in concurrency caps</strong>: most free tiers meter requests-per-minute, not parallelism, so capping by default would serialize providers for no benefit. <code>MAX_CONCURRENT_REQUESTS_PER_KEY_&lt;PLATFORM&gt;</code> (per platform) or <code>MAX_CONCURRENT_REQUESTS_PER_KEY</code> (fallback) enables a per-key cap checked against live lease counts. There is deliberately no built-in per-platform table: the providers that behave this way are not documented precisely enough to assert numbers for.</li>
+</ul>
+<h2>Cooldowns</h2>
+<p>A 429 blocks that model+key pair for a period:</p>
+<table>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>Duration</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Transient cooldown</td>
+<td>90s</td>
+<td>Per-minute-window 429; recovers within ~one window.</td>
+</tr>
+<tr>
+<td>Escalation ladder</td>
+<td>2min → 10min → 1h → 1 day</td>
+<td>Hits tracked over a rolling 24h window; a genuinely exhausted daily quota quarantines the key for the rest of the day instead of looping through short cooldowns. A successful request clears the hit counter.</td>
+</tr>
+<tr>
+<td>Unknown-limit ceiling</td>
+<td>capped at 10min</td>
+<td>When exhaustion is guessed rather than measured, the bench is capped since the verdict is a guess.</td>
+</tr>
+<tr>
+<td>Payment required (402)</td>
+<td>1 day</td>
+<td>Out-of-credits.</td>
+</tr>
+<tr>
+<td>Model forbidden (403 tier gate)</td>
+<td>1 day</td>
+<td>Key valid, model gated to a higher tier.</td>
+</tr>
+<tr>
+<td>Local endpoint errors</td>
+<td>5s</td>
+<td>Never enters the ladder.</td>
+</tr>
+</tbody></table>
+<p><strong>Operator ceiling (#952).</strong> Relay endpoints often return &quot;busy&quot; or &quot;insufficient balance&quot; for transient reasons, and a few of those per key can walk a whole pool onto day-long benches. Fallback page → routing options → <em>Longest automatic cooldown</em> (<code>routing_cooldown_ceiling_ms</code>, <code>PUT /api/fallback/routing {&quot;cooldownCeilingMs&quot;}</code>) caps the escalation ladder and the 402/403 benches at 10 min, 1 h or 6 h. Provider-stated retry times (Retry-After, daily-quota resets) are never shortened. The <em>Router pressure</em> panel&#39;s <strong>Clear all</strong> (<code>DELETE /api/fallback/penalty-inspector</code>) lifts every cooldown, score penalty, ladder counter and cross-key failure streak at once; the per-key reset (<code>DELETE /api/keys/:id/cooldowns</code>) remains for the surgical case.
+| Auth failure (401) | benched until the next health cycle | ~5 minutes. |</p>
+<h3>Provenance and probe-based early recovery</h3>
+<p>Cooldowns record why they exist (<code>heuristic</code>, <code>authoritative</code>, <code>credit</code>, <code>tier</code>). Only <code>heuristic</code> benches are guesses that often outlive the outage; provider-stated facts (explicit Retry-After expiry, daily-quota reset) and credit/tier benches are never probed because a passing key-validation probe proves nothing about them.</p>
+<p>The cooldown-probe job scans every 60s and re-validates probe-ripe keys to clear heuristic cooldowns early:</p>
+<ul>
+<li>ripe only after half the bench has elapsed, and only if &gt;60s remains (probing a nearly-expired bench wastes a validate call);</li>
+<li>a failed probe never extends the bench — it schedules the next probe further out (2min doubling, capped at 15min);</li>
+<li>probes are side-effect-free for health bookkeeping, staggered after restart, and budgeted per pass (<code>COOLDOWN_PROBE_MAX_PER_PASS</code>, default 3); <code>COOLDOWN_PROBE_DISABLED=1</code> kills the job;</li>
+<li>the probe unit is the KEY, not the model: one <code>validateKey</code> result is evidence for every heuristic cooldown that key holds.</li>
+</ul>
+<h2>Back-off from headers and error bodies (#798)</h2>
+<p>Before #798, a provider that stated exactly when to come back got the same heuristic ladder as one that said nothing, because error bodies were flattened to a message string before reaching the router. Now every adapter builds errors via <code>providerHttpError</code>, which captures:</p>
+<ol>
+<li><strong>The <code>Retry-After</code> header</strong> — delta-seconds or HTTP-date, parsed once (shared parser in <code>providers/base.ts</code>) and still the winning channel when both sources are present.</li>
+<li><strong>A delay stated inside the error body</strong>:<ul>
+<li>structured fields: Gemini answers 429 with <code>error.details[]</code> carrying <code>google.rpc.RetryInfo</code> whose <code>retryDelay</code> reads <code>&quot;17s&quot;</code>; the body is walked depth-capped (max depth 6) looking for <code>retryDelay</code> / <code>retry_after</code> / <code>retryAfterSeconds</code> shapes, which is more durable across providers than exact paths;</li>
+<li>prose: anchored phrases like &quot;try again in 30 seconds&quot; or &quot;retry after 2m&quot; — anchored so an unrelated number in an error message can never be mistaken for a back-off.</li>
+</ul>
+</li>
+<li>All parsed delays are clamped to 24h so a malformed/hostile hint cannot bench a key forever.</li>
+</ol>
+<p>Only the number is kept — never the body — so nothing extra reaches logs or attempt traces. Tests: <a href="https://github.com/f3tools/f3router/blob/main/server/src/__tests__/providers/stated-retry.test.ts" target="_blank" rel="noreferrer"><code>server/src/__tests__/providers/stated-retry.test.ts</code></a>.</p>
+<h2>Provider-reported quota polling (#1403)</h2>
+<p>Headers and error bodies only show quota when a request happens to carry them. Providers with a <strong>key-info endpoint</strong> (OpenRouter&#39;s <code>GET /api/v1/key</code> returns the key&#39;s <code>limit</code> / <code>limit_remaining</code> credit balance; SiliconFlow&#39;s <code>GET /v1/user/info</code> returns the account&#39;s <code>totalBalance</code>/<code>balance</code> in CNY as numeric strings) can be asked directly, and now are: <code>BaseProvider.fetchQuota()</code> is an optional probe that records what the provider itself reports as a <code>source: &#39;quota_api&#39;</code> observation (confidence 1.0). The health pass piggybacks the probe onto a <strong>healthy</strong> verdict only, per key at most once per 15 minutes (<code>QUOTA_POLL_INTERVAL_MS</code>), fire-and-forget and failure-silent: a quota probe that errors or times out says nothing about the key and never changes a health verdict. Providers register their endpoint as a <code>quotaProbe</code> spec (URL + the JSON fields carrying limit/remaining); a spec may omit <code>limitFields</code> when the provider reports only a balance. Providers without a spec pay zero network. This is what fills the dashboard&#39;s live balances for pools that send no token-level rate-limit headers, instead of the text-label guess <code>parseBudget</code> makes over catalog copy.</p>
+<h2>Health checks must not burn metered quota (#882)</h2>
+<p>Health runs a scheduled pass every 5 minutes (±20% jitter, keys validated more recently than 3.5 minutes skipped, default concurrency 8, ≥1s spacing between same-provider probes). That cadence is fine for free validation endpoints but poisonous where validation itself costs quota:</p>
+<ul>
+<li>ModelScope validates keys with a paid 1-token chat completion (<code>GET /v1/models</code> does not enforce auth), spending magic-grain quota — at the default cadence roughly 288 paid probes/key/day. Fix (#882): tokens not prefixed <code>ms-</code> are rejected locally with zero network calls, and a successful validation is cached per key for <code>MODELSCOPE_VALIDATE_CACHE_MS</code> (default 24h).</li>
+<li>Pollinations&#39; public <code>/v1/models</code> answers 200 even for revoked keys, so validation targets the authenticated <code>/account/key</code>; AI Horde treats any reachable endpoint as healthy rather than spending queue slots.</li>
+</ul>
+<p>The rule for contributors: <strong>if <code>validateKey</code> consumes metered quota, it needs a cache or a free probe path</strong> — see <a href="/f3router/docs/en/providers/03-adding-a-new-provider.html">03-adding-a-new-provider.md</a>.</p>
+</article></main>
+</div>
+</body>
+</html>
