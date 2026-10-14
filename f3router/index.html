@@ -3,65 +3,87 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>f3router — f3tools</title>
-<meta name="description" content="f3router is a free, MIT-licensed tool from f3tools.">
+<title>f3router — free LLM API router for coding agents</title>
+<meta name="description" content="f3router gives your coding agents one OpenAI-compatible /v1 endpoint in front of many free LLM providers, with automatic fallback when a quota runs out.">
 <meta name="theme-color" content="#3b82f6">
 <link rel="icon" href="../assets/f3tools-logo.png">
 <link rel="stylesheet" href="../style.css">
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+<style>
+  .pill{display:inline-block;margin:4px 6px 0 0;font-size:13px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+  .steps{counter-reset:s;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));padding:0;list-style:none}
+  .steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .steps li::before{content:counter(s);display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--grad);color:#fff;font-weight:700;margin-bottom:8px}
+  .price{max-width:520px;margin:0 auto;text-align:center;background:var(--card);border:1px dashed var(--blue);border-radius:16px;padding:28px}
+  .price h3{margin:0 0 8px;font-size:1.3rem}
+  .soon{display:inline-block;margin-top:10px;padding:6px 14px;border-radius:999px;background:var(--grad);color:#fff;font-weight:700;font-size:14px}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:10px 0}
+  .faq summary{cursor:pointer;font-weight:600}
+  .faq p{color:var(--muted);margin:8px 0 0}
+</style>
 </head>
 <body>
-<div class="wrap" x-data="tool('f3router')" x-init="load()">
+<div class="wrap">
   <header class="top">
     <a class="brand" href="../"><img src="../assets/f3tools-logo.png" alt="" width="32" height="32"><span>f3tools</span></a>
-    <nav><a href="../#tools">All tools</a><a href="https://github.com/f3tools" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+    <nav><a href="#how">How it works</a><a href="#start">Quick start</a><a href="#pricing">Pricing</a><a href="docs.html">Docs</a><a href="https://github.com/f3tools/f3router" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
   </header>
 
-  <template x-if="t">
-    <main>
-      <section class="hero">
-        <h1><span class="grad" x-text="t.name"></span></h1>
-        <p class="lede" x-text="t.tagline"></p>
-      </section>
+  <section class="hero">
+    <p class="lede" style="margin-bottom:10px">Free &amp; open source · MIT</p>
+    <h1><span class="grad">One free LLM endpoint</span> for all your coding agents</h1>
+    <p class="lede">f3router gives Claude Code, Codex, Pi, OpenCode and other agents a single OpenAI-compatible <code>/v1</code> endpoint. It sends each request to a free provider that has quota left, and falls over to the next one when a limit is hit.</p>
+    <div class="links" style="justify-content:center;margin-top:22px">
+      <a class="btn primary" href="#start">Get started</a>
+      <a class="btn" href="docs.html">Read the docs</a>
+    </div>
+    <div style="margin-top:18px">
+      <span class="pill">OpenAI-compatible</span><span class="pill">Anthropic-compatible</span><span class="pill">Automatic fallback</span><span class="pill">Encrypted keys</span><span class="pill">Self-hosted</span>
+    </div>
+  </section>
 
-      <section class="section">
-        <p x-text="t.summary"></p>
-      </section>
+  <section id="how" class="section">
+    <h2>How it works</h2>
+    <p class="lede">Your agent talks to one endpoint. f3router ranks the free models you have keys for, sends the request to the best one available, and keeps per-key usage so you stay under each free-tier cap.</p>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+      <div class="card"><h2 style="font-size:1.1rem">One endpoint</h2><p>Point any OpenAI or Anthropic client at <code>/v1</code>. No SDK changes.</p></div>
+      <div class="card"><h2 style="font-size:1.1rem">Live routing</h2><p>Requests go to the best free model right now, based on reliability, speed and quota.</p></div>
+      <div class="card"><h2 style="font-size:1.1rem">Automatic fallback</h2><p>Rate-limited or failing providers are skipped and cooled down before your agent sees an error.</p></div>
+      <div class="card"><h2 style="font-size:1.1rem">Your keys, encrypted</h2><p>Provider keys are stored encrypted on your machine. Nothing is sent to us.</p></div>
+    </div>
+  </section>
 
-      <section class="section">
-        <h2>Install</h2>
-        <pre><code x-text="t.install"></code></pre>
-        <p>Then run <code x-text="t.run"></code>.</p>
-      </section>
+  <section id="start" class="section">
+    <h2>Quick start</h2>
+    <ol class="steps">
+      <li><strong>Install</strong><p class="lede" style="margin:6px 0 0">Run the installer from the repository, or download the desktop app from GitHub Releases.</p></li>
+      <li><strong>Add a free key</strong><p class="lede" style="margin:6px 0 0">Add keys from the providers you use (Groq, Cerebras, Gemini and others have free tiers).</p></li>
+      <li><strong>Point your agent at f3router</strong><p class="lede" style="margin:6px 0 0">Set the base URL to <code>http://localhost:&lt;port&gt;/v1</code> and use the key shown in the app.</p></li>
+    </ol>
+    <pre style="margin-top:18px"><code>curl -fsSL https://raw.githubusercontent.com/f3tools/f3router/main/docs/install.sh | sh</code></pre>
+    <p class="lede">Windows: <code>docs/install.ps1</code> in the repository. Full steps are in the <a href="docs.html">docs</a>.</p>
+  </section>
 
-      <section class="section links">
-        <a class="btn primary" :href="t.npm" target="_blank" rel="noreferrer">npm</a>
-        <a class="btn" :href="t.repo" target="_blank" rel="noreferrer">Source on GitHub</a>
-      </section>
-    </main>
-  </template>
-  <p x-show="!t && error" x-text="error"></p>
+  <section id="pricing" class="section">
+    <h2>Pricing</h2>
+    <div class="price">
+      <h3>Premium Pricing</h3>
+      <p class="lede" style="margin:0">for Live Updated Curated List</p>
+      <span class="soon">Coming Soon</span>
+    </div>
+    <p class="lede" style="text-align:center;margin-top:18px">f3router is free and open source today. The premium list is still being prepared.</p>
+  </section>
 
-  <a class="back" href="../">← Back to f3tools</a>
-  <footer><div>MIT licensed · part of <a href="../">f3tools</a></div></footer>
+  <section class="section faq">
+    <h2>FAQ</h2>
+    <details><summary>Is f3router free?</summary><p>Yes. The code is MIT licensed and runs on your own machine. The providers you connect have their own free-tier limits.</p></details>
+    <details><summary>Where do my keys go?</summary><p>Only to the providers you configure. They are stored encrypted on your machine.</p></details>
+    <details><summary>Which agents work with it?</summary><p>Any tool that accepts an OpenAI-compatible or Anthropic-compatible base URL, including Claude Code, Codex, Pi, OpenCode, Cline and Aider.</p></details>
+    <details><summary>Does it hide provider errors?</summary><p>It retries and falls over to other providers first. Failovers, cooldowns and scores are visible per request in Analytics.</p></details>
+  </section>
+
+  <footer>
+    <div>MIT licensed · <a href="https://github.com/f3tools/f3router" target="_blank" rel="noreferrer">github.com/f3tools/f3router</a> · <a href="docs.html">Docs</a> · <a href="../">f3tools</a></div>
+  </footer>
 </div>
-<script>
-function tool(id) {
-  return {
-    t: null,
-    error: "",
-    async load() {
-      try {
-        const res = await fetch("../tools.json", { cache: "no-cache" });
-        if (!res.ok) throw new Error(res.status);
-        this.t = (await res.json()).find((x) => x.id === id) || null;
-        if (!this.t) this.error = "Tool not found.";
-      } catch (e) {
-        this.error = "Could not load this tool.";
-      }
-    },
-  };
-}
-</script>
 </body>
 </html>
