@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>f3router docs</title>
+<meta name="description" content="How to install f3router, connect your coding agents, manage keys and routing, and self-host it.">
+<link rel="icon" href="../assets/f3tools-logo.png">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .docs{display:grid;gap:24px;grid-template-columns:200px 1fr;padding:24px 0 48px}
+  @media (max-width:760px){.docs{grid-template-columns:1fr}}
+  .toc a{display:block;padding:6px 0;color:var(--muted);text-decoration:none}
+  .toc a:hover{color:var(--ink)}
+  .docs h2{margin-top:32px;scroll-margin-top:16px}
+  .docs h3{margin-top:22px;font-size:1.05rem}
+  .docs ul{padding-left:20px;color:var(--muted)}
+  .docs li{margin:6px 0}
+  .note{border-left:3px solid var(--blue);background:var(--card);padding:12px 16px;border-radius:8px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="index.html"><img src="../assets/f3tools-logo.png" alt="" width="32" height="32"><span>f3router docs</span></a>
+    <nav><a href="index.html">Home</a><a href="https://github.com/f3tools/f3router/tree/main/docs" target="_blank" rel="noreferrer">Full guides ↗</a><a href="https://github.com/f3tools/f3router" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+  </header>
+
+  <div class="docs">
+    <nav class="toc">
+      <a href="#install">Install</a>
+      <a href="#connect">Connect an agent</a>
+      <a href="#keys">Provider keys</a>
+      <a href="#routing">Routing</a>
+      <a href="#self-host">Self-hosting</a>
+      <a href="#troubleshooting">Troubleshooting</a>
+      <a href="#license">License</a>
+    </nav>
+
+    <article>
+      <h1>f3router docs</h1>
+      <p class="lede">f3router runs on your machine and gives your coding agents one OpenAI-compatible <code>/v1</code> endpoint in front of many free LLM providers.</p>
+
+      <h2 id="install">Install</h2>
+      <h3>macOS and Linux</h3>
+      <pre><code>curl -fsSL https://raw.githubusercontent.com/f3tools/f3router/main/docs/install.sh | sh</code></pre>
+      <h3>Windows</h3>
+      <pre><code>irm https://raw.githubusercontent.com/f3tools/f3router/main/docs/install.ps1 | iex</code></pre>
+      <p>Or download the desktop app from <a href="https://github.com/f3tools/f3router/releases/latest" target="_blank" rel="noreferrer">GitHub Releases</a>. The installer scripts are in the repository under <code>docs/</code>.</p>
+      <div class="note">The app prints its local address when it starts. Use that address and port in the steps below.</div>
+
+      <h2 id="connect">Connect an agent</h2>
+      <p>Point your agent at the router instead of a provider:</p>
+      <ul>
+        <li><strong>Base URL:</strong> <code>http://localhost:&lt;port&gt;/v1</code> for OpenAI-style clients</li>
+        <li><strong>API key:</strong> the f3router key shown in the app (not a provider key)</li>
+        <li><strong>Model:</strong> <code>auto</code> lets the router choose, or pick a specific model id from the Models page</li>
+      </ul>
+      <p>Anthropic-style clients can use the same server root. Check the Keys page in the app for the exact values.</p>
+
+      <h2 id="keys">Provider keys</h2>
+      <p>Add keys for the free-tier providers you have accounts with. Each key is stored encrypted on your machine and used only for that provider.</p>
+      <ul>
+        <li>Keys stay on your machine. Nothing is sent to f3tools.</li>
+        <li>Rotate or remove a key at any time from the Keys page.</li>
+        <li>Per-key usage is tracked so the router can stay under each free-tier cap.</li>
+      </ul>
+
+      <h2 id="routing">Routing</h2>
+      <p>The router ranks the models you have keys for and tries them in order:</p>
+      <ul>
+        <li><strong>Balanced</strong> (default): weighs reliability, speed and intelligence.</li>
+        <li><strong>Manual:</strong> you set the order by dragging models.</li>
+        <li><strong>Fastest, Smartest, Most reliable, Custom:</strong> other live-score strategies.</li>
+      </ul>
+      <p>If a provider returns a rate limit or an error, the router cools it down and tries the next one. Failovers and scores are visible per request in Analytics.</p>
+
+      <h2 id="self-host">Self-hosting</h2>
+      <p>f3router is single-user software. Keep it bound to localhost unless you know you need LAN access. Install and architecture details are in the repository guides:</p>
+      <ul>
+        <li><a href="https://github.com/f3tools/f3router/tree/main/docs/en/install" target="_blank" rel="noreferrer">Install guides</a></li>
+        <li><a href="https://github.com/f3tools/f3router/tree/main/docs/en/architecture" target="_blank" rel="noreferrer">Architecture</a></li>
+        <li><a href="https://github.com/f3tools/f3router/tree/main/docs/en/desktop" target="_blank" rel="noreferrer">Desktop app</a></li>
+      </ul>
+
+      <h2 id="troubleshooting">Troubleshooting</h2>
+      <ul>
+        <li><strong>"No active credentials for provider":</strong> the model's provider has no key yet. Add a key for it on the Keys page.</li>
+        <li><strong>Agent cannot connect:</strong> check the base URL includes <code>/v1</code> and the port matches what the app shows.</li>
+        <li><strong>Every request falls back:</strong> open Analytics to see which providers are cooling down and why.</li>
+      </ul>
+
+      <h2 id="license">License</h2>
+      <p>f3router is MIT licensed. See <a href="https://github.com/f3tools/f3router/blob/main/LICENSE" target="_blank" rel="noreferrer">LICENSE</a> in the repository.</p>
+    </article>
+  </div>
+
+  <footer>
+    <div>MIT licensed · <a href="index.html">f3router</a> · <a href="../">f3tools</a></div>
+  </footer>
+</div>
+</body>
+</html>
